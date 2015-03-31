@@ -1,0 +1,55 @@
+{
+    "project": {
+        "name": "davinci-visual",
+        "description": "A lightweight WebGL Mathematical visualization library.",
+        "version": "0.0.1",
+        "url": "",
+        "logo": "../assets/logo.png"
+    },
+    "files": {
+        "amd/davinci-visual/VisualElement.js": {
+            "name": "amd/davinci-visual/VisualElement.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "amd/davinci-visual.js": {
+            "name": "amd/davinci-visual.js",
+            "modules": {
+                "visual": 1
+            },
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {
+        "visual": {
+            "name": "visual",
+            "submodules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "amd/davinci-visual.js",
+            "line": 2,
+            "description": "Provides the visual module"
+        }
+    },
+    "classes": {},
+    "classitems": [
+        {
+            "file": "amd/davinci-visual/VisualElement.js",
+            "line": 4,
+            "description": "Visual provides the common behavior for all Mesh (Geometry, Material) objects.",
+            "class": ""
+        }
+    ],
+    "warnings": [
+        {
+            "message": "Missing item type\nVisual provides the common behavior for all Mesh (Geometry, Material) objects.",
+            "line": " amd/davinci-visual/VisualElement.js:4"
+        }
+    ]
+}
