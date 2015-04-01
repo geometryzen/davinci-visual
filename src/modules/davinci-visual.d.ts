@@ -15,9 +15,20 @@ declare module visual
     }
     class VisualElement<T extends THREE.Geometry>
     {
+      geometry: T;
+      material: THREE.MeshLambertMaterial;
+      mesh: THREE.Mesh;
       constructor(geometry: T, color: number, opacity: number = 1.0, transparent: boolean = false) {}
     }
     class Arrow extends VisualElement<ArrowGeometry>
+    {
+      constructor(scale: number, color: number, opacity: number = 1.0, transparent: boolean = false) {}
+    }
+    class Box extends VisualElement<THREE.BoxGeometry>
+    {
+      constructor(width: number, height: number, depth: number, color: number, opacity: number = 1.0, transparent: boolean = false) {}
+    }
+    class Vortex extends VisualElement<VortexGeometry>
     {
       constructor(scale: number, color: number, opacity: number = 1.0, transparent: boolean = false) {}
     }
