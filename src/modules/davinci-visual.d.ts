@@ -7,7 +7,7 @@ declare module visual
 {
     class VisualElement<T extends THREE.Geometry>
     {
-
+      constructor(geometry: T, color: number, opacity: number = 1.0, transparent: boolean = false) {}
     }
 }
 declare module visual {
