@@ -1,4 +1,5 @@
-/// <reference path="../../typings/threejs/three.d.ts" />
+///<reference path="../../typings/threejs/three.d.ts"/>
+
 class RevolutionGeometry extends THREE.Geometry
 {
   constructor(points, generator, segments, phiStart, phiLength, attitude)

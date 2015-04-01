@@ -12,36 +12,43 @@ requirejs.config({
     "spec": "../test/spec"
   },
 
+  "shim": {
+    "THREE": ["../vendor/threejs/build/three.js"]
+  },
+
   // target amd loader shim as the main module, path is relative to baseUrl.
   name: "../vendor/almond/almond",
 
   optimize: "none",
 
-  // files to include along with almond.  only eight is defined, as
+  // files to include along with almond. only davinci-visual is defined, as
   // it pulls in the rest of the dependencies automatically.
   include: ["davinci-visual"],
 
   // code to wrap around the start / end of the resulting build file
   // the global variable used to expose the API is defined here
   wrap: {
-    start: "(function(global, define) {\n"+
-              // check for amd loader on global namespace
-           "  var globalDefine = global.define;\n",
+    start: "(function(global, THREE)\n"+
+           "{\n",
 
-    end:   "  var library = require('davinci-visual');\n"+
-           "  if(typeof module !== 'undefined' && module.exports) {\n"+
-                // export library for node
-           "    module.exports = library;\n"+
-           "  } else if(globalDefine) {\n"+
-                // define library for global amd loader that is already present
-           "    (function (define) {\n"+
-           "      define(function () { return library; });\n"+
-           "    }(globalDefine));\n"+
-           "  } else {\n"+
-                // define library on global namespace for inline script loading
-           "    global['visual'] = library;\n"+
-           "  }\n"+
-           "}(this));\n"
+    end:   "var library = require('davinci-visual');\n"+
+           "if (typeof module !== 'undefined' && module.exports)\n"+
+           "{\n"+
+           "  // Export library for CommonJS/Node.\n"+
+           "  module.exports = library;\n"+
+           "}\n"+
+           "else if (global.define)\n"+
+           "{\n"+
+           "  // Define library for global AMD loader that is already present.\n"+
+           "  (function (define) {define(function () { return library; });}(global.define));\n"+
+           "}\n"+
+           "else\n"+
+           "{\n"+
+           "  // Define library on global namespace for inline script loading.\n"+
+           "  global['visual'] = library;\n"+
+           "}\n"+
+           "\n"+
+           "}(this, THREE));\n"
   },
 
   // don't include coffeescript compiler in optimized file

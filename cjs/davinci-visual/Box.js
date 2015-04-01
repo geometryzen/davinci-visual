@@ -4,7 +4,7 @@ var __extends = this.__extends || function (d, b) {
     __.prototype = b.prototype;
     d.prototype = new __();
 };
-/// <reference path="../../typings/threejs/three.d.ts" />
+///<reference path="../../typings/threejs/three.d.ts"/>
 var VisualElement = require('davinci-visual/VisualElement');
 var Box = (function (_super) {
     __extends(Box, _super);

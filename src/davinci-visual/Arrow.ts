@@ -1,4 +1,3 @@
-/// <reference path="../../typings/threejs/three.d.ts" />
 import VisualElement = require('davinci-visual/VisualElement');
 import ArrowGeometry = require('davinci-visual/ArrowGeometry');
 

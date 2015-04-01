@@ -16,6 +16,9 @@
     };
 
     require.config({
-        baseUrl: "amd/"
+        baseUrl: "amd/",
+        shim: {
+            "THREE": ["../vendor/threejs/build/three.min.js"]
+        }
     });
 }(require));

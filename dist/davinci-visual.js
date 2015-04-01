@@ -1,5 +1,5 @@
-(function(global, define) {
-  var globalDefine = global.define;
+(function(global, THREE)
+{
 /**
  * @license almond 0.3.1 Copyright (c) 2011-2014, The Dojo Foundation All Rights Reserved.
  * Available via the MIT or new BSD license.
@@ -435,14 +435,13 @@ define("../vendor/almond/almond", function(){});
 
 define('davinci-visual/core',["require", "exports"], function (require, exports) {
     var visual = {
-        VERSION: '0.0.1'
+        VERSION: '0.0.2'
     };
     return visual;
 });
 
+///<reference path="../../typings/threejs/three.d.ts"/>
 define('davinci-visual/VisualElement',["require", "exports"], function (require, exports) {
-    /// <reference path="../../vendor/davinci-blade/dist/davinci-blade.d.ts" />
-    /// <reference path="../../typings/threejs/three.d.ts" />
     /**
      * Visual provides the common behavior for all Mesh (Geometry, Material) objects.
      */
@@ -455,19 +454,15 @@ define('davinci-visual/VisualElement',["require", "exports"], function (require,
             this.mesh = new THREE.Mesh(this.geometry, this.material);
         }
         Object.defineProperty(VisualElement.prototype, "position", {
-            set: function (p) {
-                this.mesh.position.set(p.x, p.y, p.z);
+            get: function () {
+                return this.mesh.position;
             },
             enumerable: true,
             configurable: true
         });
-        Object.defineProperty(VisualElement.prototype, "attitude", {
+        Object.defineProperty(VisualElement.prototype, "quaternion", {
             get: function () {
-                var q = this.mesh.quaternion;
-                return new blade.Euclidean3(q.w, 0, 0, 0, -q.z, -q.x, -q.y, 0);
-            },
-            set: function (rotor) {
-                this.mesh.quaternion.set(-rotor.yz, -rotor.zx, -rotor.xy, rotor.w);
+                return this.mesh.quaternion;
             },
             enumerable: true,
             configurable: true
@@ -476,15 +471,19 @@ define('davinci-visual/VisualElement',["require", "exports"], function (require,
             get: function () {
                 return this.mesh.scale;
             },
-            set: function (value) {
-                this.mesh.scale = value;
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(VisualElement.prototype, "opacity", {
+            get: function () {
+                return this.material.opacity;
             },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(VisualElement.prototype, "color", {
-            set: function (color) {
-                this.material.color = color;
+            get: function () {
+                return this.material.color;
             },
             enumerable: true,
             configurable: true
@@ -494,6 +493,7 @@ define('davinci-visual/VisualElement',["require", "exports"], function (require,
     return VisualElement;
 });
 
+///<reference path="../../typings/threejs/three.d.ts"/>
 var __extends = this.__extends || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -501,7 +501,6 @@ var __extends = this.__extends || function (d, b) {
     d.prototype = new __();
 };
 define('davinci-visual/RevolutionGeometry',["require", "exports"], function (require, exports) {
-    /// <reference path="../../typings/threejs/three.d.ts" />
     var RevolutionGeometry = (function (_super) {
         __extends(RevolutionGeometry, _super);
         function RevolutionGeometry(points, generator, segments, phiStart, phiLength, attitude) {
@@ -705,14 +704,21 @@ define('davinci-visual',["require", "exports", 'davinci-visual/core', 'davinci-v
     return visual;
 });
 
-  var library = require('davinci-visual');
-  if(typeof module !== 'undefined' && module.exports) {
-    module.exports = library;
-  } else if(globalDefine) {
-    (function (define) {
-      define(function () { return library; });
-    }(globalDefine));
-  } else {
-    global['visual'] = library;
-  }
-}(this));
+var library = require('davinci-visual');
+if (typeof module !== 'undefined' && module.exports)
+{
+  // Export library for CommonJS/Node.
+  module.exports = library;
+}
+else if (global.define)
+{
+  // Define library for global AMD loader that is already present.
+  (function (define) {define(function () { return library; });}(global.define));
+}
+else
+{
+  // Define library on global namespace for inline script loading.
+  global['visual'] = library;
+}
+
+}(this, THREE));

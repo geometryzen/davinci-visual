@@ -1,6 +1,6 @@
 {
   "name": "davinci-visual",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A lightweight WebGL Mathematical visualization library.",
   "author": {
     "name": "David Holmes",
@@ -21,7 +21,8 @@
     }
   ],
   "dependencies": {
-    "davinci-blade": "~0.9.25"
+    "davinci-blade": "~0.9.25",
+    "threejs": "latest"
   },
   "devDependencies": {
     "jasmine": "2.2.1",

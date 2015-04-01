@@ -4,7 +4,6 @@ var __extends = this.__extends || function (d, b) {
     __.prototype = b.prototype;
     d.prototype = new __();
 };
-/// <reference path="../../typings/threejs/three.d.ts" />
 var VisualElement = require('davinci-visual/VisualElement');
 var ArrowGeometry = require('davinci-visual/ArrowGeometry');
 var Arrow = (function (_super) {

@@ -1,3 +1,4 @@
+///<reference path="../../typings/threejs/three.d.ts"/>
 import RevolutionGeometry = require('davinci-visual/RevolutionGeometry');
 
 class ArrowGeometry extends RevolutionGeometry

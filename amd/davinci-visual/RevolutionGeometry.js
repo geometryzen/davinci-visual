@@ -1,3 +1,4 @@
+///<reference path="../../typings/threejs/three.d.ts"/>
 var __extends = this.__extends || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -5,7 +6,6 @@ var __extends = this.__extends || function (d, b) {
     d.prototype = new __();
 };
 define(["require", "exports"], function (require, exports) {
-    /// <reference path="../../typings/threejs/three.d.ts" />
     var RevolutionGeometry = (function (_super) {
         __extends(RevolutionGeometry, _super);
         function RevolutionGeometry(points, generator, segments, phiStart, phiLength, attitude) {
