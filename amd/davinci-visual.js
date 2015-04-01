@@ -1,4 +1,4 @@
-define(["require", "exports", 'davinci-visual/core', 'davinci-visual/Arrow', 'davinci-visual/Box'], function (require, exports, core, Arrow, Box) {
+define(["require", "exports", 'davinci-visual/core', 'davinci-visual/Arrow', 'davinci-visual/Box', 'davinci-visual/VisualElement'], function (require, exports, core, Arrow, Box, VisualElement) {
     /**
      * Provides the visual module
      *
@@ -7,7 +7,8 @@ define(["require", "exports", 'davinci-visual/core', 'davinci-visual/Arrow', 'da
     var visual = {
         'VERSION': core.VERSION,
         Arrow: Arrow,
-        Box: Box
+        Box: Box,
+        VisualElement: VisualElement
     };
     return visual;
 });

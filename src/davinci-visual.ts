@@ -1,6 +1,7 @@
 import core = require('davinci-visual/core');
 import Arrow = require('davinci-visual/Arrow');
 import Box = require('davinci-visual/Box');
+import VisualElement = require('davinci-visual/VisualElement');
 
 /**
  * Provides the visual module
@@ -10,6 +11,7 @@ import Box = require('davinci-visual/Box');
 var visual = {
     'VERSION': core.VERSION,
     Arrow: Arrow,
-    Box: Box
+    Box: Box,
+    VisualElement: VisualElement
 };
 export = visual;

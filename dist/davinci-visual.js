@@ -438,7 +438,7 @@ define("../vendor/almond/almond", function(){});
 
 define('davinci-visual/core',["require", "exports"], function (require, exports) {
     var visual = {
-        VERSION: '0.0.5'
+        VERSION: '0.0.6'
     };
     return visual;
 });
@@ -693,7 +693,7 @@ define('davinci-visual/Box',["require", "exports", 'davinci-visual/VisualElement
     })(VisualElement);
 });
 
-define('davinci-visual',["require", "exports", 'davinci-visual/core', 'davinci-visual/Arrow', 'davinci-visual/Box'], function (require, exports, core, Arrow, Box) {
+define('davinci-visual',["require", "exports", 'davinci-visual/core', 'davinci-visual/Arrow', 'davinci-visual/Box', 'davinci-visual/VisualElement'], function (require, exports, core, Arrow, Box, VisualElement) {
     /**
      * Provides the visual module
      *
@@ -702,7 +702,8 @@ define('davinci-visual',["require", "exports", 'davinci-visual/core', 'davinci-v
     var visual = {
         'VERSION': core.VERSION,
         Arrow: Arrow,
-        Box: Box
+        Box: Box,
+        VisualElement: VisualElement
     };
     return visual;
 });
