@@ -15,3 +15,4 @@ var Arrow = (function (_super) {
     }
     return Arrow;
 })(VisualElement);
+module.exports = Arrow;

@@ -14,4 +14,5 @@ define(["require", "exports", 'davinci-visual/VisualElement'], function (require
         }
         return Box;
     })(VisualElement);
+    return Box;
 });

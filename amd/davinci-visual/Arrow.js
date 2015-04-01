@@ -14,4 +14,5 @@ define(["require", "exports", 'davinci-visual/VisualElement', 'davinci-visual/Ar
         }
         return Arrow;
     })(VisualElement);
+    return Arrow;
 });

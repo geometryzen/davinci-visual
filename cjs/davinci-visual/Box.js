@@ -15,3 +15,4 @@ var Box = (function (_super) {
     }
     return Box;
 })(VisualElement);
+module.exports = Box;

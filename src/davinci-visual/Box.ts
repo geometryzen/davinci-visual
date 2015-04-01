@@ -8,3 +8,5 @@ class Box extends VisualElement<THREE.BoxGeometry>
     super(new THREE.BoxGeometry(width, height, depth), color, opacity, transparent);
   }
 }
+
+export = Box;

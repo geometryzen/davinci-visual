@@ -8,3 +8,5 @@ class Arrow extends VisualElement<ArrowGeometry>
     super(new ArrowGeometry(scale), color, opacity, transparent);
   }
 }
+
+export = Arrow;
