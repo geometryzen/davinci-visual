@@ -1,5 +1,7 @@
-(function(global, THREE)
+(function(global, define)
 {
+  var THREE = global.THREE;
+
 /**
  * @license almond 0.3.1 Copyright (c) 2011-2014, The Dojo Foundation All Rights Reserved.
  * Available via the MIT or new BSD license.
@@ -435,7 +437,7 @@ define("../vendor/almond/almond", function(){});
 
 define('davinci-visual/core',["require", "exports"], function (require, exports) {
     var visual = {
-        VERSION: '0.0.3'
+        VERSION: '0.0.4'
     };
     return visual;
 });
@@ -721,4 +723,4 @@ else
   global['visual'] = library;
 }
 
-}(this, THREE));
+}(this));

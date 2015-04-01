@@ -28,8 +28,10 @@ requirejs.config({
   // code to wrap around the start / end of the resulting build file
   // the global variable used to expose the API is defined here
   wrap: {
-    start: "(function(global, THREE)\n"+
-           "{\n",
+    start: "(function(global, define)\n"+
+           "{\n"+
+           "  var THREE = global.THREE;\n"+
+           "\n",
 
     end:   "var library = require('davinci-visual');\n"+
            "if (typeof module !== 'undefined' && module.exports)\n"+
@@ -48,7 +50,7 @@ requirejs.config({
            "  global['visual'] = library;\n"+
            "}\n"+
            "\n"+
-           "}(this, THREE));\n"
+           "}(this));\n"
   },
 
   // don't include coffeescript compiler in optimized file
