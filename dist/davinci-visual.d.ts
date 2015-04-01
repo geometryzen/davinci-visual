@@ -5,9 +5,21 @@
 //
 declare module visual
 {
+    class RevolutionGeometry extends THREE.Geometry
+    {
+      constructor(points, generator, segments, phiStart, phiLength, attitude) {}
+    }
+    class ArrowGeometry extends RevolutionGeometry
+    {
+      constructor(scale, attitude?: THREE.Quaternion, segments?, length?: number, radiusShaft?: number, radiusCone?: number, lengthCone?: number, axis?: THREE.Vector3) {}
+    }
     class VisualElement<T extends THREE.Geometry>
     {
       constructor(geometry: T, color: number, opacity: number = 1.0, transparent: boolean = false) {}
+    }
+    class Arrow extends VisualElement<ArrowGeometry>
+    {
+      constructor(scale: number, color: number, opacity: number = 1.0, transparent: boolean = false) {}
     }
 }
 declare module visual {
