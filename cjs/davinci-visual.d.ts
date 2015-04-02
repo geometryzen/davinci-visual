@@ -13,5 +13,6 @@ declare var visual: {
     Box: typeof Box;
     Vortex: typeof Vortex;
     VisualElement: typeof VisualElement;
+    trackball: (object: THREE.Object3D, wnd: Window) => {};
 };
 export = visual;

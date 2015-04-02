@@ -438,7 +438,7 @@ define("../vendor/almond/almond", function(){});
 
 define('davinci-visual/core',["require", "exports"], function (require, exports) {
     var visual = {
-        VERSION: '0.0.10'
+        VERSION: '0.0.11'
     };
     return visual;
 });
@@ -813,7 +813,15 @@ define('davinci-visual/Vortex',["require", "exports", 'davinci-visual/VisualElem
     return Vortex;
 });
 
-define('davinci-visual',["require", "exports", 'davinci-visual/core', 'davinci-visual/Arrow', 'davinci-visual/Box', 'davinci-visual/Vortex', 'davinci-visual/VisualElement'], function (require, exports, core, Arrow, Box, Vortex, VisualElement) {
+define('davinci-visual/trackball',["require", "exports"], function (require, exports) {
+    var trackball = function (object, wnd) {
+        var api = {};
+        return api;
+    };
+    return trackball;
+});
+
+define('davinci-visual',["require", "exports", 'davinci-visual/core', 'davinci-visual/Arrow', 'davinci-visual/Box', 'davinci-visual/Vortex', 'davinci-visual/VisualElement', 'davinci-visual/trackball'], function (require, exports, core, Arrow, Box, Vortex, VisualElement, trackball) {
     /**
      * Provides the visual module
      *
@@ -824,7 +832,8 @@ define('davinci-visual',["require", "exports", 'davinci-visual/core', 'davinci-v
         Arrow: Arrow,
         Box: Box,
         Vortex: Vortex,
-        VisualElement: VisualElement
+        VisualElement: VisualElement,
+        trackball: trackball
     };
     return visual;
 });

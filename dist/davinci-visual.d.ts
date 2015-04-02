@@ -32,6 +32,7 @@ declare module visual
     {
       constructor(scale: number, color: number, opacity: number = 1.0, transparent: boolean = false) {}
     }
+    function trackball() {}
 }
 declare module visual {
     var VERSION: string;

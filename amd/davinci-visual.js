@@ -1,4 +1,4 @@
-define(["require", "exports", 'davinci-visual/core', 'davinci-visual/Arrow', 'davinci-visual/Box', 'davinci-visual/Vortex', 'davinci-visual/VisualElement'], function (require, exports, core, Arrow, Box, Vortex, VisualElement) {
+define(["require", "exports", 'davinci-visual/core', 'davinci-visual/Arrow', 'davinci-visual/Box', 'davinci-visual/Vortex', 'davinci-visual/VisualElement', 'davinci-visual/trackball'], function (require, exports, core, Arrow, Box, Vortex, VisualElement, trackball) {
     /**
      * Provides the visual module
      *
@@ -9,7 +9,8 @@ define(["require", "exports", 'davinci-visual/core', 'davinci-visual/Arrow', 'da
         Arrow: Arrow,
         Box: Box,
         Vortex: Vortex,
-        VisualElement: VisualElement
+        VisualElement: VisualElement,
+        trackball: trackball
     };
     return visual;
 });

@@ -17,7 +17,7 @@
                 <h1><img src="../../assets/logo.png" title="davinci-visual"></h1>
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.0.10</em>
+            <em>API Docs for: 0.0.11</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -79,7 +79,7 @@
 
 <div class="file">
     <pre class="code prettyprint linenums">
-define([&quot;require&quot;, &quot;exports&quot;, &#x27;davinci-visual/core&#x27;, &#x27;davinci-visual/Arrow&#x27;, &#x27;davinci-visual/Box&#x27;, &#x27;davinci-visual/Vortex&#x27;, &#x27;davinci-visual/VisualElement&#x27;], function (require, exports, core, Arrow, Box, Vortex, VisualElement) {
+define([&quot;require&quot;, &quot;exports&quot;, &#x27;davinci-visual/core&#x27;, &#x27;davinci-visual/Arrow&#x27;, &#x27;davinci-visual/Box&#x27;, &#x27;davinci-visual/Vortex&#x27;, &#x27;davinci-visual/VisualElement&#x27;, &#x27;davinci-visual/trackball&#x27;], function (require, exports, core, Arrow, Box, Vortex, VisualElement, trackball) {
     /**
      * Provides the visual module
      *
@@ -90,7 +90,8 @@ define([&quot;require&quot;, &quot;exports&quot;, &#x27;davinci-visual/core&#x27
         Arrow: Arrow,
         Box: Box,
         Vortex: Vortex,
-        VisualElement: VisualElement
+        VisualElement: VisualElement,
+        trackball: trackball
     };
     return visual;
 });

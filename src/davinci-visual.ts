@@ -3,6 +3,7 @@ import Arrow = require('davinci-visual/Arrow');
 import Box = require('davinci-visual/Box');
 import Vortex = require('davinci-visual/Vortex');
 import VisualElement = require('davinci-visual/VisualElement');
+import trackball = require('davinci-visual/trackball');
 
 /**
  * Provides the visual module
@@ -14,6 +15,7 @@ var visual = {
     Arrow: Arrow,
     Box: Box,
     Vortex: Vortex,
-    VisualElement: VisualElement
+    VisualElement: VisualElement,
+    trackball: trackball
 };
 export = visual;
