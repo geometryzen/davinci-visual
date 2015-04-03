@@ -1,4 +1,4 @@
 var visual = {
-    VERSION: '0.0.19'
+    VERSION: '0.0.20'
 };
 module.exports = visual;

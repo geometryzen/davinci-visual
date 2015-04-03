@@ -8,7 +8,7 @@ declare class Visual {
     workbench3D: Workbench3D;
     canvas2D: HTMLCanvasElement;
     workbench2D: Workbench2D;
-    space2D: createjs.Stage;
+    stage: createjs.Stage;
     controls: any;
     constructor(wnd: Window);
     add(object: THREE.Object3D): void;

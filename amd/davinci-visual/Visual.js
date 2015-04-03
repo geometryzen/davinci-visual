@@ -23,8 +23,8 @@ define(["require", "exports", 'davinci-visual/trackball', 'davinci-visual/Workbe
             this.canvas2D.style.top = "0px";
             this.canvas2D.style.left = "0px";
             this.workbench2D = new Workbench2D(this.canvas2D, wnd);
-            this.space2D = new createjs.Stage(this.canvas2D);
-            this.space2D.autoClear = true;
+            this.stage = new createjs.Stage(this.canvas2D);
+            this.stage.autoClear = true;
             this.controls.rotateSpeed = 1.0;
             this.controls.zoomSpeed = 1.2;
             this.controls.panSpeed = 0.8;
@@ -51,7 +51,7 @@ define(["require", "exports", 'davinci-visual/trackball', 'davinci-visual/Workbe
         Visual.prototype.update = function () {
             this.renderer.render(this.scene, this.camera);
             this.controls.update();
-            this.space2D.update();
+            this.stage.update();
         };
         return Visual;
     })();

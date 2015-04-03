@@ -39,7 +39,8 @@ declare module visual
       setUp: () => void;
       tearDown: () => void;
       update: () => void;
-      add: (object: THREE.Object3D) => void;
+      scene: THREE.Scene;
+      stage: createjs.Stage;
     }
 }
 declare module visual {

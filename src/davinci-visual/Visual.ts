@@ -11,7 +11,7 @@ class Visual
   public workbench3D: Workbench3D;
   public canvas2D: HTMLCanvasElement;
   public workbench2D: Workbench2D;
-  public space2D: createjs.Stage;
+  public stage: createjs.Stage;
   public controls;
 
   constructor(wnd: Window)
@@ -43,8 +43,8 @@ class Visual
     this.canvas2D.style.left = "0px";
     
     this.workbench2D = new Workbench2D(this.canvas2D, wnd);
-    this.space2D = new createjs.Stage(this.canvas2D);
-    this.space2D.autoClear = true;
+    this.stage = new createjs.Stage(this.canvas2D);
+    this.stage.autoClear = true;
 
     this.controls.rotateSpeed = 1.0;
     this.controls.zoomSpeed = 1.2;
@@ -83,7 +83,7 @@ class Visual
   {
     this.renderer.render(this.scene, this.camera);
     this.controls.update();
-    this.space2D.update();
+    this.stage.update();
   }
 }
 export = Visual;
