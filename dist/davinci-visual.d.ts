@@ -49,12 +49,12 @@ declare module visual
      */
     interface SphereGeometryParameters {
       radius?: number;
-      widthSegments? number;
-      heightSegments? number;
+      widthSegments?: number;
+      heightSegments?: number;
       phiStart?: number;
       phiLength?: number;
-      thetaStart? number;
-      thetaLength? number;
+      thetaStart?: number;
+      thetaLength?: number;
     }
     /**
      * A class for generating spherical objects.

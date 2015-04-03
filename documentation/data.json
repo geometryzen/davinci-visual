@@ -2,7 +2,7 @@
     "project": {
         "name": "davinci-visual",
         "description": "A lightweight WebGL Mathematical visualization library.",
-        "version": "0.0.29",
+        "version": "0.0.30",
         "url": "",
         "logo": "../assets/logo.png"
     },
