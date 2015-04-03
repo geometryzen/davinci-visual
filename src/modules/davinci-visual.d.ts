@@ -39,14 +39,23 @@ declare module visual
     {
       constructor(width: number, height: number, depth: number, color: number, opacity: number = 1.0, transparent: boolean = false) {}
     }
-    interface SphereGeometryParametersOptions {
-      radius: number;
+    /**
+     * The parameters used in constructing the SphereGeometry.
+     */
+    interface SphereGeometryParameters {
+      radius?: number;
+      widthSegments? number;
+      heightSegments? number;
+      phiStart?: number;
+      phiLength?: number;
+      thetaStart? number;
+      thetaLength? number;
     }
     /**
-     *
+     * A class for generating spherical objects.
      */
     class Sphere extends VisualElement<THREE.SphereGeometry> {
-      constructor(g?: SphereGeometryParameters, m?: LambertMaterialParameters) {}
+      constructor(geometry?: SphereGeometryParameters, material?: LambertMaterialParameters) {}
     }
     class Vortex extends VisualElement<VortexGeometry> {
       constructor(scale: number, color: number, opacity: number = 1.0, transparent: boolean = false) {}
