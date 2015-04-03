@@ -16,6 +16,24 @@
     },
     "webrtc/MediaStream.d.ts": {
       "commit": "02a93db66ab297f542db1ec9f91de9935f7ff567"
+    },
+    "createjs/createjs.d.ts": {
+      "commit": "2520bce9a8a71b66e67487cbd5b33fec880b0c55"
+    },
+    "easeljs/easeljs.d.ts": {
+      "commit": "2520bce9a8a71b66e67487cbd5b33fec880b0c55"
+    },
+    "tweenjs/tweenjs.d.ts": {
+      "commit": "2520bce9a8a71b66e67487cbd5b33fec880b0c55"
+    },
+    "soundjs/soundjs.d.ts": {
+      "commit": "2520bce9a8a71b66e67487cbd5b33fec880b0c55"
+    },
+    "preloadjs/preloadjs.d.ts": {
+      "commit": "2520bce9a8a71b66e67487cbd5b33fec880b0c55"
+    },
+    "createjs-lib/createjs-lib.d.ts": {
+      "commit": "2520bce9a8a71b66e67487cbd5b33fec880b0c55"
     }
   }
 }

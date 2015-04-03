@@ -19,19 +19,19 @@ var trackball = function(object: THREE.Object3D, wnd: Window): TrackBall {
         keys: [65 /*A*/, 83 /*S*/, 68 /*D*/],
         update: function() {
             eye.subVectors(object.position, target);
-            if ( !api.noRotate ) {
+            if (!api.noRotate) {
                 rotateCamera();
             }
-            if ( !api.noZoom ) {
+            if (!api.noZoom) {
                 zoomCamera();
             }
-            if ( !api.noPan ) {
+            if (!api.noPan) {
                 panCamera();
             }
             object.position.addVectors(target, eye);
             checkDistances();
-            object.lookAt( target );
-            if ( lastPosition.distanceToSquared( object.position ) > EPS ) {
+            object.lookAt(target);
+            if (lastPosition.distanceToSquared( object.position) > EPS) {
                 // TODO      dispatchEvent( changeEvent );
                 lastPosition.copy(object.position);
             }

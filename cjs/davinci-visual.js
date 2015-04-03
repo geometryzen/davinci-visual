@@ -4,6 +4,9 @@ var Box = require('davinci-visual/Box');
 var Vortex = require('davinci-visual/Vortex');
 var VisualElement = require('davinci-visual/VisualElement');
 var trackball = require('davinci-visual/trackball');
+var Visual = require('davinci-visual/Visual');
+var Workbench2D = require('davinci-visual/Workbench2D');
+var Workbench3D = require('davinci-visual/Workbench3D');
 /**
  * Provides the visual module
  *
@@ -15,6 +18,9 @@ var visual = {
     Box: Box,
     Vortex: Vortex,
     VisualElement: VisualElement,
-    trackball: trackball
+    trackball: trackball,
+    Visual: Visual,
+    Workbench2D: Workbench2D,
+    Workbench3D: Workbench3D
 };
 module.exports = visual;

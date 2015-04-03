@@ -30,8 +30,8 @@ requirejs.config({
   wrap: {
     start: "(function(global, define)\n"+
            "{\n"+
+           "  var createjs = global.createjs;\n"+
            "  var THREE = global.THREE;\n"+
-           "  console.log('THREE=>' + typeof THREE);\n"+
            "\n",
 
     end:   "var library = require('davinci-visual');\n"+
