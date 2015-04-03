@@ -111,7 +111,7 @@ define(["require", "exports"], function (require, exports) {
                 eye.multiplyScalar(factor);
             }
             else {
-                factor = 1.0 + (zoomEnd.y - zoomStart.y) * this.zoomSpeed;
+                factor = 1.0 + (zoomEnd.y - zoomStart.y) * api.zoomSpeed;
                 if (factor !== 1.0 && factor > 0.0) {
                     eye.multiplyScalar(factor);
                     if (api.staticMoving) {
@@ -246,7 +246,7 @@ define(["require", "exports"], function (require, exports) {
             state = STATE.NONE;
             document.removeEventListener('mousemove', mousemove);
             document.removeEventListener('mouseup', mouseup);
-            // TODO this.dispatchEvent( endEvent );
+            // TODO dispatchEvent( endEvent );
         }
         function mousewheel(event) {
             if (api.enabled === false)

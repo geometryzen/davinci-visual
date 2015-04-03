@@ -8,7 +8,7 @@ var trackball = function(object: THREE.Object3D, wnd: Window): TrackBall {
         enabled: true,
         rotateSpeed: 1.0,
         zoomSpeed: 1.2,
-        panSpeed:0.3,
+        panSpeed: 0.3,
         noRotate: false,
         noZoom: false,
         noPan: false,
@@ -121,7 +121,7 @@ var trackball = function(object: THREE.Object3D, wnd: Window): TrackBall {
             eye.multiplyScalar( factor );
         }
         else {
-            factor = 1.0 + ( zoomEnd.y - zoomStart.y ) * this.zoomSpeed;
+            factor = 1.0 + ( zoomEnd.y - zoomStart.y ) * api.zoomSpeed;
             if ( factor !== 1.0 && factor > 0.0 ) {
                 eye.multiplyScalar( factor );
                     if ( api.staticMoving ) {
@@ -250,7 +250,7 @@ var trackball = function(object: THREE.Object3D, wnd: Window): TrackBall {
             panEnd.copy(getMouseOnScreen(event.pageX, event.pageY));
         }
     }
-    function mouseup( event ) {
+    function mouseup(event) {
         if (api.enabled === false)
             return;
         event.preventDefault();
@@ -258,21 +258,18 @@ var trackball = function(object: THREE.Object3D, wnd: Window): TrackBall {
         state = STATE.NONE;
         document.removeEventListener('mousemove', mousemove);
         document.removeEventListener('mouseup', mouseup);
-// TODO this.dispatchEvent( endEvent );
+// TODO dispatchEvent( endEvent );
     }
-    function mousewheel( event ) {
+    function mousewheel(event: MouseWheelEvent) {
         if (api.enabled === false)
             return;
-
         event.preventDefault();
         event.stopPropagation();
-
         var delta = 0;
-
         if (event.wheelDelta) { // WebKit / Opera / Explorer 9
             delta = event.wheelDelta / 40;
         }
-        else if ( event.detail ) { // Firefox
+        else if (event.detail) { // Firefox
             delta = - event.detail / 3;
         }
         zoomStart.y += delta * 0.01;

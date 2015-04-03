@@ -438,7 +438,7 @@ define("../vendor/almond/almond", function(){});
 
 define('davinci-visual/core',["require", "exports"], function (require, exports) {
     var visual = {
-        VERSION: '0.0.15'
+        VERSION: '0.0.16'
     };
     return visual;
 });
@@ -926,7 +926,7 @@ define('davinci-visual/trackball',["require", "exports"], function (require, exp
                 eye.multiplyScalar(factor);
             }
             else {
-                factor = 1.0 + (zoomEnd.y - zoomStart.y) * this.zoomSpeed;
+                factor = 1.0 + (zoomEnd.y - zoomStart.y) * api.zoomSpeed;
                 if (factor !== 1.0 && factor > 0.0) {
                     eye.multiplyScalar(factor);
                     if (api.staticMoving) {
@@ -1061,7 +1061,7 @@ define('davinci-visual/trackball',["require", "exports"], function (require, exp
             state = STATE.NONE;
             document.removeEventListener('mousemove', mousemove);
             document.removeEventListener('mouseup', mouseup);
-            // TODO this.dispatchEvent( endEvent );
+            // TODO dispatchEvent( endEvent );
         }
         function mousewheel(event) {
             if (api.enabled === false)
