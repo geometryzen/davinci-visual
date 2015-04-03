@@ -28,17 +28,20 @@ declare module visual
     {
       constructor(width: number, height: number, depth: number, color: number, opacity: number = 1.0, transparent: boolean = false) {}
     }
-    class Sphere extends VisualElement<THREE.SphereGeometry>
-    {
+    interface SphereOptions {
+      radius: number;
+    }
+    class Sphere extends VisualElement<THREE.SphereGeometry> {
       constructor(options: SphereOptions, color: number, opacity: number = 1.0, transparent: boolean = false) {}
     }
-    class Vortex extends VisualElement<VortexGeometry>
-    {
+    class Vortex extends VisualElement<VortexGeometry> {
       constructor(scale: number, color: number, opacity: number = 1.0, transparent: boolean = false) {}
     }
+    interface TrackBall {
+      
+    }
     function trackball(object: THREE.Object3D, wnd: Window): TrackBall {}
-    class Visual
-    {
+    class Visual {
       constructor(wnd: Window) {};
       setUp: () => void;
       tearDown: () => void;
