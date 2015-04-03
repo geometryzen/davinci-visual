@@ -1,6 +1,7 @@
 import core = require('davinci-visual/core');
 import Arrow = require('davinci-visual/Arrow');
 import Box = require('davinci-visual/Box');
+import SphereGeometryParameters = require('davinci-visual/SphereGeometryParameters');
 import Sphere = require('davinci-visual/Sphere');
 import Vortex = require('davinci-visual/Vortex');
 import VisualElement = require('davinci-visual/VisualElement');

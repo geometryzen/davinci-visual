@@ -13,7 +13,7 @@ class Sphere extends VisualElement<THREE.SphereGeometry>
     g.heightSegments = g.heightSegments || 12;
     m = m || {};
     m.color = m.color || 0xFFFFFF;
-    super(new THREE.SphereGeometry(g.radius, g.widthSegments, g.heightSegments), m.color, m.opacity, m.transparent);
+    super(new THREE.SphereGeometry(g.radius, g.widthSegments, g.heightSegments, g.phiStart, g.phiLength, g.thetaStart, g.thetaLength), m.color, m.opacity, m.transparent);
   }
 }
 

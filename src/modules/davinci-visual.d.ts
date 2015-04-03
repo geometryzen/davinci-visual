@@ -35,6 +35,11 @@ declare module visual
     {
       constructor(scale: number, color: number, opacity: number = 1.0, transparent: boolean = false) {}
     }
+    /**
+     * The parameters used in constructing the BoxGeometry.
+     */
+    interface BoxGeometryParameters {
+    }
     class Box extends VisualElement<THREE.BoxGeometry>
     {
       constructor(width: number, height: number, depth: number, color: number, opacity: number = 1.0, transparent: boolean = false) {}

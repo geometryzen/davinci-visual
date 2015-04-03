@@ -14,7 +14,7 @@ var Sphere = (function (_super) {
         g.heightSegments = g.heightSegments || 12;
         m = m || {};
         m.color = m.color || 0xFFFFFF;
-        _super.call(this, new THREE.SphereGeometry(g.radius, g.widthSegments, g.heightSegments), m.color, m.opacity, m.transparent);
+        _super.call(this, new THREE.SphereGeometry(g.radius, g.widthSegments, g.heightSegments, g.phiStart, g.phiLength, g.thetaStart, g.thetaLength), m.color, m.opacity, m.transparent);
     }
     return Sphere;
 })(VisualElement);

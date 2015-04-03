@@ -438,7 +438,7 @@ define("../vendor/almond/almond", function(){});
 
 define('davinci-visual/core',["require", "exports"], function (require, exports) {
     var visual = {
-        VERSION: '0.0.28'
+        VERSION: '0.0.29'
     };
     return visual;
 });
@@ -683,7 +683,7 @@ define('davinci-visual/Sphere',["require", "exports", 'davinci-visual/VisualElem
             g.heightSegments = g.heightSegments || 12;
             m = m || {};
             m.color = m.color || 0xFFFFFF;
-            _super.call(this, new THREE.SphereGeometry(g.radius, g.widthSegments, g.heightSegments), m.color, m.opacity, m.transparent);
+            _super.call(this, new THREE.SphereGeometry(g.radius, g.widthSegments, g.heightSegments, g.phiStart, g.phiLength, g.thetaStart, g.thetaLength), m.color, m.opacity, m.transparent);
         }
         return Sphere;
     })(VisualElement);

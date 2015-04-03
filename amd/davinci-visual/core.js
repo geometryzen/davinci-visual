@@ -1,6 +1,6 @@
 define(["require", "exports"], function (require, exports) {
     var visual = {
-        VERSION: '0.0.28'
+        VERSION: '0.0.29'
     };
     return visual;
 });
