@@ -34,14 +34,14 @@ define(["require", "exports"], function (require, exports) {
                     // TODO      dispatchEvent( changeEvent );
                     lastPosition.copy(object.position);
                 }
+            },
+            handleResize: function () {
+                var box = documentElement.getBoundingClientRect();
+                screen.left = box.left + wnd.pageXOffset - documentElement.clientLeft;
+                screen.top = box.top + wnd.pageYOffset - documentElement.clientTop;
+                screen.width = box.width;
+                screen.height = box.height;
             }
-        };
-        var handleResize = function () {
-            var box = documentElement.getBoundingClientRect();
-            screen.left = box.left + wnd.pageXOffset - documentElement.clientLeft;
-            screen.top = box.top + wnd.pageYOffset - documentElement.clientTop;
-            screen.width = box.width;
-            screen.height = box.height;
         };
         var getMouseOnScreen = (function () {
             var vector = new THREE.Vector2();
@@ -341,7 +341,7 @@ define(["require", "exports"], function (require, exports) {
         documentElement.addEventListener('touchmove', touchmove, false);
         wnd.addEventListener('keydown', keydown, false);
         wnd.addEventListener('keyup', keyup, false);
-        handleResize();
+        api.handleResize();
         // force an update at start
         api.update();
         return api;

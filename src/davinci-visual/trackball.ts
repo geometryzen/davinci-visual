@@ -35,15 +35,14 @@ var trackball = function(object: THREE.Object3D, wnd: Window): TrackBall {
                 // TODO      dispatchEvent( changeEvent );
                 lastPosition.copy(object.position);
             }
+        },
+        handleResize: function() {
+            var box = documentElement.getBoundingClientRect();
+            screen.left = box.left + wnd.pageXOffset - documentElement.clientLeft;
+            screen.top = box.top + wnd.pageYOffset - documentElement.clientTop;
+            screen.width = box.width;
+            screen.height = box.height;
         }
-    };
-    var handleResize = function()
-    {
-        var box = documentElement.getBoundingClientRect();
-        screen.left = box.left + wnd.pageXOffset - documentElement.clientLeft;
-        screen.top = box.top + wnd.pageYOffset - documentElement.clientTop;
-        screen.width = box.width;
-        screen.height = box.height;
     };
     var getMouseOnScreen: (pageX: number, pageY: number) => THREE.Vector2 = (function() {
         var vector = new THREE.Vector2();
@@ -357,7 +356,7 @@ var trackball = function(object: THREE.Object3D, wnd: Window): TrackBall {
     wnd.addEventListener( 'keydown', keydown, false );
     wnd.addEventListener( 'keyup', keyup, false );
 
-    handleResize();
+    api.handleResize();
 
     // force an update at start
     api.update();
