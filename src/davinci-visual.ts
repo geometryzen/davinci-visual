@@ -1,6 +1,7 @@
 import core = require('davinci-visual/core');
 import Arrow = require('davinci-visual/Arrow');
 import Box = require('davinci-visual/Box');
+import Sphere = require('davinci-visual/Sphere');
 import Vortex = require('davinci-visual/Vortex');
 import VisualElement = require('davinci-visual/VisualElement');
 import trackball = require('davinci-visual/trackball');
@@ -18,6 +19,7 @@ var visual = {
     'VERSION': core.VERSION,
     Arrow: Arrow,
     Box: Box,
+    Sphere: Sphere,
     Vortex: Vortex,
     VisualElement: VisualElement,
     trackball: trackball,

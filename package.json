@@ -1,6 +1,6 @@
 {
   "name": "davinci-visual",
-  "version": "0.0.20",
+  "version": "0.0.21",
   "description": "A lightweight WebGL Mathematical visualization library.",
   "author":
   {

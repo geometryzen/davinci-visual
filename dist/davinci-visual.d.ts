@@ -28,6 +28,10 @@ declare module visual
     {
       constructor(width: number, height: number, depth: number, color: number, opacity: number = 1.0, transparent: boolean = false) {}
     }
+    class Sphere extends VisualElement<THREE.SphereGeometry>
+    {
+      constructor(radius: number, color: number, opacity: number = 1.0, transparent: boolean = false) {}
+    }
     class Vortex extends VisualElement<VortexGeometry>
     {
       constructor(scale: number, color: number, opacity: number = 1.0, transparent: boolean = false) {}

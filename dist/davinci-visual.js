@@ -438,7 +438,7 @@ define("../vendor/almond/almond", function(){});
 
 define('davinci-visual/core',["require", "exports"], function (require, exports) {
     var visual = {
-        VERSION: '0.0.20'
+        VERSION: '0.0.21'
     };
     return visual;
 });
@@ -693,6 +693,25 @@ define('davinci-visual/Box',["require", "exports", 'davinci-visual/VisualElement
         return Box;
     })(VisualElement);
     return Box;
+});
+
+var __extends = this.__extends || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    __.prototype = b.prototype;
+    d.prototype = new __();
+};
+define('davinci-visual/Sphere',["require", "exports", 'davinci-visual/VisualElement'], function (require, exports, VisualElement) {
+    var Sphere = (function (_super) {
+        __extends(Sphere, _super);
+        function Sphere(radius, color, opacity, transparent) {
+            if (opacity === void 0) { opacity = 1.0; }
+            if (transparent === void 0) { transparent = false; }
+            _super.call(this, new THREE.SphereGeometry(radius), color, opacity, transparent);
+        }
+        return Sphere;
+    })(VisualElement);
+    return Sphere;
 });
 
 ///<reference path="../../typings/threejs/three.d.ts"/>
@@ -1294,7 +1313,7 @@ define('davinci-visual/Visual',["require", "exports", 'davinci-visual/trackball'
     return Visual;
 });
 
-define('davinci-visual',["require", "exports", 'davinci-visual/core', 'davinci-visual/Arrow', 'davinci-visual/Box', 'davinci-visual/Vortex', 'davinci-visual/VisualElement', 'davinci-visual/trackball', 'davinci-visual/Visual', 'davinci-visual/Workbench2D', 'davinci-visual/Workbench3D'], function (require, exports, core, Arrow, Box, Vortex, VisualElement, trackball, Visual, Workbench2D, Workbench3D) {
+define('davinci-visual',["require", "exports", 'davinci-visual/core', 'davinci-visual/Arrow', 'davinci-visual/Box', 'davinci-visual/Sphere', 'davinci-visual/Vortex', 'davinci-visual/VisualElement', 'davinci-visual/trackball', 'davinci-visual/Visual', 'davinci-visual/Workbench2D', 'davinci-visual/Workbench3D'], function (require, exports, core, Arrow, Box, Sphere, Vortex, VisualElement, trackball, Visual, Workbench2D, Workbench3D) {
     /**
      * Provides the visual module
      *
@@ -1304,6 +1323,7 @@ define('davinci-visual',["require", "exports", 'davinci-visual/core', 'davinci-v
         'VERSION': core.VERSION,
         Arrow: Arrow,
         Box: Box,
+        Sphere: Sphere,
         Vortex: Vortex,
         VisualElement: VisualElement,
         trackball: trackball,
