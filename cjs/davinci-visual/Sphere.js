@@ -7,10 +7,8 @@ var __extends = this.__extends || function (d, b) {
 var VisualElement = require('davinci-visual/VisualElement');
 var Sphere = (function (_super) {
     __extends(Sphere, _super);
-    function Sphere(options, color, opacity, transparent) {
-        if (opacity === void 0) { opacity = 1.0; }
-        if (transparent === void 0) { transparent = false; }
-        _super.call(this, new THREE.SphereGeometry(options.radius, options.widthSegments, options.heightSegments), color, opacity, transparent);
+    function Sphere(options, m) {
+        _super.call(this, new THREE.SphereGeometry(options.radius, options.widthSegments, options.heightSegments), m.color, m.opacity, m.transparent);
     }
     return Sphere;
 })(VisualElement);

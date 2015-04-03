@@ -1,5 +1,6 @@
 ///<reference path="../../typings/createjs/createjs.d.ts"/>
 import trackball = require('davinci-visual/trackball');
+import TrackBall = require('davinci-visual/TrackBall');
 import Workbench2D = require('davinci-visual/Workbench2D');
 import Workbench3D = require('davinci-visual/Workbench3D');
 
@@ -12,7 +13,7 @@ class Visual
   public canvas2D: HTMLCanvasElement;
   public workbench2D: Workbench2D;
   public stage: createjs.Stage;
-  public controls;
+  public controls: TrackBall;
 
   constructor(wnd: Window)
   {
