@@ -8,8 +8,12 @@ var VisualElement = require('davinci-visual/VisualElement');
 var Sphere = (function (_super) {
     __extends(Sphere, _super);
     function Sphere(g, m) {
-        g = g || { radiusX: 1.0 };
-        m = m || { color: undefined, opacity: undefined, transparent: undefined };
+        g = g || {};
+        g.radius = g.radius || 1.0;
+        g.widthSegments = g.widthSegments || 16;
+        g.heightSegments = g.heightSegments || 12;
+        m = m || {};
+        m.color = m.color || 0xFFFFFF;
         _super.call(this, new THREE.SphereGeometry(g.radius, g.widthSegments, g.heightSegments), m.color, m.opacity, m.transparent);
     }
     return Sphere;
