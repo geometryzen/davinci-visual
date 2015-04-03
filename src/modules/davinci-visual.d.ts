@@ -36,7 +36,10 @@ declare module visual
     class Visual
     {
       constructor(wnd: Window) {};
+      setUp: () => void;
+      tearDown: () => void;
       update: () => void;
+      add: (object: THREE.Object3D) => void;
     }
 }
 declare module visual {
