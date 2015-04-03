@@ -17,7 +17,7 @@
                 <h1><img src="../../assets/logo.png" title="davinci-visual"></h1>
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.0.24</em>
+            <em>API Docs for: 0.0.25</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -80,55 +80,27 @@
 <div class="file">
     <pre class="code prettyprint linenums">
 ///&lt;reference path=&quot;../../typings/threejs/three.d.ts&quot;/&gt;
+var __extends = this.__extends || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    __.prototype = b.prototype;
+    d.prototype = new __();
+};
 define([&quot;require&quot;, &quot;exports&quot;], function (require, exports) {
     /**
      * Visual provides the common behavior for all Mesh (Geometry, Material) objects.
      */
-    var VisualElement = (function () {
+    var VisualElement = (function (_super) {
+        __extends(VisualElement, _super);
         function VisualElement(geometry, color, opacity, transparent) {
             if (opacity === void 0) { opacity = 1.0; }
             if (transparent === void 0) { transparent = false; }
             this.geometry = geometry;
             this.material = new THREE.MeshLambertMaterial({ &quot;color&quot;: color, &quot;opacity&quot;: opacity, &quot;transparent&quot;: transparent });
-            this.mesh = new THREE.Mesh(this.geometry, this.material);
+            _super.call(this, geometry, this.material);
         }
-        Object.defineProperty(VisualElement.prototype, &quot;position&quot;, {
-            get: function () {
-                return this.mesh.position;
-            },
-            enumerable: true,
-            configurable: true
-        });
-        Object.defineProperty(VisualElement.prototype, &quot;quaternion&quot;, {
-            get: function () {
-                return this.mesh.quaternion;
-            },
-            enumerable: true,
-            configurable: true
-        });
-        Object.defineProperty(VisualElement.prototype, &quot;scale&quot;, {
-            get: function () {
-                return this.mesh.scale;
-            },
-            enumerable: true,
-            configurable: true
-        });
-        Object.defineProperty(VisualElement.prototype, &quot;opacity&quot;, {
-            get: function () {
-                return this.material.opacity;
-            },
-            enumerable: true,
-            configurable: true
-        });
-        Object.defineProperty(VisualElement.prototype, &quot;color&quot;, {
-            get: function () {
-                return this.material.color;
-            },
-            enumerable: true,
-            configurable: true
-        });
         return VisualElement;
-    })();
+    })(THREE.Mesh);
     return VisualElement;
 });
 

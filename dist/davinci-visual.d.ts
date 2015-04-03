@@ -11,11 +11,11 @@ declare module visual
        * A value of 0.0 indicates fully transparent, 1.0 is fully opaque.
        * If transparent is not set to true for the material, the material will remain fully opaque and this value will only affect its color.
        */
-      opacity: number;
-      transparent: number;
+      opacity?: number;
+      transparent?: boolean;
     }
     interface LambertMaterialParameters extends MaterialParameters {
-      color: number;
+      color?: number;
     }
     class RevolutionGeometry extends THREE.Geometry
     {
@@ -29,7 +29,6 @@ declare module visual
     {
       geometry: T;
       material: THREE.MeshLambertMaterial;
-      mesh: THREE.Mesh;
       constructor(geometry: T, color: number, opacity: number = 1.0, transparent: boolean = false) {}
     }
     class Arrow extends VisualElement<ArrowGeometry>
@@ -43,8 +42,11 @@ declare module visual
     interface SphereOptions {
       radius: number;
     }
+    /**
+     *
+     */
     class Sphere extends VisualElement<THREE.SphereGeometry> {
-      constructor(options: SphereOptions, m: LambertMaterialParameters) {}
+      constructor(g?: SphereGeometryParameters, m?: LambertMaterialParameters) {}
     }
     class Vortex extends VisualElement<VortexGeometry> {
       constructor(scale: number, color: number, opacity: number = 1.0, transparent: boolean = false) {}

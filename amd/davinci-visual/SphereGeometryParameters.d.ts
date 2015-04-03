@@ -1,4 +1,4 @@
-interface SphereOptions {
+interface SphereGeometryParameters {
     radius?: number;
     widthSegments?: number;
     heightSegments?: number;
@@ -7,4 +7,4 @@ interface SphereOptions {
     thetaStart?: number;
     thetaLength?: number;
 }
-export = SphereOptions;
+export = SphereGeometryParameters;

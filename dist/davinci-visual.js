@@ -438,61 +438,33 @@ define("../vendor/almond/almond", function(){});
 
 define('davinci-visual/core',["require", "exports"], function (require, exports) {
     var visual = {
-        VERSION: '0.0.24'
+        VERSION: '0.0.25'
     };
     return visual;
 });
 
 ///<reference path="../../typings/threejs/three.d.ts"/>
+var __extends = this.__extends || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    __.prototype = b.prototype;
+    d.prototype = new __();
+};
 define('davinci-visual/VisualElement',["require", "exports"], function (require, exports) {
     /**
      * Visual provides the common behavior for all Mesh (Geometry, Material) objects.
      */
-    var VisualElement = (function () {
+    var VisualElement = (function (_super) {
+        __extends(VisualElement, _super);
         function VisualElement(geometry, color, opacity, transparent) {
             if (opacity === void 0) { opacity = 1.0; }
             if (transparent === void 0) { transparent = false; }
             this.geometry = geometry;
             this.material = new THREE.MeshLambertMaterial({ "color": color, "opacity": opacity, "transparent": transparent });
-            this.mesh = new THREE.Mesh(this.geometry, this.material);
+            _super.call(this, geometry, this.material);
         }
-        Object.defineProperty(VisualElement.prototype, "position", {
-            get: function () {
-                return this.mesh.position;
-            },
-            enumerable: true,
-            configurable: true
-        });
-        Object.defineProperty(VisualElement.prototype, "quaternion", {
-            get: function () {
-                return this.mesh.quaternion;
-            },
-            enumerable: true,
-            configurable: true
-        });
-        Object.defineProperty(VisualElement.prototype, "scale", {
-            get: function () {
-                return this.mesh.scale;
-            },
-            enumerable: true,
-            configurable: true
-        });
-        Object.defineProperty(VisualElement.prototype, "opacity", {
-            get: function () {
-                return this.material.opacity;
-            },
-            enumerable: true,
-            configurable: true
-        });
-        Object.defineProperty(VisualElement.prototype, "color", {
-            get: function () {
-                return this.material.color;
-            },
-            enumerable: true,
-            configurable: true
-        });
         return VisualElement;
-    })();
+    })(THREE.Mesh);
     return VisualElement;
 });
 
@@ -704,8 +676,8 @@ var __extends = this.__extends || function (d, b) {
 define('davinci-visual/Sphere',["require", "exports", 'davinci-visual/VisualElement'], function (require, exports, VisualElement) {
     var Sphere = (function (_super) {
         __extends(Sphere, _super);
-        function Sphere(options, m) {
-            _super.call(this, new THREE.SphereGeometry(options.radius, options.widthSegments, options.heightSegments), m.color, m.opacity, m.transparent);
+        function Sphere(g, m) {
+            _super.call(this, new THREE.SphereGeometry(g.radius, g.widthSegments, g.heightSegments), m.color, m.opacity, m.transparent);
         }
         return Sphere;
     })(VisualElement);
