@@ -1,12 +1,10 @@
 import TrackBall = require('davinci-visual/TrackBall');
 
-var trackball = function(object: THREE.Object3D, wnd: Window): TrackBall
-{
+var trackball = function(object: THREE.Object3D, wnd: Window): TrackBall {
     var document = wnd.document;
     var documentElement = document.documentElement;
     var screen = {left: 0, top: 0, width: 0, height: 0};
-    var api: TrackBall =
-    {
+    var api: TrackBall = {
         enabled: true,
         rotateSpeed: 1.0,
         zoomSpeed: 1.2,
@@ -18,7 +16,26 @@ var trackball = function(object: THREE.Object3D, wnd: Window): TrackBall
         dynamicDampingFactor: 0.2,
         minDistance: 0,
         maxDistance: Infinity,
-        keys: [ 65 /*A*/, 83 /*S*/, 68 /*D*/ ]
+        keys: [65 /*A*/, 83 /*S*/, 68 /*D*/],
+        update: function() {
+            eye.subVectors(object.position, target);
+            if ( !api.noRotate ) {
+                rotateCamera();
+            }
+            if ( !api.noZoom ) {
+                zoomCamera();
+            }
+            if ( !api.noPan ) {
+                panCamera();
+            }
+            object.position.addVectors(target, eye);
+            checkDistances();
+            object.lookAt( target );
+            if ( lastPosition.distanceToSquared( object.position ) > EPS ) {
+                // TODO      dispatchEvent( changeEvent );
+                lastPosition.copy(object.position);
+            }
+        }
     };
     var handleResize = function()
     {
@@ -154,25 +171,6 @@ var trackball = function(object: THREE.Object3D, wnd: Window): TrackBall
     var changeEvent = { type: 'change' };
     var startEvent = { type: 'start' };
     var endEvent = { type: 'end' };
-    var update = function () {
-        eye.subVectors(object.position, target);
-        if ( !api.noRotate ) {
-            rotateCamera();
-        }
-        if ( !api.noZoom ) {
-            zoomCamera();
-        }
-        if ( !api.noPan ) {
-            panCamera();
-        }
-        object.position.addVectors(target, eye);
-        checkDistances();
-        object.lookAt( target );
-        if ( lastPosition.distanceToSquared( object.position ) > EPS ) {
-            // TODO      dispatchEvent( changeEvent );
-            lastPosition.copy(object.position);
-        }
-    };
     // for reset
     var target0 = target.clone();
     var position0 = object.position.clone();
@@ -362,7 +360,7 @@ var trackball = function(object: THREE.Object3D, wnd: Window): TrackBall
     handleResize();
 
     // force an update at start
-    update();
+    api.update();
 
     return api;
 };

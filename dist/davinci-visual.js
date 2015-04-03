@@ -438,7 +438,7 @@ define("../vendor/almond/almond", function(){});
 
 define('davinci-visual/core',["require", "exports"], function (require, exports) {
     var visual = {
-        VERSION: '0.0.13'
+        VERSION: '0.0.14'
     };
     return visual;
 });
@@ -830,7 +830,26 @@ define('davinci-visual/trackball',["require", "exports"], function (require, exp
             dynamicDampingFactor: 0.2,
             minDistance: 0,
             maxDistance: Infinity,
-            keys: [65, 83, 68]
+            keys: [65, 83, 68],
+            update: function () {
+                eye.subVectors(object.position, target);
+                if (!api.noRotate) {
+                    rotateCamera();
+                }
+                if (!api.noZoom) {
+                    zoomCamera();
+                }
+                if (!api.noPan) {
+                    panCamera();
+                }
+                object.position.addVectors(target, eye);
+                checkDistances();
+                object.lookAt(target);
+                if (lastPosition.distanceToSquared(object.position) > EPS) {
+                    // TODO      dispatchEvent( changeEvent );
+                    lastPosition.copy(object.position);
+                }
+            }
         };
         var handleResize = function () {
             var box = documentElement.getBoundingClientRect();
@@ -954,25 +973,6 @@ define('davinci-visual/trackball',["require", "exports"], function (require, exp
         var changeEvent = { type: 'change' };
         var startEvent = { type: 'start' };
         var endEvent = { type: 'end' };
-        var update = function () {
-            eye.subVectors(object.position, target);
-            if (!api.noRotate) {
-                rotateCamera();
-            }
-            if (!api.noZoom) {
-                zoomCamera();
-            }
-            if (!api.noPan) {
-                panCamera();
-            }
-            object.position.addVectors(target, eye);
-            checkDistances();
-            object.lookAt(target);
-            if (lastPosition.distanceToSquared(object.position) > EPS) {
-                // TODO      dispatchEvent( changeEvent );
-                lastPosition.copy(object.position);
-            }
-        };
         // for reset
         var target0 = target.clone();
         var position0 = object.position.clone();
@@ -1158,7 +1158,7 @@ define('davinci-visual/trackball',["require", "exports"], function (require, exp
         wnd.addEventListener('keyup', keyup, false);
         handleResize();
         // force an update at start
-        update();
+        api.update();
         return api;
     };
     return trackball;

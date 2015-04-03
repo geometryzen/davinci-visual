@@ -12,5 +12,6 @@ interface TrackBall
   minDistance: number;
   maxDistance: number;
   keys: number[];
+  update: () => void;
 }
 export = TrackBall;
