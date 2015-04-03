@@ -25,7 +25,7 @@ declare module visual
     {
       constructor(scale, attitude?: THREE.Quaternion, segments?, length?: number, radiusShaft?: number, radiusCone?: number, lengthCone?: number, axis?: THREE.Vector3) {}
     }
-    class VisualElement<T extends THREE.Geometry>
+    class VisualElement<T extends THREE.Geometry> extends THREE.Mesh
     {
       geometry: T;
       material: THREE.MeshLambertMaterial;
@@ -39,7 +39,7 @@ declare module visual
     {
       constructor(width: number, height: number, depth: number, color: number, opacity: number = 1.0, transparent: boolean = false) {}
     }
-    interface SphereOptions {
+    interface SphereGeometryParametersOptions {
       radius: number;
     }
     /**

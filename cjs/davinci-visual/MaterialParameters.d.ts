@@ -1,5 +1,5 @@
 interface MaterialParameters {
-    opacity: number;
-    transparent: boolean;
+    opacity?: number;
+    transparent?: boolean;
 }
 export = MaterialParameters;

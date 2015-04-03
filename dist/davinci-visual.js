@@ -438,7 +438,7 @@ define("../vendor/almond/almond", function(){});
 
 define('davinci-visual/core',["require", "exports"], function (require, exports) {
     var visual = {
-        VERSION: '0.0.25'
+        VERSION: '0.0.26'
     };
     return visual;
 });
@@ -677,6 +677,8 @@ define('davinci-visual/Sphere',["require", "exports", 'davinci-visual/VisualElem
     var Sphere = (function (_super) {
         __extends(Sphere, _super);
         function Sphere(g, m) {
+            g = g || { radiusX: 1.0 };
+            m = m || { color: undefined, opacity: undefined, transparent: undefined };
             _super.call(this, new THREE.SphereGeometry(g.radius, g.widthSegments, g.heightSegments), m.color, m.opacity, m.transparent);
         }
         return Sphere;

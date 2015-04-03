@@ -8,6 +8,8 @@ define(["require", "exports", 'davinci-visual/VisualElement'], function (require
     var Sphere = (function (_super) {
         __extends(Sphere, _super);
         function Sphere(g, m) {
+            g = g || { radiusX: 1.0 };
+            m = m || { color: undefined, opacity: undefined, transparent: undefined };
             _super.call(this, new THREE.SphereGeometry(g.radius, g.widthSegments, g.heightSegments), m.color, m.opacity, m.transparent);
         }
         return Sphere;

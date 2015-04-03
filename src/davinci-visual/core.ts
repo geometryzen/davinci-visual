@@ -1,6 +1,6 @@
 var visual =
 {
-    VERSION: '0.0.25'
+    VERSION: '0.0.26'
 };
 
 export = visual;
