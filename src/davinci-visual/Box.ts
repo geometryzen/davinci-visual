@@ -1,6 +1,6 @@
 ///<reference path="../../typings/threejs/three.d.ts"/>
 module visual {
-  class Box extends VisualElement<THREE.BoxGeometry>
+  export class Box extends VisualElement<THREE.BoxGeometry>
   {
     constructor(width: number, height: number, depth: number, color: number, opacity: number = 1.0, transparent: boolean = false)
     {

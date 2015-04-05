@@ -1,7 +1,7 @@
 ///<reference path="../../typings/createjs/createjs.d.ts"/>
 module visual {
 
-class Visual
+export class Visual
 {
   public scene: THREE.Scene = new THREE.Scene();
   public camera: THREE.PerspectiveCamera = new THREE.PerspectiveCamera(45, 1.0, 0.1, 10000);

@@ -1,5 +1,5 @@
 module visual {
-    class Arrow extends VisualElement<ArrowGeometry>
+    export class Arrow extends VisualElement<ArrowGeometry>
     {
       constructor(scale: number, color: number, opacity: number = 1.0, transparent: boolean = false)
       {

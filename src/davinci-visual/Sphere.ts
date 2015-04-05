@@ -1,6 +1,6 @@
 ///<reference path="../../typings/threejs/three.d.ts"/>
 module visual {
-    class Sphere extends VisualElement<THREE.SphereGeometry> {
+    export class Sphere extends VisualElement<THREE.SphereGeometry> {
         constructor(g?: SphereGeometryParameters, m?: LambertMaterialParameters) {
             g = g || {};
             g.radius = g.radius || 1.0;

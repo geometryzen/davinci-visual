@@ -3,6 +3,9 @@
 declare module visual {
 }
 declare module visual {
+    class Arrow extends VisualElement<ArrowGeometry> {
+        constructor(scale: number, color: number, opacity?: number, transparent?: boolean);
+    }
 }
 declare module visual {
     class ArrowGeometry extends RevolutionGeometry {
@@ -10,6 +13,9 @@ declare module visual {
     }
 }
 declare module visual {
+    class Box extends VisualElement<THREE.BoxGeometry> {
+        constructor(width: number, height: number, depth: number, color: number, opacity?: number, transparent?: boolean);
+    }
 }
 declare module visual {
     interface LambertMaterialParameters extends MaterialParameters {
@@ -28,6 +34,9 @@ declare module visual {
     }
 }
 declare module visual {
+    class Sphere extends VisualElement<THREE.SphereGeometry> {
+        constructor(g?: SphereGeometryParameters, m?: LambertMaterialParameters);
+    }
 }
 declare module visual {
     interface SphereGeometryParameters {
@@ -59,6 +68,21 @@ declare module visual {
     }
 }
 declare module visual {
+    class Visual {
+        scene: THREE.Scene;
+        camera: THREE.PerspectiveCamera;
+        renderer: THREE.WebGLRenderer;
+        workbench3D: Workbench3D;
+        canvas2D: HTMLCanvasElement;
+        workbench2D: Workbench2D;
+        stage: createjs.Stage;
+        controls: TrackBall;
+        constructor(wnd: Window);
+        add(object: THREE.Object3D): void;
+        setUp(): void;
+        tearDown(): void;
+        update(): void;
+    }
 }
 declare module visual {
     /**

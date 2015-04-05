@@ -15,6 +15,7 @@ var visual;
         }
         return Arrow;
     })(visual.VisualElement);
+    visual.Arrow = Arrow;
 })(visual || (visual = {}));
 ///<reference path="../../typings/threejs/three.d.ts"/>
 var visual;
@@ -104,6 +105,7 @@ var visual;
         }
         return Box;
     })(visual.VisualElement);
+    visual.Box = Box;
 })(visual || (visual = {}));
 ///<reference path="../../typings/threejs/three.d.ts"/>
 var visual;
@@ -195,6 +197,7 @@ var visual;
         }
         return Sphere;
     })(visual.VisualElement);
+    visual.Sphere = Sphere;
 })(visual || (visual = {}));
 ///<reference path="../../typings/createjs/createjs.d.ts"/>
 var visual;
@@ -255,6 +258,7 @@ var visual;
         };
         return Visual;
     })();
+    visual.Visual = Visual;
 })(visual || (visual = {}));
 ///<reference path="../../typings/threejs/three.d.ts"/>
 var visual;
@@ -452,7 +456,7 @@ var visual;
 })(visual || (visual = {}));
 var visual;
 (function (visual) {
-    visual.VERSION = '0.0.31';
+    visual.VERSION = '0.0.32';
 })(visual || (visual = {}));
 ;
 var visual;
