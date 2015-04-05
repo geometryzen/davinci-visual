@@ -1,8 +1,5 @@
 ///<reference path="../../typings/createjs/createjs.d.ts"/>
-import trackball = require('davinci-visual/trackball');
-import TrackBall = require('davinci-visual/TrackBall');
-import Workbench2D = require('davinci-visual/Workbench2D');
-import Workbench3D = require('davinci-visual/Workbench3D');
+module visual {
 
 class Visual
 {
@@ -87,4 +84,4 @@ class Visual
     this.stage.update();
   }
 }
-export = Visual;
+}

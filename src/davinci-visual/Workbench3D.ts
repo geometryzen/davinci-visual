@@ -1,3 +1,4 @@
+module visual {
 function removeElementsByTagName(doc: Document, tagName: string) {
   var elements = doc.getElementsByTagName(tagName);
   for (var i = elements.length - 1; i >= 0; i--) {
@@ -6,7 +7,7 @@ function removeElementsByTagName(doc: Document, tagName: string) {
   }
 }
 
-class Workbench3D
+export class Workbench3D
 {
   public canvas: HTMLCanvasElement;
   public wnd: Window;
@@ -39,4 +40,4 @@ class Workbench3D
     removeElementsByTagName(this.wnd.document, "canvas");
   }
 }
-export = Workbench3D;
+}

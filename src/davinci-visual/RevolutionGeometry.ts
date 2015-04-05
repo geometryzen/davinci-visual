@@ -1,6 +1,6 @@
 ///<reference path="../../typings/threejs/three.d.ts"/>
-
-class RevolutionGeometry extends THREE.Geometry
+module visual {
+export class RevolutionGeometry extends THREE.Geometry
 {
   constructor(points, generator, segments, phiStart, phiLength, attitude)
   {
@@ -91,4 +91,4 @@ class RevolutionGeometry extends THREE.Geometry
     this.computeVertexNormals();
   }
 }
-export = RevolutionGeometry;
+}

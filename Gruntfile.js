@@ -1,3 +1,9 @@
+/**
+ * NOTE: This file has hooks for compiling to AMD and CommonJS which
+ * we don't use right now. This is because shimming three.js with the
+ * TypeScript compiler in order to perform testing is problematic.
+ * A simpler approach using internal modules is satisfactory right now.
+ */
 module.exports = function(grunt) {
 
   var path = require('path');
@@ -11,7 +17,7 @@ module.exports = function(grunt) {
 
     // Task configuration.
     clean: {
-      src: ['dist', 'amd', 'cjs']
+      src: ['dist', 'build', 'amd', 'cjs']
     },
 
     exec: {
@@ -73,6 +79,7 @@ module.exports = function(grunt) {
     jshint: {
         src: [
             'Gruntfile.js',
+            'dist/**/*.js',
             'amd/**/*.js',
             'cjs/**/*.js',
             'spec/**/*.js'
@@ -90,7 +97,7 @@ module.exports = function(grunt) {
             url: '<%= pkg.homepage %>',
             logo: '../assets/logo.png',
             options: {
-                paths: 'amd',
+                paths: 'dist',
                 outdir: 'documentation'
             }
         }
@@ -148,11 +155,15 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-exec');
 
   var compilerSources = [
-      "src/davinci-visual.ts"
+      "src/davinci-visual.ts", "src/davinci-visual/*.ts"
   ];
 
   function ES5(xs) {
       return ['--target ES5'].concat(xs);
+  }
+
+  function ES6(xs) {
+      return ['--target ES6'].concat(xs);
   }
 
   function AMD(xs) {
@@ -163,8 +174,16 @@ module.exports = function(grunt) {
       return ['--module commonjs'].concat(xs);
   }
 
+  function INTERNAL(xs) {
+      return xs;
+  }
+
   function removeComments(xs) {
       return ['--removeComments'].concat(xs);
+  }
+
+  function out(FILE, xs) {
+      return ['--out', FILE].concat(xs);
   }
 
   function outDir(where, xs) {
@@ -173,6 +192,7 @@ module.exports = function(grunt) {
 
   var argsAMD = AMD(ES5(compilerSources));
   var argsCJS = COMMONJS(ES5(compilerSources));
+  var argsINT = out('dist/davinci-visual.js', INTERNAL(ES5(compilerSources)));
 
   grunt.registerTask('buildAMD', "Build", function(){
     var done = this.async();
@@ -192,11 +212,20 @@ module.exports = function(grunt) {
     });
   });
 
+  grunt.registerTask('build', "Build", function(){
+    var done = this.async();
+    tsc(['--declaration'].concat(outDir('build', argsINT)).join(" ")).then(function(){
+      done(true);
+    }).catch(function(){
+      done(false);
+    });
+  });
+
   grunt.registerTask('test', ['connect:test', 'jasmine']);
 
   grunt.registerTask('docs', ['yuidoc']);
 
   grunt.registerTask('testAll', ['exec:test', 'test']);
 
-  grunt.registerTask('default', ['clean', 'buildAMD', 'buildCJS', 'docs', 'copy', 'requirejs', 'uglify']);
+  grunt.registerTask('default', ['clean', 'build', 'docs'/*, 'copy'*/, 'uglify']);
 };

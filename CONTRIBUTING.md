@@ -1,9 +1,3 @@
-# Welcome to davinci-visual
-
-A lightweight WebGL Mathematical visualization library.
-
-[![Build Status](https://travis-ci.org/geometryzen/davinci-visual.png)](https://travis-ci.org/geometryzen/davinci-visual)
-
 ## Contributing
 
 ### Building
@@ -41,11 +35,3 @@ to compile the source using the TypeScript compiler (For this you need to have [
 ### Making Changes
 
 Make your changes to the TypeScript files in the _src_ directory. Do not edit the files in the _dist_ directory, these files will be generated.
-
-## Release History
-* v0.0.31: Initial release (pending)
-
-## License
-Copyright (c) 2014-2015 David Holmes  
-Licensed under the MIT license.
-

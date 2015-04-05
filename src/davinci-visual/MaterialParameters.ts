@@ -1,5 +1,6 @@
-interface MaterialParameters {
-  opacity?: number;
-  transparent?: boolean;
+module visual {
+    export interface MaterialParameters {
+        opacity?: number;
+        transparent?: boolean;
+    }
 }
-export = MaterialParameters;

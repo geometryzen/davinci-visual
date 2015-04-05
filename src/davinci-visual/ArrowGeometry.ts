@@ -1,7 +1,6 @@
 ///<reference path="../../typings/threejs/three.d.ts"/>
-import RevolutionGeometry = require('davinci-visual/RevolutionGeometry');
-
-class ArrowGeometry extends RevolutionGeometry
+module visual {
+export class ArrowGeometry extends RevolutionGeometry
 {
   constructor(scale, attitude?: THREE.Quaternion, segments?, length?: number, radiusShaft?: number, radiusCone?: number, lengthCone?: number, axis?: THREE.Vector3)
   {
@@ -74,4 +73,4 @@ class ArrowGeometry extends RevolutionGeometry
     super(arrow.points, arrow.generator, segments, 0, 2 * Math.PI, attitude);
   }
 }
-export = ArrowGeometry;
+}

@@ -1,22 +1,19 @@
 ///<reference path="../../typings/threejs/three.d.ts"/>
-
-class VortexGeometry extends THREE.Geometry
+module visual {
+export class VortexGeometry extends THREE.Geometry
 {
-  constructor(radius, radiusCone, radiusShaft, lengthCone, lengthShaft, arrowSegments, radialSegments)
-  {
-    super();
-
-    var scope = this;
-
-    var n = 9;
-    radius = radius || 1;
-    radiusCone  = radiusCone || 0.08;
-    radiusShaft = radiusShaft || 0.01;
-    lengthCone  = lengthCone || 0.2;
-    lengthShaft = lengthShaft || 0.8;
-    arrowSegments = arrowSegments || 6;
-    var circleSegments = arrowSegments * n;
-    radialSegments = radialSegments || 8;
+    constructor(radius, radiusCone, radiusShaft, lengthCone, lengthShaft, arrowSegments, radialSegments) {
+        super();
+        var scope = this;
+        var n = 9;
+        radius = radius || 1;
+        radiusCone  = radiusCone || 0.08;
+        radiusShaft = radiusShaft || 0.01;
+        lengthCone  = lengthCone || 0.2;
+        lengthShaft = lengthShaft || 0.8;
+        arrowSegments = arrowSegments || 6;
+        var circleSegments = arrowSegments * n;
+        radialSegments = radialSegments || 8;
 
     var twoPI = Math.PI * 2;
     var R = radius;
@@ -111,4 +108,4 @@ class VortexGeometry extends THREE.Geometry
     }
   }
 }
-export = VortexGeometry;
+}
