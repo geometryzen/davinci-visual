@@ -95,6 +95,12 @@ declare module visual {
     }
 }
 declare module visual {
+    /**
+     * Vortex is used to represent geometric objects with a non-zero curl.
+     */
+    class Vortex extends VisualElement<VortexGeometry> {
+        constructor(scale: number, color: number, opacity?: number, transparent?: boolean);
+    }
 }
 declare module visual {
     class VortexGeometry extends THREE.Geometry {

@@ -281,6 +281,9 @@ var visual;
 })(visual || (visual = {}));
 var visual;
 (function (visual) {
+    /**
+     * Vortex is used to represent geometric objects with a non-zero curl.
+     */
     var Vortex = (function (_super) {
         __extends(Vortex, _super);
         function Vortex(scale, color, opacity, transparent) {
@@ -290,6 +293,7 @@ var visual;
         }
         return Vortex;
     })(visual.VisualElement);
+    visual.Vortex = Vortex;
 })(visual || (visual = {}));
 ///<reference path="../../typings/threejs/three.d.ts"/>
 var visual;
@@ -456,7 +460,7 @@ var visual;
 })(visual || (visual = {}));
 var visual;
 (function (visual) {
-    visual.VERSION = '0.0.32';
+    visual.VERSION = '0.0.33';
 })(visual || (visual = {}));
 ;
 var visual;

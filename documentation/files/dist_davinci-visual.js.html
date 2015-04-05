@@ -17,7 +17,7 @@
                 <h1><img src="../../assets/logo.png" title="davinci-visual"></h1>
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.0.32</em>
+            <em>API Docs for: 0.0.33</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -361,6 +361,9 @@ var visual;
 })(visual || (visual = {}));
 var visual;
 (function (visual) {
+    /**
+     * Vortex is used to represent geometric objects with a non-zero curl.
+     */
     var Vortex = (function (_super) {
         __extends(Vortex, _super);
         function Vortex(scale, color, opacity, transparent) {
@@ -370,6 +373,7 @@ var visual;
         }
         return Vortex;
     })(visual.VisualElement);
+    visual.Vortex = Vortex;
 })(visual || (visual = {}));
 ///&lt;reference path=&quot;../../typings/threejs/three.d.ts&quot;/&gt;
 var visual;
@@ -536,7 +540,7 @@ var visual;
 })(visual || (visual = {}));
 var visual;
 (function (visual) {
-    visual.VERSION = &#x27;0.0.32&#x27;;
+    visual.VERSION = &#x27;0.0.33&#x27;;
 })(visual || (visual = {}));
 ;
 var visual;
