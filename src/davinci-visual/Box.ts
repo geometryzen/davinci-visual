@@ -1,4 +1,5 @@
-///<reference path="../../typings/threejs/three.d.ts"/>
+/// <reference path="../../typings/threejs/three.d.ts"/>
+/// <reference path="VisualElement.ts"/>
 module visual {
   export class Box extends VisualElement<THREE.BoxGeometry>
   {

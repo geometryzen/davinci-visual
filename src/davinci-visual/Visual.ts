@@ -1,4 +1,6 @@
-///<reference path="../../typings/createjs/createjs.d.ts"/>
+/// <reference path="../../typings/createjs/createjs.d.ts"/>
+/// <reference path="Workbench2D.ts"/>
+/// <reference path="Workbench3D.ts"/>
 module visual {
 
 export class Visual

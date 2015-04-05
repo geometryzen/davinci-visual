@@ -1,3 +1,5 @@
+/// <reference path="VortexGeometry.ts"/>
+/// <reference path="VisualElement.ts"/>
 module visual {
     /**
      * Vortex is used to represent geometric objects with a non-zero curl.

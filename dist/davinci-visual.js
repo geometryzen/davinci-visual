@@ -4,19 +4,6 @@ var __extends = this.__extends || function (d, b) {
     __.prototype = b.prototype;
     d.prototype = new __();
 };
-var visual;
-(function (visual) {
-    var Arrow = (function (_super) {
-        __extends(Arrow, _super);
-        function Arrow(scale, color, opacity, transparent) {
-            if (opacity === void 0) { opacity = 1.0; }
-            if (transparent === void 0) { transparent = false; }
-            _super.call(this, new visual.ArrowGeometry(scale), color, opacity, transparent);
-        }
-        return Arrow;
-    })(visual.VisualElement);
-    visual.Arrow = Arrow;
-})(visual || (visual = {}));
 ///<reference path="../../typings/threejs/three.d.ts"/>
 var visual;
 (function (visual) {
@@ -94,6 +81,42 @@ var visual;
     visual.ArrowGeometry = ArrowGeometry;
 })(visual || (visual = {}));
 ///<reference path="../../typings/threejs/three.d.ts"/>
+var visual;
+(function (visual) {
+    /**
+     * Visual provides the common behavior for all Mesh (Geometry, Material) objects.
+     */
+    var VisualElement = (function (_super) {
+        __extends(VisualElement, _super);
+        function VisualElement(geometry, color, opacity, transparent) {
+            if (opacity === void 0) { opacity = 1.0; }
+            if (transparent === void 0) { transparent = false; }
+            this.geometry = geometry;
+            this.material = new THREE.MeshLambertMaterial({ "color": color, "opacity": opacity, "transparent": transparent });
+            _super.call(this, geometry, this.material);
+        }
+        return VisualElement;
+    })(THREE.Mesh);
+    visual.VisualElement = VisualElement;
+})(visual || (visual = {}));
+/// <reference path="../../typings/threejs/three.d.ts"/>
+/// <reference path="ArrowGeometry.ts"/>
+/// <reference path="VisualElement.ts"/>
+var visual;
+(function (visual) {
+    var Arrow = (function (_super) {
+        __extends(Arrow, _super);
+        function Arrow(scale, color, opacity, transparent) {
+            if (opacity === void 0) { opacity = 1.0; }
+            if (transparent === void 0) { transparent = false; }
+            _super.call(this, new visual.ArrowGeometry(scale), color, opacity, transparent);
+        }
+        return Arrow;
+    })(visual.VisualElement);
+    visual.Arrow = Arrow;
+})(visual || (visual = {}));
+/// <reference path="../../typings/threejs/three.d.ts"/>
+/// <reference path="VisualElement.ts"/>
 var visual;
 (function (visual) {
     var Box = (function (_super) {
@@ -199,7 +222,79 @@ var visual;
     })(visual.VisualElement);
     visual.Sphere = Sphere;
 })(visual || (visual = {}));
-///<reference path="../../typings/createjs/createjs.d.ts"/>
+var visual;
+(function (visual) {
+    function removeElementsByTagName(doc, tagName) {
+        var elements = doc.getElementsByTagName(tagName);
+        for (var i = elements.length - 1; i >= 0; i--) {
+            var e = elements[i];
+            e.parentNode.removeChild(e);
+        }
+    }
+    var Workbench2D = (function () {
+        function Workbench2D(canvas, wnd) {
+            this.canvas = canvas;
+            this.wnd = wnd;
+            function onWindowResize(event) {
+                var width = wnd.innerWidth;
+                var height = wnd.innerHeight;
+                canvas.width = width;
+                canvas.height = height;
+            }
+            this.sizer = onWindowResize;
+        }
+        Workbench2D.prototype.setUp = function () {
+            this.wnd.document.body.insertBefore(this.canvas, this.wnd.document.body.firstChild);
+            this.wnd.addEventListener('resize', this.sizer, false);
+            this.sizer(null);
+        };
+        Workbench2D.prototype.tearDown = function () {
+            this.wnd.removeEventListener('resize', this.sizer, false);
+            removeElementsByTagName(this.wnd.document, "canvas");
+        };
+        return Workbench2D;
+    })();
+    visual.Workbench2D = Workbench2D;
+})(visual || (visual = {}));
+var visual;
+(function (visual) {
+    function removeElementsByTagName(doc, tagName) {
+        var elements = doc.getElementsByTagName(tagName);
+        for (var i = elements.length - 1; i >= 0; i--) {
+            var e = elements[i];
+            e.parentNode.removeChild(e);
+        }
+    }
+    var Workbench3D = (function () {
+        function Workbench3D(canvas, renderer, camera, controls, wnd) {
+            this.canvas = canvas;
+            this.wnd = wnd;
+            function onWindowResize(event) {
+                var width = wnd.innerWidth;
+                var height = wnd.innerHeight;
+                renderer.setSize(width, height);
+                camera.aspect = width / height;
+                camera.updateProjectionMatrix();
+                controls.handleResize();
+            }
+            this.sizer = onWindowResize;
+        }
+        Workbench3D.prototype.setUp = function () {
+            this.wnd.document.body.insertBefore(this.canvas, this.wnd.document.body.firstChild);
+            this.wnd.addEventListener('resize', this.sizer, false);
+            this.sizer(null);
+        };
+        Workbench3D.prototype.tearDown = function () {
+            this.wnd.removeEventListener('resize', this.sizer, false);
+            removeElementsByTagName(this.wnd.document, "canvas");
+        };
+        return Workbench3D;
+    })();
+    visual.Workbench3D = Workbench3D;
+})(visual || (visual = {}));
+/// <reference path="../../typings/createjs/createjs.d.ts"/>
+/// <reference path="Workbench2D.ts"/>
+/// <reference path="Workbench3D.ts"/>
 var visual;
 (function (visual) {
     var Visual = (function () {
@@ -259,41 +354,6 @@ var visual;
         return Visual;
     })();
     visual.Visual = Visual;
-})(visual || (visual = {}));
-///<reference path="../../typings/threejs/three.d.ts"/>
-var visual;
-(function (visual) {
-    /**
-     * Visual provides the common behavior for all Mesh (Geometry, Material) objects.
-     */
-    var VisualElement = (function (_super) {
-        __extends(VisualElement, _super);
-        function VisualElement(geometry, color, opacity, transparent) {
-            if (opacity === void 0) { opacity = 1.0; }
-            if (transparent === void 0) { transparent = false; }
-            this.geometry = geometry;
-            this.material = new THREE.MeshLambertMaterial({ "color": color, "opacity": opacity, "transparent": transparent });
-            _super.call(this, geometry, this.material);
-        }
-        return VisualElement;
-    })(THREE.Mesh);
-    visual.VisualElement = VisualElement;
-})(visual || (visual = {}));
-var visual;
-(function (visual) {
-    /**
-     * Vortex is used to represent geometric objects with a non-zero curl.
-     */
-    var Vortex = (function (_super) {
-        __extends(Vortex, _super);
-        function Vortex(scale, color, opacity, transparent) {
-            if (opacity === void 0) { opacity = 1.0; }
-            if (transparent === void 0) { transparent = false; }
-            _super.call(this, new visual.VortexGeometry(4.0, 0.32, 0.04, 0.08, 0.3, 8, 12), color, opacity, transparent);
-        }
-        return Vortex;
-    })(visual.VisualElement);
-    visual.Vortex = Vortex;
 })(visual || (visual = {}));
 ///<reference path="../../typings/threejs/three.d.ts"/>
 var visual;
@@ -388,79 +448,27 @@ var visual;
     })(THREE.Geometry);
     visual.VortexGeometry = VortexGeometry;
 })(visual || (visual = {}));
+/// <reference path="VortexGeometry.ts"/>
+/// <reference path="VisualElement.ts"/>
 var visual;
 (function (visual) {
-    function removeElementsByTagName(doc, tagName) {
-        var elements = doc.getElementsByTagName(tagName);
-        for (var i = elements.length - 1; i >= 0; i--) {
-            var e = elements[i];
-            e.parentNode.removeChild(e);
+    /**
+     * Vortex is used to represent geometric objects with a non-zero curl.
+     */
+    var Vortex = (function (_super) {
+        __extends(Vortex, _super);
+        function Vortex(scale, color, opacity, transparent) {
+            if (opacity === void 0) { opacity = 1.0; }
+            if (transparent === void 0) { transparent = false; }
+            _super.call(this, new visual.VortexGeometry(4.0, 0.32, 0.04, 0.08, 0.3, 8, 12), color, opacity, transparent);
         }
-    }
-    var Workbench2D = (function () {
-        function Workbench2D(canvas, wnd) {
-            this.canvas = canvas;
-            this.wnd = wnd;
-            function onWindowResize(event) {
-                var width = wnd.innerWidth;
-                var height = wnd.innerHeight;
-                canvas.width = width;
-                canvas.height = height;
-            }
-            this.sizer = onWindowResize;
-        }
-        Workbench2D.prototype.setUp = function () {
-            this.wnd.document.body.insertBefore(this.canvas, this.wnd.document.body.firstChild);
-            this.wnd.addEventListener('resize', this.sizer, false);
-            this.sizer(null);
-        };
-        Workbench2D.prototype.tearDown = function () {
-            this.wnd.removeEventListener('resize', this.sizer, false);
-            removeElementsByTagName(this.wnd.document, "canvas");
-        };
-        return Workbench2D;
-    })();
-    visual.Workbench2D = Workbench2D;
+        return Vortex;
+    })(visual.VisualElement);
+    visual.Vortex = Vortex;
 })(visual || (visual = {}));
 var visual;
 (function (visual) {
-    function removeElementsByTagName(doc, tagName) {
-        var elements = doc.getElementsByTagName(tagName);
-        for (var i = elements.length - 1; i >= 0; i--) {
-            var e = elements[i];
-            e.parentNode.removeChild(e);
-        }
-    }
-    var Workbench3D = (function () {
-        function Workbench3D(canvas, renderer, camera, controls, wnd) {
-            this.canvas = canvas;
-            this.wnd = wnd;
-            function onWindowResize(event) {
-                var width = wnd.innerWidth;
-                var height = wnd.innerHeight;
-                renderer.setSize(width, height);
-                camera.aspect = width / height;
-                camera.updateProjectionMatrix();
-                controls.handleResize();
-            }
-            this.sizer = onWindowResize;
-        }
-        Workbench3D.prototype.setUp = function () {
-            this.wnd.document.body.insertBefore(this.canvas, this.wnd.document.body.firstChild);
-            this.wnd.addEventListener('resize', this.sizer, false);
-            this.sizer(null);
-        };
-        Workbench3D.prototype.tearDown = function () {
-            this.wnd.removeEventListener('resize', this.sizer, false);
-            removeElementsByTagName(this.wnd.document, "canvas");
-        };
-        return Workbench3D;
-    })();
-    visual.Workbench3D = Workbench3D;
-})(visual || (visual = {}));
-var visual;
-(function (visual) {
-    visual.VERSION = '0.0.33';
+    visual.VERSION = '0.0.34';
 })(visual || (visual = {}));
 ;
 var visual;

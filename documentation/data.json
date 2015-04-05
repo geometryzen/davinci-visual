@@ -2,7 +2,7 @@
     "project": {
         "name": "davinci-visual",
         "description": "A lightweight WebGL Mathematical visualization library.",
-        "version": "0.0.33",
+        "version": "0.0.34",
         "url": "",
         "logo": "../assets/logo.png"
     },
@@ -20,13 +20,13 @@
     "classitems": [
         {
             "file": "dist/davinci-visual.js",
-            "line": 266,
+            "line": 86,
             "description": "Visual provides the common behavior for all Mesh (Geometry, Material) objects.",
             "class": ""
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 284,
+            "line": 455,
             "description": "Vortex is used to represent geometric objects with a non-zero curl.",
             "class": ""
         }
@@ -34,11 +34,11 @@
     "warnings": [
         {
             "message": "Missing item type\nVisual provides the common behavior for all Mesh (Geometry, Material) objects.",
-            "line": " dist/davinci-visual.js:266"
+            "line": " dist/davinci-visual.js:86"
         },
         {
             "message": "Missing item type\nVortex is used to represent geometric objects with a non-zero curl.",
-            "line": " dist/davinci-visual.js:284"
+            "line": " dist/davinci-visual.js:455"
         }
     ]
 }
