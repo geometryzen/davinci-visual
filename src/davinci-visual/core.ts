@@ -1,3 +1,3 @@
 module visual {
-    export var VERSION: string = '0.0.36';
+    export var VERSION: string = '0.0.37';
 };

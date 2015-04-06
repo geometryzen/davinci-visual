@@ -14,6 +14,10 @@ module visual {
         this.material = new THREE.MeshLambertMaterial({"color": color,"opacity": opacity,"transparent": transparent});
         super(geometry, this.material);
       }
+      get attitude(): blade.Euclidean3 {
+        var q = this.quaternion;
+        return new blade.Euclidean3(q.w, 0, 0, 0, -q.z, -q.x, -q.y, 0);
+      }
       set attitude(rotor: blade.Euclidean3) {
         this.quaternion.set(-rotor.yz, -rotor.zx, -rotor.xy, rotor.w);
       }

@@ -172,6 +172,10 @@ var visual;
             _super.call(this, geometry, this.material);
         }
         Object.defineProperty(VisualElement.prototype, "attitude", {
+            get: function () {
+                var q = this.quaternion;
+                return new blade.Euclidean3(q.w, 0, 0, 0, -q.z, -q.x, -q.y, 0);
+            },
             set: function (rotor) {
                 this.quaternion.set(-rotor.yz, -rotor.zx, -rotor.xy, rotor.w);
             },
@@ -834,6 +838,6 @@ var visual;
 })(visual || (visual = {}));
 var visual;
 (function (visual) {
-    visual.VERSION = '0.0.36';
+    visual.VERSION = '0.0.37';
 })(visual || (visual = {}));
 ;
