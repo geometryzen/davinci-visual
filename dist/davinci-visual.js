@@ -155,7 +155,8 @@ var visual;
     })(visual.RevolutionGeometry);
     visual.ArrowGeometry = ArrowGeometry;
 })(visual || (visual = {}));
-///<reference path="../../typings/threejs/three.d.ts"/>
+/// <reference path="../../typings/threejs/three.d.ts"/>
+/// <reference path="../../vendor/davinci-blade/dist/davinci-blade.d.ts"/>
 var visual;
 (function (visual) {
     /**
@@ -170,6 +171,13 @@ var visual;
             this.material = new THREE.MeshLambertMaterial({ "color": color, "opacity": opacity, "transparent": transparent });
             _super.call(this, geometry, this.material);
         }
+        Object.defineProperty(VisualElement.prototype, "attitude", {
+            set: function (rotor) {
+                this.quaternion.set(-rotor.yz, -rotor.zx, -rotor.xy, rotor.w);
+            },
+            enumerable: true,
+            configurable: true
+        });
         return VisualElement;
     })(THREE.Mesh);
     visual.VisualElement = VisualElement;
@@ -826,6 +834,6 @@ var visual;
 })(visual || (visual = {}));
 var visual;
 (function (visual) {
-    visual.VERSION = '0.0.35';
+    visual.VERSION = '0.0.36';
 })(visual || (visual = {}));
 ;

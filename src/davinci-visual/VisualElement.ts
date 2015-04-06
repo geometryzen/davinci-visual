@@ -1,4 +1,5 @@
-///<reference path="../../typings/threejs/three.d.ts"/>
+/// <reference path="../../typings/threejs/three.d.ts"/>
+/// <reference path="../../vendor/davinci-blade/dist/davinci-blade.d.ts"/>
 module visual {
     /**
      * Visual provides the common behavior for all Mesh (Geometry, Material) objects.
@@ -12,6 +13,9 @@ module visual {
         this.geometry = geometry;
         this.material = new THREE.MeshLambertMaterial({"color": color,"opacity": opacity,"transparent": transparent});
         super(geometry, this.material);
+      }
+      set attitude(rotor: blade.Euclidean3) {
+        this.quaternion.set(-rotor.yz, -rotor.zx, -rotor.xy, rotor.w);
       }
     }
 }

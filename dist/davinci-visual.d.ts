@@ -1,4 +1,5 @@
 /// <reference path="../typings/threejs/three.d.ts" />
+/// <reference path="../vendor/davinci-blade/dist/davinci-blade.d.ts" />
 /// <reference path="../typings/createjs/createjs.d.ts" />
 declare module visual {
 }
@@ -20,6 +21,7 @@ declare module visual {
         geometry: T;
         material: THREE.MeshLambertMaterial;
         constructor(geometry: T, color: number, opacity?: number, transparent?: boolean);
+        attitude: blade.Euclidean3;
     }
 }
 declare module visual {
