@@ -1,4 +1,7 @@
-///<reference path="../../typings/threejs/three.d.ts"/>
+/// <reference path="../../typings/threejs/three.d.ts"/>
+/// <reference path="VisualElement.ts"/>
+/// <reference path="SphereGeometryParameters.ts"/>
+/// <reference path="LambertMaterialParameters.ts"/>
 module visual {
     export class Sphere extends VisualElement<THREE.SphereGeometry> {
         constructor(g?: SphereGeometryParameters, m?: LambertMaterialParameters) {

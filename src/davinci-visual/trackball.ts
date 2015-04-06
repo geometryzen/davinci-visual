@@ -1,3 +1,5 @@
+/// <reference path="../../typings/threejs/three.d.ts"/>
+/// <reference path="TrackBall.ts"/>
 module visual {
 
 export var trackball = function(object: THREE.Object3D, wnd: Window): TrackBall {

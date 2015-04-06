@@ -1,4 +1,5 @@
-///<reference path="../../typings/threejs/three.d.ts"/>
+/// <reference path="../../typings/threejs/three.d.ts"/>
+/// <reference path="RevolutionGeometry.ts"/>
 module visual {
 export class ArrowGeometry extends RevolutionGeometry
 {

@@ -1,4 +1,4 @@
-///<reference path="../../typings/threejs/three.d.ts"/>
+/// <reference path="../../typings/threejs/three.d.ts"/>
 module visual {
 export class VortexGeometry extends THREE.Geometry
 {

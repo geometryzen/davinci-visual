@@ -3,6 +3,11 @@
 declare module visual {
 }
 declare module visual {
+    class RevolutionGeometry extends THREE.Geometry {
+        constructor(points: any, generator: any, segments: any, phiStart: any, phiLength: any, attitude: any);
+    }
+}
+declare module visual {
     class ArrowGeometry extends RevolutionGeometry {
         constructor(scale: any, attitude?: THREE.Quaternion, segments?: any, length?: number, radiusShaft?: number, radiusCone?: number, lengthCone?: number, axis?: THREE.Vector3);
     }
@@ -28,24 +33,14 @@ declare module visual {
     }
 }
 declare module visual {
-    interface LambertMaterialParameters extends MaterialParameters {
-        color?: number;
-    }
-}
-declare module visual {
     interface MaterialParameters {
         opacity?: number;
         transparent?: boolean;
     }
 }
 declare module visual {
-    class RevolutionGeometry extends THREE.Geometry {
-        constructor(points: any, generator: any, segments: any, phiStart: any, phiLength: any, attitude: any);
-    }
-}
-declare module visual {
-    class Sphere extends VisualElement<THREE.SphereGeometry> {
-        constructor(g?: SphereGeometryParameters, m?: LambertMaterialParameters);
+    interface LambertMaterialParameters extends MaterialParameters {
+        color?: number;
     }
 }
 declare module visual {
@@ -57,6 +52,11 @@ declare module visual {
         phiLength?: number;
         thetaStart?: number;
         thetaLength?: number;
+    }
+}
+declare module visual {
+    class Sphere extends VisualElement<THREE.SphereGeometry> {
+        constructor(g?: SphereGeometryParameters, m?: LambertMaterialParameters);
     }
 }
 declare module visual {
@@ -98,6 +98,9 @@ declare module visual {
     }
 }
 declare module visual {
+    var trackball: (object: THREE.Object3D, wnd: Window) => TrackBall;
+}
+declare module visual {
     class Visual {
         scene: THREE.Scene;
         camera: THREE.PerspectiveCamera;
@@ -129,7 +132,4 @@ declare module visual {
 }
 declare module visual {
     var VERSION: string;
-}
-declare module visual {
-    var trackball: (object: THREE.Object3D, wnd: Window) => TrackBall;
 }
