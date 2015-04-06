@@ -21,6 +21,7 @@ declare module visual {
         geometry: T;
         material: THREE.MeshLambertMaterial;
         constructor(geometry: T, color: number, opacity?: number, transparent?: boolean);
+        pos: blade.Euclidean3;
         attitude: blade.Euclidean3;
     }
 }

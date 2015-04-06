@@ -17,7 +17,7 @@
                 <h1><img src="../../assets/logo.png" title="davinci-visual"></h1>
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.0.37</em>
+            <em>API Docs for: 0.0.38</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -251,6 +251,13 @@ var visual;
             this.material = new THREE.MeshLambertMaterial({ &quot;color&quot;: color, &quot;opacity&quot;: opacity, &quot;transparent&quot;: transparent });
             _super.call(this, geometry, this.material);
         }
+        Object.defineProperty(VisualElement.prototype, &quot;pos&quot;, {
+            set: function (position) {
+                this.position.set(position.x, position.y, position.z);
+            },
+            enumerable: true,
+            configurable: true
+        });
         Object.defineProperty(VisualElement.prototype, &quot;attitude&quot;, {
             get: function () {
                 var q = this.quaternion;
@@ -918,7 +925,7 @@ var visual;
 })(visual || (visual = {}));
 var visual;
 (function (visual) {
-    visual.VERSION = &#x27;0.0.37&#x27;;
+    visual.VERSION = &#x27;0.0.38&#x27;;
 })(visual || (visual = {}));
 ;
 

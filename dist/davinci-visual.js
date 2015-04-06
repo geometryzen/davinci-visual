@@ -171,6 +171,13 @@ var visual;
             this.material = new THREE.MeshLambertMaterial({ "color": color, "opacity": opacity, "transparent": transparent });
             _super.call(this, geometry, this.material);
         }
+        Object.defineProperty(VisualElement.prototype, "pos", {
+            set: function (position) {
+                this.position.set(position.x, position.y, position.z);
+            },
+            enumerable: true,
+            configurable: true
+        });
         Object.defineProperty(VisualElement.prototype, "attitude", {
             get: function () {
                 var q = this.quaternion;
@@ -838,6 +845,6 @@ var visual;
 })(visual || (visual = {}));
 var visual;
 (function (visual) {
-    visual.VERSION = '0.0.37';
+    visual.VERSION = '0.0.38';
 })(visual || (visual = {}));
 ;

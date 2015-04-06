@@ -2,7 +2,7 @@
     "project": {
         "name": "davinci-visual",
         "description": "A lightweight WebGL Mathematical visualization library.",
-        "version": "0.0.37",
+        "version": "0.0.38",
         "url": "",
         "logo": "../assets/logo.png"
     },
@@ -26,7 +26,7 @@
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 825,
+            "line": 832,
             "description": "Vortex is used to represent geometric objects with a non-zero curl.",
             "class": ""
         }
@@ -38,7 +38,7 @@
         },
         {
             "message": "Missing item type\nVortex is used to represent geometric objects with a non-zero curl.",
-            "line": " dist/davinci-visual.js:825"
+            "line": " dist/davinci-visual.js:832"
         }
     ]
 }
