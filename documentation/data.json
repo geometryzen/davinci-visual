@@ -2,7 +2,7 @@
     "project": {
         "name": "davinci-visual",
         "description": "A lightweight WebGL Mathematical visualization library.",
-        "version": "0.0.38",
+        "version": "0.0.39",
         "url": "",
         "logo": "../assets/logo.png"
     },
@@ -29,6 +29,37 @@
             "line": 832,
             "description": "Vortex is used to represent geometric objects with a non-zero curl.",
             "class": ""
+        },
+        {
+            "file": "dist/davinci-visual.js",
+            "line": 847,
+            "class": ""
+        },
+        {
+            "file": "dist/davinci-visual.js",
+            "line": 852,
+            "description": "The version of the visual module.",
+            "class": ""
+        },
+        {
+            "file": "dist/davinci-visual.js",
+            "line": 856,
+            "description": "Returns a vector with the specified Cartesian coordinates.",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "The x-coordinate."
+                },
+                {
+                    "name": "y",
+                    "description": "The y-coordinate."
+                },
+                {
+                    "name": "z",
+                    "description": "The z-coordinate."
+                }
+            ],
+            "class": ""
         }
     ],
     "warnings": [
@@ -39,6 +70,18 @@
         {
             "message": "Missing item type\nVortex is used to represent geometric objects with a non-zero curl.",
             "line": " dist/davinci-visual.js:832"
+        },
+        {
+            "message": "Missing item type",
+            "line": " dist/davinci-visual.js:847"
+        },
+        {
+            "message": "Missing item type\nThe version of the visual module.",
+            "line": " dist/davinci-visual.js:852"
+        },
+        {
+            "message": "Missing item type\nReturns a vector with the specified Cartesian coordinates.",
+            "line": " dist/davinci-visual.js:856"
         }
     ]
 }

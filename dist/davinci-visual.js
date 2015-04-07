@@ -843,8 +843,25 @@ var visual;
     })(visual.VisualElement);
     visual.Vortex = Vortex;
 })(visual || (visual = {}));
+/// <reference path="../../vendor/davinci-blade/dist/davinci-blade.d.ts"/>
+/**
+ *
+ */
 var visual;
 (function (visual) {
-    visual.VERSION = '0.0.38';
+    /**
+     * The version of the visual module.
+     */
+    visual.VERSION = '0.0.39';
+    /**
+     * Returns a vector with the specified Cartesian coordinates.
+     * @param x The x-coordinate.
+     * @param y The y-coordinate.
+     * @param z The z-coordinate.
+     */
+    function vector(x, y, z) {
+        return new blade.Euclidean3(0, x, y, z, 0, 0, 0, 0);
+    }
+    visual.vector = vector;
 })(visual || (visual = {}));
 ;

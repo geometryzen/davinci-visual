@@ -133,6 +133,19 @@ declare module visual {
         constructor(scale: number, color: number, opacity?: number, transparent?: boolean);
     }
 }
+/**
+ *
+ */
 declare module visual {
+    /**
+     * The version of the visual module.
+     */
     var VERSION: string;
+    /**
+     * Returns a vector with the specified Cartesian coordinates.
+     * @param x The x-coordinate.
+     * @param y The y-coordinate.
+     * @param z The z-coordinate.
+     */
+    function vector(x: number, y: number, z: number): blade.Euclidean3;
 }

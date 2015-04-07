@@ -17,7 +17,7 @@
                 <h1><img src="../../assets/logo.png" title="davinci-visual"></h1>
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.0.38</em>
+            <em>API Docs for: 0.0.39</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -923,9 +923,26 @@ var visual;
     })(visual.VisualElement);
     visual.Vortex = Vortex;
 })(visual || (visual = {}));
+/// &lt;reference path=&quot;../../vendor/davinci-blade/dist/davinci-blade.d.ts&quot;/&gt;
+/**
+ *
+ */
 var visual;
 (function (visual) {
-    visual.VERSION = &#x27;0.0.38&#x27;;
+    /**
+     * The version of the visual module.
+     */
+    visual.VERSION = &#x27;0.0.39&#x27;;
+    /**
+     * Returns a vector with the specified Cartesian coordinates.
+     * @param x The x-coordinate.
+     * @param y The y-coordinate.
+     * @param z The z-coordinate.
+     */
+    function vector(x, y, z) {
+        return new blade.Euclidean3(0, x, y, z, 0, 0, 0, 0);
+    }
+    visual.vector = vector;
 })(visual || (visual = {}));
 ;
 
