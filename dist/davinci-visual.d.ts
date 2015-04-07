@@ -142,10 +142,15 @@ declare module visual {
      */
     var VERSION: string;
     /**
-     * Returns a vector with the specified Cartesian coordinates.
+     * Returns a grade zero Euclidean 3D multivector.
+     * @param w The scalar value.
+     */
+    function scalarE3(w: number): blade.Euclidean3;
+    /**
+     * Returns a grade one Euclidean 3D multivector with the specified Cartesian coordinates.
      * @param x The x-coordinate.
      * @param y The y-coordinate.
      * @param z The z-coordinate.
      */
-    function vector(x: number, y: number, z: number): blade.Euclidean3;
+    function vectorE3(x: number, y: number, z: number): blade.Euclidean3;
 }

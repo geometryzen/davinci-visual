@@ -172,8 +172,12 @@ var visual;
             _super.call(this, geometry, this.material);
         }
         Object.defineProperty(VisualElement.prototype, "pos", {
-            set: function (position) {
-                this.position.set(position.x, position.y, position.z);
+            get: function () {
+                var position = this.position;
+                return new blade.Euclidean3(0, position.x, position.y, position.z, 0, 0, 0, 0);
+            },
+            set: function (vector) {
+                this.position.set(vector.x, vector.y, vector.z);
             },
             enumerable: true,
             configurable: true
@@ -852,16 +856,24 @@ var visual;
     /**
      * The version of the visual module.
      */
-    visual.VERSION = '0.0.39';
+    visual.VERSION = '0.0.40';
     /**
-     * Returns a vector with the specified Cartesian coordinates.
+     * Returns a grade zero Euclidean 3D multivector.
+     * @param w The scalar value.
+     */
+    function scalarE3(w) {
+        return new blade.Euclidean3(w, 0, 0, 0, 0, 0, 0, 0);
+    }
+    visual.scalarE3 = scalarE3;
+    /**
+     * Returns a grade one Euclidean 3D multivector with the specified Cartesian coordinates.
      * @param x The x-coordinate.
      * @param y The y-coordinate.
      * @param z The z-coordinate.
      */
-    function vector(x, y, z) {
+    function vectorE3(x, y, z) {
         return new blade.Euclidean3(0, x, y, z, 0, 0, 0, 0);
     }
-    visual.vector = vector;
+    visual.vectorE3 = vectorE3;
 })(visual || (visual = {}));
 ;
