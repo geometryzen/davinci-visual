@@ -199,7 +199,6 @@ var visual;
 })(visual || (visual = {}));
 /// <reference path="ArrowGeometry.ts"/>
 /// <reference path="ArrowGeometryParameters.ts"/>
-/// <reference path="ArrowParameters.ts"/>
 /// <reference path="VisualElement.ts"/>
 var visual;
 (function (visual) {
@@ -860,7 +859,7 @@ var visual;
     /**
      * The version of the visual module.
      */
-    visual.VERSION = '0.0.41';
+    visual.VERSION = '0.0.42';
     /**
      * Returns a grade zero Euclidean 3D multivector.
      * @param w The scalar value.

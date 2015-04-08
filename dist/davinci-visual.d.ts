@@ -19,14 +19,6 @@ declare module visual {
     }
 }
 declare module visual {
-    interface ArrowParameters {
-        scale?: number;
-        color?: number;
-        opacity?: number;
-        transparent?: number;
-    }
-}
-declare module visual {
     /**
      * Visual provides the common behavior for all Mesh (Geometry, Material) objects.
      */
@@ -40,7 +32,9 @@ declare module visual {
 }
 declare module visual {
     class Arrow extends VisualElement<ArrowGeometry> {
-        constructor(parameters: ArrowParameters);
+        constructor(parameters?: {
+            scale?: number;
+        });
     }
 }
 declare module visual {
