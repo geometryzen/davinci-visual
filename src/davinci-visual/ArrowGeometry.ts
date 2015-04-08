@@ -2,7 +2,7 @@
 /// <reference path="RevolutionGeometry.ts"/>
 module visual {
     export class ArrowGeometry extends RevolutionGeometry {
-        constructor(scale: number, attitude?: THREE.Quaternion, segments?: number, length?: number, radiusShaft?: number, radiusCone?: number, lengthCone?: number, axis?: THREE.Vector3) {
+        constructor(scale: number, attitude: THREE.Quaternion, segments: number, length: number, radiusShaft: number, radiusCone: number, lengthCone: number, axis: { x: number; y: number; z: number }) {
             scale        = scale || 1;
             attitude     = attitude || new THREE.Quaternion(0, 0, 0, 1);
             length       = (length || 1) * scale;

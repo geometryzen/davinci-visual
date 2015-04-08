@@ -10,7 +10,11 @@ declare module visual {
 }
 declare module visual {
     class ArrowGeometry extends RevolutionGeometry {
-        constructor(scale: number, attitude?: THREE.Quaternion, segments?: number, length?: number, radiusShaft?: number, radiusCone?: number, lengthCone?: number, axis?: THREE.Vector3);
+        constructor(scale: number, attitude: THREE.Quaternion, segments: number, length: number, radiusShaft: number, radiusCone: number, lengthCone: number, axis: {
+            x: number;
+            y: number;
+            z: number;
+        });
     }
 }
 declare module visual {
@@ -29,7 +33,14 @@ declare module visual {
     class Arrow extends VisualElement<ArrowGeometry> {
         constructor(parameters?: {
             scale?: number;
+            axis?: {
+                x: number;
+                y: number;
+                z: number;
+            };
             color?: number;
+            opacity?: number;
+            transparent?: boolean;
         });
     }
 }

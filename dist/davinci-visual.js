@@ -205,9 +205,16 @@ var visual;
         __extends(Arrow, _super);
         function Arrow(parameters) {
             parameters = parameters || {};
-            parameters.scale = parameters.scale || 1.0;
+            var scale = parameters.scale || 1.0;
+            var attitude = new THREE.Quaternion(0, 0, 0, 1);
+            var segments = undefined;
+            var length = 1.0 * scale;
+            var radiusShaft = 0.01 * scale;
+            var radiusCone = 0.08 * scale;
+            var lengthCone = 0.2 * scale;
+            var axis = parameters.axis || { x: 0, y: 0, z: 1 };
             var m = {};
-            _super.call(this, new visual.ArrowGeometry(parameters.scale), parameters.color, m.opacity, m.transparent);
+            _super.call(this, new visual.ArrowGeometry(scale, attitude, segments, length, radiusShaft, radiusCone, lengthCone, axis), parameters.color, parameters.opacity, parameters.transparent);
         }
         return Arrow;
     })(visual.VisualElement);
@@ -857,7 +864,7 @@ var visual;
     /**
      * The version of the visual module.
      */
-    visual.VERSION = '0.0.43';
+    visual.VERSION = '0.0.44';
     /**
      * Returns a grade zero Euclidean 3D multivector (scalar).
      * @param w The scalar value.
