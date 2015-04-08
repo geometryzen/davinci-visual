@@ -198,7 +198,6 @@ var visual;
     visual.VisualElement = VisualElement;
 })(visual || (visual = {}));
 /// <reference path="ArrowGeometry.ts"/>
-/// <reference path="ArrowGeometryParameters.ts"/>
 /// <reference path="VisualElement.ts"/>
 var visual;
 (function (visual) {
@@ -207,9 +206,8 @@ var visual;
         function Arrow(parameters) {
             parameters = parameters || {};
             parameters.scale = parameters.scale || 1.0;
-            var g = {};
             var m = {};
-            _super.call(this, new visual.ArrowGeometry(parameters.scale), m.color, m.opacity, m.transparent);
+            _super.call(this, new visual.ArrowGeometry(parameters.scale), parameters.color, m.opacity, m.transparent);
         }
         return Arrow;
     })(visual.VisualElement);
@@ -859,9 +857,9 @@ var visual;
     /**
      * The version of the visual module.
      */
-    visual.VERSION = '0.0.42';
+    visual.VERSION = '0.0.43';
     /**
-     * Returns a grade zero Euclidean 3D multivector.
+     * Returns a grade zero Euclidean 3D multivector (scalar).
      * @param w The scalar value.
      */
     function scalarE3(w) {
@@ -869,7 +867,7 @@ var visual;
     }
     visual.scalarE3 = scalarE3;
     /**
-     * Returns a grade one Euclidean 3D multivector with the specified Cartesian coordinates.
+     * Returns a grade one Euclidean 3D multivector (vector) with the specified Cartesian coordinates.
      * @param x The x-coordinate.
      * @param y The y-coordinate.
      * @param z The z-coordinate.
@@ -879,7 +877,7 @@ var visual;
     }
     visual.vectorE3 = vectorE3;
     /**
-     * Returns a grade two Euclidean 3D multivector with the specified Cartesian coordinates.
+     * Returns a grade two Euclidean 3D multivector (bivector) with the specified Cartesian coordinates.
      * @param xy The xy-coordinate.
      * @param yz The yz-coordinate.
      * @param zx The zx-coordinate.
@@ -888,5 +886,13 @@ var visual;
         return new blade.Euclidean3(0, 0, 0, 0, xy, yz, zx, 0);
     }
     visual.bivectorE3 = bivectorE3;
+    /**
+     * Returns a grade three Euclidean 3D multivector (pseudoscalar).
+     * @param xyz The pseudoscalar value.
+     */
+    function pseudoE3(xyz) {
+        return new blade.Euclidean3(0, 0, 0, 0, 0, 0, 0, xyz);
+    }
+    visual.pseudoE3 = pseudoE3;
 })(visual || (visual = {}));
 ;

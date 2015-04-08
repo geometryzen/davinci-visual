@@ -14,11 +14,6 @@ declare module visual {
     }
 }
 declare module visual {
-    interface ArrowGeometryParameters {
-        scale?: number;
-    }
-}
-declare module visual {
     /**
      * Visual provides the common behavior for all Mesh (Geometry, Material) objects.
      */
@@ -34,6 +29,7 @@ declare module visual {
     class Arrow extends VisualElement<ArrowGeometry> {
         constructor(parameters?: {
             scale?: number;
+            color?: number;
         });
     }
 }
@@ -149,22 +145,27 @@ declare module visual {
      */
     var VERSION: string;
     /**
-     * Returns a grade zero Euclidean 3D multivector.
+     * Returns a grade zero Euclidean 3D multivector (scalar).
      * @param w The scalar value.
      */
     function scalarE3(w: number): blade.Euclidean3;
     /**
-     * Returns a grade one Euclidean 3D multivector with the specified Cartesian coordinates.
+     * Returns a grade one Euclidean 3D multivector (vector) with the specified Cartesian coordinates.
      * @param x The x-coordinate.
      * @param y The y-coordinate.
      * @param z The z-coordinate.
      */
     function vectorE3(x: number, y: number, z: number): blade.Euclidean3;
     /**
-     * Returns a grade two Euclidean 3D multivector with the specified Cartesian coordinates.
+     * Returns a grade two Euclidean 3D multivector (bivector) with the specified Cartesian coordinates.
      * @param xy The xy-coordinate.
      * @param yz The yz-coordinate.
      * @param zx The zx-coordinate.
      */
     function bivectorE3(xy: number, yz: number, zx: number): blade.Euclidean3;
+    /**
+     * Returns a grade three Euclidean 3D multivector (pseudoscalar).
+     * @param xyz The pseudoscalar value.
+     */
+    function pseudoE3(xyz: number): blade.Euclidean3;
 }
