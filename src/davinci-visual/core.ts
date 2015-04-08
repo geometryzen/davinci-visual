@@ -6,7 +6,7 @@ module visual {
     /**
      * The version of the visual module.
      */
-    export var VERSION: string = '0.0.40';
+    export var VERSION: string = '0.0.41';
     /**
      * Returns a grade zero Euclidean 3D multivector.
      * @param w The scalar value.
@@ -22,5 +22,14 @@ module visual {
      */
     export function vectorE3(x: number, y: number, z: number) {
       return new blade.Euclidean3(0, x, y, z, 0, 0, 0, 0);
+    }
+    /**
+     * Returns a grade two Euclidean 3D multivector with the specified Cartesian coordinates.
+     * @param xy The xy-coordinate.
+     * @param yz The yz-coordinate.
+     * @param zx The zx-coordinate.
+     */
+    export function bivectorE3(xy: number, yz: number, zx: number) {
+      return new blade.Euclidean3(0, 0, 0, 0, xy, yz, zx, 0);
     }
 };

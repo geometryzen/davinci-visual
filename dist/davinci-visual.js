@@ -198,15 +198,19 @@ var visual;
     visual.VisualElement = VisualElement;
 })(visual || (visual = {}));
 /// <reference path="ArrowGeometry.ts"/>
+/// <reference path="ArrowGeometryParameters.ts"/>
+/// <reference path="ArrowParameters.ts"/>
 /// <reference path="VisualElement.ts"/>
 var visual;
 (function (visual) {
     var Arrow = (function (_super) {
         __extends(Arrow, _super);
-        function Arrow(scale, color, opacity, transparent) {
-            if (opacity === void 0) { opacity = 1.0; }
-            if (transparent === void 0) { transparent = false; }
-            _super.call(this, new visual.ArrowGeometry(scale), color, opacity, transparent);
+        function Arrow(parameters) {
+            parameters = parameters || {};
+            parameters.scale = parameters.scale || 1.0;
+            var g = {};
+            var m = {};
+            _super.call(this, new visual.ArrowGeometry(parameters.scale), m.color, m.opacity, m.transparent);
         }
         return Arrow;
     })(visual.VisualElement);
@@ -856,7 +860,7 @@ var visual;
     /**
      * The version of the visual module.
      */
-    visual.VERSION = '0.0.40';
+    visual.VERSION = '0.0.41';
     /**
      * Returns a grade zero Euclidean 3D multivector.
      * @param w The scalar value.
@@ -875,5 +879,15 @@ var visual;
         return new blade.Euclidean3(0, x, y, z, 0, 0, 0, 0);
     }
     visual.vectorE3 = vectorE3;
+    /**
+     * Returns a grade two Euclidean 3D multivector with the specified Cartesian coordinates.
+     * @param xy The xy-coordinate.
+     * @param yz The yz-coordinate.
+     * @param zx The zx-coordinate.
+     */
+    function bivectorE3(xy, yz, zx) {
+        return new blade.Euclidean3(0, 0, 0, 0, xy, yz, zx, 0);
+    }
+    visual.bivectorE3 = bivectorE3;
 })(visual || (visual = {}));
 ;

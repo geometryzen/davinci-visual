@@ -10,7 +10,20 @@ declare module visual {
 }
 declare module visual {
     class ArrowGeometry extends RevolutionGeometry {
-        constructor(scale: any, attitude?: THREE.Quaternion, segments?: any, length?: number, radiusShaft?: number, radiusCone?: number, lengthCone?: number, axis?: THREE.Vector3);
+        constructor(scale: number, attitude?: THREE.Quaternion, segments?: number, length?: number, radiusShaft?: number, radiusCone?: number, lengthCone?: number, axis?: THREE.Vector3);
+    }
+}
+declare module visual {
+    interface ArrowGeometryParameters {
+        scale?: number;
+    }
+}
+declare module visual {
+    interface ArrowParameters {
+        scale?: number;
+        color?: number;
+        opacity?: number;
+        transparent?: number;
     }
 }
 declare module visual {
@@ -27,7 +40,7 @@ declare module visual {
 }
 declare module visual {
     class Arrow extends VisualElement<ArrowGeometry> {
-        constructor(scale: number, color: number, opacity?: number, transparent?: boolean);
+        constructor(parameters: ArrowParameters);
     }
 }
 declare module visual {
@@ -153,4 +166,11 @@ declare module visual {
      * @param z The z-coordinate.
      */
     function vectorE3(x: number, y: number, z: number): blade.Euclidean3;
+    /**
+     * Returns a grade two Euclidean 3D multivector with the specified Cartesian coordinates.
+     * @param xy The xy-coordinate.
+     * @param yz The yz-coordinate.
+     * @param zx The zx-coordinate.
+     */
+    function bivectorE3(xy: number, yz: number, zx: number): blade.Euclidean3;
 }
