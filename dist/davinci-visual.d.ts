@@ -21,16 +21,16 @@ declare module visual {
     /**
      * Visual provides the common behavior for all Mesh (Geometry, Material) objects.
      */
-    class VisualElement<T extends THREE.Geometry> extends THREE.Mesh {
-        geometry: T;
-        material: THREE.MeshLambertMaterial;
-        constructor(geometry: T, color: number, opacity?: number, transparent?: boolean);
+    class Mesh<G extends THREE.Geometry, M extends THREE.Material> extends THREE.Mesh {
+        geometry: G;
+        material: M;
+        constructor(geometry: G, material: M);
         pos: blade.Euclidean3;
         attitude: blade.Euclidean3;
     }
 }
 declare module visual {
-    class Arrow extends VisualElement<ArrowGeometry> {
+    class Arrow extends Mesh<ArrowGeometry, THREE.MeshLambertMaterial> {
         constructor(parameters?: {
             scale?: number;
             axis?: {
@@ -45,7 +45,7 @@ declare module visual {
     }
 }
 declare module visual {
-    class Box extends VisualElement<THREE.BoxGeometry> {
+    class Box extends Mesh<THREE.BoxGeometry, THREE.MeshLambertMaterial> {
         constructor(parameters?: {
             width?: number;
             height?: number;
@@ -57,7 +57,7 @@ declare module visual {
     }
 }
 declare module visual {
-    class Sphere extends VisualElement<THREE.SphereGeometry> {
+    class Sphere extends Mesh<THREE.SphereGeometry, THREE.MeshLambertMaterial> {
         constructor(parameters?: {
             radius?: number;
             color?: number;
@@ -133,7 +133,7 @@ declare module visual {
     /**
      * Vortex is used to represent geometric objects with a non-zero curl.
      */
-    class Vortex extends VisualElement<VortexGeometry> {
+    class Vortex extends Mesh<VortexGeometry, THREE.MeshLambertMaterial> {
         constructor(parameters?: {
             radius?: number;
             radiusCone?: number;

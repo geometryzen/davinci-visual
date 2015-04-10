@@ -162,16 +162,14 @@ var visual;
     /**
      * Visual provides the common behavior for all Mesh (Geometry, Material) objects.
      */
-    var VisualElement = (function (_super) {
-        __extends(VisualElement, _super);
-        function VisualElement(geometry, color, opacity, transparent) {
-            if (opacity === void 0) { opacity = 1.0; }
-            if (transparent === void 0) { transparent = false; }
+    var Mesh = (function (_super) {
+        __extends(Mesh, _super);
+        function Mesh(geometry, material) {
             this.geometry = geometry;
-            this.material = new THREE.MeshLambertMaterial({ "color": color, "opacity": opacity, "transparent": transparent });
+            this.material = material;
             _super.call(this, geometry, this.material);
         }
-        Object.defineProperty(VisualElement.prototype, "pos", {
+        Object.defineProperty(Mesh.prototype, "pos", {
             get: function () {
                 var position = this.position;
                 return new blade.Euclidean3(0, position.x, position.y, position.z, 0, 0, 0, 0);
@@ -182,7 +180,7 @@ var visual;
             enumerable: true,
             configurable: true
         });
-        Object.defineProperty(VisualElement.prototype, "attitude", {
+        Object.defineProperty(Mesh.prototype, "attitude", {
             get: function () {
                 var q = this.quaternion;
                 return new blade.Euclidean3(q.w, 0, 0, 0, -q.z, -q.x, -q.y, 0);
@@ -193,12 +191,12 @@ var visual;
             enumerable: true,
             configurable: true
         });
-        return VisualElement;
+        return Mesh;
     })(THREE.Mesh);
-    visual.VisualElement = VisualElement;
+    visual.Mesh = Mesh;
 })(visual || (visual = {}));
 /// <reference path="ArrowGeometry.ts"/>
-/// <reference path="VisualElement.ts"/>
+/// <reference path="Mesh.ts"/>
 var visual;
 (function (visual) {
     var Arrow = (function (_super) {
@@ -216,14 +214,15 @@ var visual;
             parameters.color = typeof parameters.color === 'number' ? parameters.color : 0xFFFFFF;
             parameters.opacity = typeof parameters.opacity === 'number' ? parameters.opacity : 1.0;
             parameters.transparent = typeof parameters.transparent === 'boolean' ? parameters.transparent : false;
-            _super.call(this, new visual.ArrowGeometry(scale, attitude, segments, length, radiusShaft, radiusCone, lengthCone, axis), parameters.color, parameters.opacity, parameters.transparent);
+            var material = new THREE.MeshLambertMaterial({ color: parameters.color, opacity: parameters.opacity, transparent: parameters.transparent });
+            _super.call(this, new visual.ArrowGeometry(scale, attitude, segments, length, radiusShaft, radiusCone, lengthCone, axis), material);
         }
         return Arrow;
-    })(visual.VisualElement);
+    })(visual.Mesh);
     visual.Arrow = Arrow;
 })(visual || (visual = {}));
 /// <reference path="../../typings/threejs/three.d.ts"/>
-/// <reference path="VisualElement.ts"/>
+/// <reference path="Mesh.ts"/>
 var visual;
 (function (visual) {
     var Box = (function (_super) {
@@ -236,14 +235,15 @@ var visual;
             parameters.color = typeof parameters.color === 'number' ? parameters.color : 0xFFFFFF;
             parameters.opacity = typeof parameters.opacity === 'number' ? parameters.opacity : 1.0;
             parameters.transparent = typeof parameters.transparent === 'boolean' ? parameters.transparent : false;
-            _super.call(this, new THREE.BoxGeometry(parameters.width, parameters.height, parameters.depth), parameters.color, parameters.opacity, parameters.transparent);
+            var material = new THREE.MeshLambertMaterial({ color: parameters.color, opacity: parameters.opacity, transparent: parameters.transparent });
+            _super.call(this, new THREE.BoxGeometry(parameters.width, parameters.height, parameters.depth), material);
         }
         return Box;
-    })(visual.VisualElement);
+    })(visual.Mesh);
     visual.Box = Box;
 })(visual || (visual = {}));
 /// <reference path="../../typings/threejs/three.d.ts"/>
-/// <reference path="VisualElement.ts"/>
+/// <reference path="Mesh.ts"/>
 var visual;
 (function (visual) {
     var Sphere = (function (_super) {
@@ -254,10 +254,11 @@ var visual;
             parameters.color = typeof parameters.color === 'number' ? parameters.color : 0xFFFFFF;
             parameters.opacity = typeof parameters.opacity === 'number' ? parameters.opacity : 1.0;
             parameters.transparent = typeof parameters.transparent === 'boolean' ? parameters.transparent : false;
-            _super.call(this, new THREE.SphereGeometry(parameters.radius, 16, 12), parameters.color, parameters.opacity, parameters.transparent);
+            var material = new THREE.MeshLambertMaterial({ color: parameters.color, opacity: parameters.opacity, transparent: parameters.transparent });
+            _super.call(this, new THREE.SphereGeometry(parameters.radius, 16, 12), material);
         }
         return Sphere;
-    })(visual.VisualElement);
+    })(visual.Mesh);
     visual.Sphere = Sphere;
 })(visual || (visual = {}));
 var visual;
@@ -841,7 +842,7 @@ var visual;
     visual.VortexGeometry = VortexGeometry;
 })(visual || (visual = {}));
 /// <reference path="VortexGeometry.ts"/>
-/// <reference path="VisualElement.ts"/>
+/// <reference path="Mesh.ts"/>
 var visual;
 (function (visual) {
     /**
@@ -856,10 +857,11 @@ var visual;
             parameters.color = typeof parameters.color === 'number' ? parameters.color : 0xFFFFFF;
             parameters.opacity = typeof parameters.opacity === 'number' ? parameters.opacity : 1.0;
             parameters.transparent = typeof parameters.transparent === 'boolean' ? parameters.transparent : false;
-            _super.call(this, new visual.VortexGeometry(parameters.radius, parameters.radiusCone, 0.01, 0.02, 0.075), parameters.color, parameters.opacity, parameters.transparent);
+            var material = new THREE.MeshLambertMaterial({ color: parameters.color, opacity: parameters.opacity, transparent: parameters.transparent });
+            _super.call(this, new visual.VortexGeometry(parameters.radius, parameters.radiusCone, 0.01, 0.02, 0.075), material);
         }
         return Vortex;
-    })(visual.VisualElement);
+    })(visual.Mesh);
     visual.Vortex = Vortex;
 })(visual || (visual = {}));
 /// <reference path="../../vendor/davinci-blade/dist/davinci-blade.d.ts"/>
@@ -871,7 +873,7 @@ var visual;
     /**
      * The version of the visual module.
      */
-    visual.VERSION = '0.0.50';
+    visual.VERSION = '0.0.51';
     /**
      * Returns a grade zero Euclidean 3D multivector (scalar).
      * @param w The scalar value.

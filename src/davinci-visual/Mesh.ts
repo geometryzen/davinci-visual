@@ -4,14 +4,14 @@ module visual {
     /**
      * Visual provides the common behavior for all Mesh (Geometry, Material) objects.
      */
-    export class VisualElement<T extends THREE.Geometry> extends THREE.Mesh
+    export class Mesh<G extends THREE.Geometry, M extends THREE.Material> extends THREE.Mesh
     {
-      public geometry: T;
-      public material: THREE.MeshLambertMaterial;
-      constructor(geometry: T, color: number, opacity: number = 1.0, transparent: boolean = false)
+      public geometry: G;
+      public material: M;
+      constructor(geometry: G, material: M)
       {
         this.geometry = geometry;
-        this.material = new THREE.MeshLambertMaterial({"color": color,"opacity": opacity,"transparent": transparent});
+        this.material = material;
         super(geometry, this.material);
       }
       get pos(): blade.Euclidean3 {
