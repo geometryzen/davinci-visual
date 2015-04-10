@@ -22,14 +22,14 @@ export class Visual
     this.scene.add(ambientLight);
 
     var pointLight = new THREE.PointLight(0xFFFFFF);
-    pointLight.position.set(20.0, 20.0, 20.0);
+    pointLight.position.set(10.0, 10.0, 10.0);
     this.scene.add(pointLight);
 
     var directionalLight = new THREE.DirectionalLight(0xFFFFFF);
     directionalLight.position.set(0.0, 1.0, 0.0);
     this.scene.add(directionalLight);
 
-    this.camera.position.set(10.0, 9.0, 8.0);
+    this.camera.position.set(4.0, 4.0, 4.0);
     this.camera.up.set(0,0,1);
     this.camera.lookAt(this.scene.position);
 

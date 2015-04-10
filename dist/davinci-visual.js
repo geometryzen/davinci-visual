@@ -226,10 +226,15 @@ var visual;
 (function (visual) {
     var Box = (function (_super) {
         __extends(Box, _super);
-        function Box(width, height, depth, color, opacity, transparent) {
-            if (opacity === void 0) { opacity = 1.0; }
-            if (transparent === void 0) { transparent = false; }
-            _super.call(this, new THREE.BoxGeometry(width, height, depth), color, opacity, transparent);
+        function Box(parameters) {
+            parameters = parameters || {};
+            parameters.width = parameters.width || 1.0;
+            parameters.height = parameters.height || 1.0;
+            parameters.depth = parameters.depth || 1.0;
+            parameters.color = typeof parameters.color === 'number' ? parameters.color : 0xFFFFFF;
+            parameters.opacity = typeof parameters.opacity === 'number' ? parameters.opacity : 1.0;
+            parameters.transparent = typeof parameters.transparent === 'boolean' ? parameters.transparent : false;
+            _super.call(this, new THREE.BoxGeometry(parameters.width, parameters.height, parameters.depth), parameters.color, parameters.opacity, parameters.transparent);
         }
         return Box;
     })(visual.VisualElement);
@@ -694,12 +699,12 @@ var visual;
             var ambientLight = new THREE.AmbientLight(0x111111);
             this.scene.add(ambientLight);
             var pointLight = new THREE.PointLight(0xFFFFFF);
-            pointLight.position.set(20.0, 20.0, 20.0);
+            pointLight.position.set(10.0, 10.0, 10.0);
             this.scene.add(pointLight);
             var directionalLight = new THREE.DirectionalLight(0xFFFFFF);
             directionalLight.position.set(0.0, 1.0, 0.0);
             this.scene.add(directionalLight);
-            this.camera.position.set(10.0, 9.0, 8.0);
+            this.camera.position.set(4.0, 4.0, 4.0);
             this.camera.up.set(0, 0, 1);
             this.camera.lookAt(this.scene.position);
             this.controls = visual.trackball(this.camera, wnd);
@@ -868,7 +873,7 @@ var visual;
     /**
      * The version of the visual module.
      */
-    visual.VERSION = '0.0.47';
+    visual.VERSION = '0.0.48';
     /**
      * Returns a grade zero Euclidean 3D multivector (scalar).
      * @param w The scalar value.

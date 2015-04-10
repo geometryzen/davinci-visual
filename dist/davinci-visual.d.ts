@@ -46,7 +46,14 @@ declare module visual {
 }
 declare module visual {
     class Box extends VisualElement<THREE.BoxGeometry> {
-        constructor(width: number, height: number, depth: number, color: number, opacity?: number, transparent?: boolean);
+        constructor(parameters?: {
+            width?: number;
+            height?: number;
+            depth?: number;
+            color?: number;
+            opacity?: number;
+            transparent?: boolean;
+        });
     }
 }
 declare module visual {
