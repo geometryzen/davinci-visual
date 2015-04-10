@@ -12,7 +12,6 @@ module visual {
             var radiusCone = 0.08 * scale;
             var lengthCone = 0.2 * scale;
             var axis = parameters.axis || {x: 0, y: 0, z: 1};
-            var m: LambertMaterialParameters = {};
             super(new ArrowGeometry(scale, attitude, segments, length, radiusShaft, radiusCone, lengthCone, axis), parameters.color, parameters.opacity, parameters.transparent);
         }
     }

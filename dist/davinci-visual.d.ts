@@ -57,30 +57,13 @@ declare module visual {
     }
 }
 declare module visual {
-    interface MaterialParameters {
-        opacity?: number;
-        transparent?: boolean;
-    }
-}
-declare module visual {
-    interface LambertMaterialParameters extends MaterialParameters {
-        color?: number;
-    }
-}
-declare module visual {
-    interface SphereGeometryParameters {
-        radius?: number;
-        widthSegments?: number;
-        heightSegments?: number;
-        phiStart?: number;
-        phiLength?: number;
-        thetaStart?: number;
-        thetaLength?: number;
-    }
-}
-declare module visual {
     class Sphere extends VisualElement<THREE.SphereGeometry> {
-        constructor(g?: SphereGeometryParameters, m?: LambertMaterialParameters);
+        constructor(parameters?: {
+            radius?: number;
+            color?: number;
+            opacity?: number;
+            transparent?: boolean;
+        });
     }
 }
 declare module visual {

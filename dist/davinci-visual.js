@@ -213,7 +213,6 @@ var visual;
             var radiusCone = 0.08 * scale;
             var lengthCone = 0.2 * scale;
             var axis = parameters.axis || { x: 0, y: 0, z: 1 };
-            var m = {};
             _super.call(this, new visual.ArrowGeometry(scale, attitude, segments, length, radiusShaft, radiusCone, lengthCone, axis), parameters.color, parameters.opacity, parameters.transparent);
         }
         return Arrow;
@@ -240,23 +239,19 @@ var visual;
     })(visual.VisualElement);
     visual.Box = Box;
 })(visual || (visual = {}));
-/// <reference path="MaterialParameters.ts"/>
 /// <reference path="../../typings/threejs/three.d.ts"/>
 /// <reference path="VisualElement.ts"/>
-/// <reference path="SphereGeometryParameters.ts"/>
-/// <reference path="LambertMaterialParameters.ts"/>
 var visual;
 (function (visual) {
     var Sphere = (function (_super) {
         __extends(Sphere, _super);
-        function Sphere(g, m) {
-            g = g || {};
-            g.radius = g.radius || 1.0;
-            g.widthSegments = g.widthSegments || 16;
-            g.heightSegments = g.heightSegments || 12;
-            m = m || {};
-            m.color = m.color || 0xFFFFFF;
-            _super.call(this, new THREE.SphereGeometry(g.radius, g.widthSegments, g.heightSegments, g.phiStart, g.phiLength, g.thetaStart, g.thetaLength), m.color, m.opacity, m.transparent);
+        function Sphere(parameters) {
+            parameters = parameters || {};
+            parameters.radius = parameters.radius || 1.0;
+            parameters.color = typeof parameters.color === 'number' ? parameters.color : 0xFFFFFF;
+            parameters.opacity = typeof parameters.opacity === 'number' ? parameters.opacity : 1.0;
+            parameters.transparent = typeof parameters.transparent === 'boolean' ? parameters.transparent : false;
+            _super.call(this, new THREE.SphereGeometry(parameters.radius, 16, 12), parameters.color, parameters.opacity, parameters.transparent);
         }
         return Sphere;
     })(visual.VisualElement);
@@ -873,7 +868,7 @@ var visual;
     /**
      * The version of the visual module.
      */
-    visual.VERSION = '0.0.48';
+    visual.VERSION = '0.0.49';
     /**
      * Returns a grade zero Euclidean 3D multivector (scalar).
      * @param w The scalar value.
