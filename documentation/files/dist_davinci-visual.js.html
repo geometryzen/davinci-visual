@@ -17,7 +17,7 @@
                 <h1><img src="../../assets/logo.png" title="davinci-visual"></h1>
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.0.49</em>
+            <em>API Docs for: 0.0.50</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -293,6 +293,9 @@ var visual;
             var radiusCone = 0.08 * scale;
             var lengthCone = 0.2 * scale;
             var axis = parameters.axis || { x: 0, y: 0, z: 1 };
+            parameters.color = typeof parameters.color === &#x27;number&#x27; ? parameters.color : 0xFFFFFF;
+            parameters.opacity = typeof parameters.opacity === &#x27;number&#x27; ? parameters.opacity : 1.0;
+            parameters.transparent = typeof parameters.transparent === &#x27;boolean&#x27; ? parameters.transparent : false;
             _super.call(this, new visual.ArrowGeometry(scale, attitude, segments, length, radiusShaft, radiusCone, lengthCone, axis), parameters.color, parameters.opacity, parameters.transparent);
         }
         return Arrow;
@@ -948,7 +951,7 @@ var visual;
     /**
      * The version of the visual module.
      */
-    visual.VERSION = &#x27;0.0.49&#x27;;
+    visual.VERSION = &#x27;0.0.50&#x27;;
     /**
      * Returns a grade zero Euclidean 3D multivector (scalar).
      * @param w The scalar value.

@@ -213,6 +213,9 @@ var visual;
             var radiusCone = 0.08 * scale;
             var lengthCone = 0.2 * scale;
             var axis = parameters.axis || { x: 0, y: 0, z: 1 };
+            parameters.color = typeof parameters.color === 'number' ? parameters.color : 0xFFFFFF;
+            parameters.opacity = typeof parameters.opacity === 'number' ? parameters.opacity : 1.0;
+            parameters.transparent = typeof parameters.transparent === 'boolean' ? parameters.transparent : false;
             _super.call(this, new visual.ArrowGeometry(scale, attitude, segments, length, radiusShaft, radiusCone, lengthCone, axis), parameters.color, parameters.opacity, parameters.transparent);
         }
         return Arrow;
@@ -868,7 +871,7 @@ var visual;
     /**
      * The version of the visual module.
      */
-    visual.VERSION = '0.0.49';
+    visual.VERSION = '0.0.50';
     /**
      * Returns a grade zero Euclidean 3D multivector (scalar).
      * @param w The scalar value.
