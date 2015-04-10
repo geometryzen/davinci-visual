@@ -136,7 +136,7 @@ declare module visual {
 }
 declare module visual {
     class VortexGeometry extends THREE.Geometry {
-        constructor(radius: any, radiusCone: any, radiusShaft: any, lengthCone: any, lengthShaft: any, arrowSegments: any, radialSegments: any);
+        constructor(radius: number, radiusCone: number, radiusShaft: number, lengthCone: number, lengthShaft: number, arrowSegments?: number, radialSegments?: number);
     }
 }
 declare module visual {
@@ -144,7 +144,7 @@ declare module visual {
      * Vortex is used to represent geometric objects with a non-zero curl.
      */
     class Vortex extends VisualElement<VortexGeometry> {
-        constructor(scale: number, color: number, opacity?: number, transparent?: boolean);
+        constructor(scale?: number, color?: number, opacity?: number, transparent?: boolean);
     }
 }
 /**

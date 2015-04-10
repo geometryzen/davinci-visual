@@ -1,6 +1,6 @@
 {
   "name": "davinci-visual",
-  "version": "0.0.44",
+  "version": "0.0.45",
   "description": "A lightweight WebGL Mathematical visualization library.",
   "author": {
     "name": "David Holmes",

@@ -2,7 +2,7 @@
 module visual {
 export class VortexGeometry extends THREE.Geometry
 {
-    constructor(radius, radiusCone, radiusShaft, lengthCone, lengthShaft, arrowSegments, radialSegments) {
+    constructor(radius: number, radiusCone: number, radiusShaft: number, lengthCone: number, lengthShaft: number, arrowSegments?: number, radialSegments?: number) {
         super();
         var scope = this;
         var n = 9;
@@ -11,9 +11,9 @@ export class VortexGeometry extends THREE.Geometry
         radiusShaft = radiusShaft || 0.01;
         lengthCone  = lengthCone || 0.2;
         lengthShaft = lengthShaft || 0.8;
-        arrowSegments = arrowSegments || 6;
+        arrowSegments = arrowSegments || 8;
         var circleSegments = arrowSegments * n;
-        radialSegments = radialSegments || 8;
+        radialSegments = radialSegments || 12;
 
     var twoPI = Math.PI * 2;
     var R = radius;

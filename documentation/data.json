@@ -2,7 +2,7 @@
     "project": {
         "name": "davinci-visual",
         "description": "A lightweight WebGL Mathematical visualization library.",
-        "version": "0.0.44",
+        "version": "0.0.45",
         "url": "",
         "logo": "../assets/logo.png"
     },
@@ -32,18 +32,18 @@
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 859,
-            "class": ""
-        },
-        {
-            "file": "dist/davinci-visual.js",
-            "line": 864,
-            "description": "The version of the visual module.",
+            "line": 863,
             "class": ""
         },
         {
             "file": "dist/davinci-visual.js",
             "line": 868,
+            "description": "The version of the visual module.",
+            "class": ""
+        },
+        {
+            "file": "dist/davinci-visual.js",
+            "line": 872,
             "description": "Returns a grade zero Euclidean 3D multivector (scalar).",
             "params": [
                 {
@@ -55,7 +55,7 @@
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 876,
+            "line": 880,
             "description": "Returns a grade one Euclidean 3D multivector (vector) with the specified Cartesian coordinates.",
             "params": [
                 {
@@ -75,7 +75,7 @@
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 886,
+            "line": 890,
             "description": "Returns a grade two Euclidean 3D multivector (bivector) with the specified Cartesian coordinates.",
             "params": [
                 {
@@ -95,7 +95,7 @@
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 896,
+            "line": 900,
             "description": "Returns a grade three Euclidean 3D multivector (pseudoscalar).",
             "params": [
                 {
@@ -117,27 +117,27 @@
         },
         {
             "message": "Missing item type",
-            "line": " dist/davinci-visual.js:859"
+            "line": " dist/davinci-visual.js:863"
         },
         {
             "message": "Missing item type\nThe version of the visual module.",
-            "line": " dist/davinci-visual.js:864"
-        },
-        {
-            "message": "Missing item type\nReturns a grade zero Euclidean 3D multivector (scalar).",
             "line": " dist/davinci-visual.js:868"
         },
         {
+            "message": "Missing item type\nReturns a grade zero Euclidean 3D multivector (scalar).",
+            "line": " dist/davinci-visual.js:872"
+        },
+        {
             "message": "Missing item type\nReturns a grade one Euclidean 3D multivector (vector) with the specified Cartesian coordinates.",
-            "line": " dist/davinci-visual.js:876"
+            "line": " dist/davinci-visual.js:880"
         },
         {
             "message": "Missing item type\nReturns a grade two Euclidean 3D multivector (bivector) with the specified Cartesian coordinates.",
-            "line": " dist/davinci-visual.js:886"
+            "line": " dist/davinci-visual.js:890"
         },
         {
             "message": "Missing item type\nReturns a grade three Euclidean 3D multivector (pseudoscalar).",
-            "line": " dist/davinci-visual.js:896"
+            "line": " dist/davinci-visual.js:900"
         }
     ]
 }

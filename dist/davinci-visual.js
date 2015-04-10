@@ -758,9 +758,9 @@ var visual;
             radiusShaft = radiusShaft || 0.01;
             lengthCone = lengthCone || 0.2;
             lengthShaft = lengthShaft || 0.8;
-            arrowSegments = arrowSegments || 6;
+            arrowSegments = arrowSegments || 8;
             var circleSegments = arrowSegments * n;
-            radialSegments = radialSegments || 8;
+            radialSegments = radialSegments || 12;
             var twoPI = Math.PI * 2;
             var R = radius;
             var center = new THREE.Vector3();
@@ -847,9 +847,13 @@ var visual;
     var Vortex = (function (_super) {
         __extends(Vortex, _super);
         function Vortex(scale, color, opacity, transparent) {
+            if (scale === void 0) { scale = 1.0; }
+            if (color === void 0) { color = 0xFFFFFF; }
             if (opacity === void 0) { opacity = 1.0; }
             if (transparent === void 0) { transparent = false; }
-            _super.call(this, new visual.VortexGeometry(4.0, 0.32, 0.04, 0.08, 0.3, 8, 12), color, opacity, transparent);
+            var radius = scale;
+            var radiusCone = scale * 0.08;
+            _super.call(this, new visual.VortexGeometry(radius, radiusCone, 0.01, 0.02, 0.075), color, opacity, transparent);
         }
         return Vortex;
     })(visual.VisualElement);
@@ -864,7 +868,7 @@ var visual;
     /**
      * The version of the visual module.
      */
-    visual.VERSION = '0.0.44';
+    visual.VERSION = '0.0.45';
     /**
      * Returns a grade zero Euclidean 3D multivector (scalar).
      * @param w The scalar value.
