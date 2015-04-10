@@ -6,7 +6,7 @@ module visual {
     /**
      * The version of the visual module.
      */
-    export var VERSION: string = '0.0.46';
+    export var VERSION: string = '0.0.47';
     /**
      * Returns a grade zero Euclidean 3D multivector (scalar).
      * @param w The scalar value.

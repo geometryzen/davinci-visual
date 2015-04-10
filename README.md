@@ -5,7 +5,7 @@ A lightweight WebGL Mathematical visualization library.
 [![Build Status](https://travis-ci.org/geometryzen/davinci-visual.png)](https://travis-ci.org/geometryzen/davinci-visual)
 
 ## Release History
-* v0.0.46: Initial release (pending)
+* v0.0.47: Initial release (pending)
 
 ## License
 Copyright (c) 2014-2015 David Holmes  

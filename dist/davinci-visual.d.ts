@@ -145,11 +145,11 @@ declare module visual {
      */
     class Vortex extends VisualElement<VortexGeometry> {
         constructor(parameters?: {
-            radius: number;
-            radiusCone: number;
-            color: number;
-            opacity: number;
-            transparent: boolean;
+            radius?: number;
+            radiusCone?: number;
+            color?: number;
+            opacity?: number;
+            transparent?: boolean;
         });
     }
 }

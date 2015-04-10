@@ -868,7 +868,7 @@ var visual;
     /**
      * The version of the visual module.
      */
-    visual.VERSION = '0.0.46';
+    visual.VERSION = '0.0.47';
     /**
      * Returns a grade zero Euclidean 3D multivector (scalar).
      * @param w The scalar value.
