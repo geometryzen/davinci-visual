@@ -846,14 +846,14 @@ var visual;
      */
     var Vortex = (function (_super) {
         __extends(Vortex, _super);
-        function Vortex(scale, color, opacity, transparent) {
-            if (scale === void 0) { scale = 1.0; }
-            if (color === void 0) { color = 0xFFFFFF; }
-            if (opacity === void 0) { opacity = 1.0; }
-            if (transparent === void 0) { transparent = false; }
-            var radius = scale;
-            var radiusCone = scale * 0.08;
-            _super.call(this, new visual.VortexGeometry(radius, radiusCone, 0.01, 0.02, 0.075), color, opacity, transparent);
+        function Vortex(parameters) {
+            parameters = parameters || { radius: 1.0, radiusCone: 0.08, color: 0xFFFFFF, opacity: 1.0, transparent: false };
+            parameters.radius = parameters.radius || 1.0;
+            parameters.radiusCone = parameters.radiusCone || 0.08;
+            parameters.color = typeof parameters.color === 'number' ? parameters.color : 0xFFFFFF;
+            parameters.opacity = typeof parameters.opacity === 'number' ? parameters.opacity : 1.0;
+            parameters.transparent = typeof parameters.transparent === 'boolean' ? parameters.transparent : false;
+            _super.call(this, new visual.VortexGeometry(parameters.radius, parameters.radiusCone, 0.01, 0.02, 0.075), parameters.color, parameters.opacity, parameters.transparent);
         }
         return Vortex;
     })(visual.VisualElement);
@@ -868,7 +868,7 @@ var visual;
     /**
      * The version of the visual module.
      */
-    visual.VERSION = '0.0.45';
+    visual.VERSION = '0.0.46';
     /**
      * Returns a grade zero Euclidean 3D multivector (scalar).
      * @param w The scalar value.

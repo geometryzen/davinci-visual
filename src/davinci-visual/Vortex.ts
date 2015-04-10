@@ -5,10 +5,14 @@ module visual {
      * Vortex is used to represent geometric objects with a non-zero curl.
      */
     export class Vortex extends VisualElement<VortexGeometry> {
-        constructor(scale: number = 1.0, color: number = 0xFFFFFF, opacity: number = 1.0, transparent: boolean = false) {
-            var radius = scale;
-            var radiusCone = scale * 0.08;
-            super(new VortexGeometry(radius, radiusCone, 0.01, 0.02, 0.075), color, opacity, transparent);
+        constructor(parameters?: {radius: number; radiusCone: number; color: number; opacity: number; transparent: boolean}) {
+            parameters = parameters || {radius: 1.0, radiusCone: 0.08, color: 0xFFFFFF, opacity: 1.0, transparent: false};
+            parameters.radius = parameters.radius || 1.0;
+            parameters.radiusCone = parameters.radiusCone || 0.08;
+            parameters.color = typeof parameters.color === 'number' ? parameters.color : 0xFFFFFF;
+            parameters.opacity = typeof parameters.opacity === 'number' ? parameters.opacity : 1.0;
+            parameters.transparent = typeof parameters.transparent === 'boolean' ? parameters.transparent : false;
+            super(new VortexGeometry(parameters.radius, parameters.radiusCone, 0.01, 0.02, 0.075), parameters.color, parameters.opacity, parameters.transparent);
         }
     }
 }
