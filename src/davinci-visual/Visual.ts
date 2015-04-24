@@ -45,8 +45,10 @@ export class Visual
     this.canvas2D.style.left = "0px";
     
     this.workbench2D = new Workbench2D(this.canvas2D, wnd);
-    this.stage = new createjs.Stage(this.canvas2D);
-    this.stage.autoClear = true;
+    if (typeof createjs !== 'undefined') {
+      this.stage = new createjs.Stage(this.canvas2D);
+      this.stage.autoClear = true;
+    }
 
     this.controls.rotateSpeed = 1.0;
     this.controls.zoomSpeed = 1.2;
@@ -85,7 +87,9 @@ export class Visual
   {
     this.renderer.render(this.scene, this.camera);
     this.controls.update();
-    this.stage.update();
+    if (this.stage) {
+      this.stage.update();
+    }
   }
 }
 }

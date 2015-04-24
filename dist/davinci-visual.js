@@ -255,7 +255,7 @@ var visual;
             parameters.opacity = typeof parameters.opacity === 'number' ? parameters.opacity : 1.0;
             parameters.transparent = typeof parameters.transparent === 'boolean' ? parameters.transparent : false;
             var material = new THREE.MeshLambertMaterial({ color: parameters.color, opacity: parameters.opacity, transparent: parameters.transparent });
-            _super.call(this, new THREE.SphereGeometry(parameters.radius, 16, 12), material);
+            _super.call(this, new THREE.SphereGeometry(parameters.radius, parameters.widthSegments, parameters.heightSegments, parameters.phiStart, parameters.phiLength, parameters.thetaStart, parameters.thetaLength), material);
         }
         return Sphere;
     })(visual.Mesh);
@@ -714,8 +714,10 @@ var visual;
             this.canvas2D.style.top = "0px";
             this.canvas2D.style.left = "0px";
             this.workbench2D = new visual.Workbench2D(this.canvas2D, wnd);
-            this.stage = new createjs.Stage(this.canvas2D);
-            this.stage.autoClear = true;
+            if (typeof createjs !== 'undefined') {
+                this.stage = new createjs.Stage(this.canvas2D);
+                this.stage.autoClear = true;
+            }
             this.controls.rotateSpeed = 1.0;
             this.controls.zoomSpeed = 1.2;
             this.controls.panSpeed = 0.8;
@@ -742,7 +744,9 @@ var visual;
         Visual.prototype.update = function () {
             this.renderer.render(this.scene, this.camera);
             this.controls.update();
-            this.stage.update();
+            if (this.stage) {
+                this.stage.update();
+            }
         };
         return Visual;
     })();
@@ -873,7 +877,7 @@ var visual;
     /**
      * The version of the visual module.
      */
-    visual.VERSION = '0.0.51';
+    visual.VERSION = '0.0.52';
     /**
      * Returns a grade zero Euclidean 3D multivector (scalar).
      * @param w The scalar value.

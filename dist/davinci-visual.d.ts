@@ -60,6 +60,12 @@ declare module visual {
     class Sphere extends Mesh<THREE.SphereGeometry, THREE.MeshLambertMaterial> {
         constructor(parameters?: {
             radius?: number;
+            widthSegments?: number;
+            heightSegments?: number;
+            phiStart?: number;
+            phiLength?: number;
+            thetaStart?: number;
+            thetaLength?: number;
             color?: number;
             opacity?: number;
             transparent?: boolean;
