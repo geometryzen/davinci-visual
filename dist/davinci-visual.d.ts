@@ -124,7 +124,12 @@ declare module visual {
         canvas2D: HTMLCanvasElement;
         workbench2D: Workbench2D;
         stage: createjs.Stage;
-        constructor(wnd: Window, canvas?: HTMLCanvasElement);
+        /**
+         * Constructs a `Visual` associated with the specified window and canvas.
+         * @param $window The window in which the visualization will operate.
+         * @param canvas The canvas element or the `id` property of a canvas element in which the visualization will operate.
+         */
+        constructor($window: Window, canvas?: HTMLCanvasElement | string);
         add(object: THREE.Object3D): void;
         /**
          * Resizes the canvas to (width, height), and also sets the viewport to fit that size.

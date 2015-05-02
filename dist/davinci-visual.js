@@ -232,7 +232,7 @@ var visual;
             parameters.width = parameters.width || 1.0;
             parameters.height = parameters.height || 1.0;
             parameters.depth = parameters.depth || 1.0;
-            parameters.color = typeof parameters.color === 'number' ? parameters.color : 0xFFFFFF;
+            parameters.color = typeof parameters.color === 'number' ? parameters.color : 0xFF0000;
             parameters.opacity = typeof parameters.opacity === 'number' ? parameters.opacity : 1.0;
             parameters.transparent = typeof parameters.transparent === 'boolean' ? parameters.transparent : false;
             var material = new THREE.MeshLambertMaterial({ color: parameters.color, opacity: parameters.opacity, transparent: parameters.transparent });
@@ -251,7 +251,7 @@ var visual;
         function Sphere(parameters) {
             parameters = parameters || {};
             parameters.radius = parameters.radius || 1.0;
-            parameters.color = typeof parameters.color === 'number' ? parameters.color : 0xFFFFFF;
+            parameters.color = typeof parameters.color === 'number' ? parameters.color : 0x0000FF;
             parameters.opacity = typeof parameters.opacity === 'number' ? parameters.opacity : 1.0;
             parameters.transparent = typeof parameters.transparent === 'boolean' ? parameters.transparent : false;
             var material = new THREE.MeshLambertMaterial({ color: parameters.color, opacity: parameters.opacity, transparent: parameters.transparent });
@@ -346,7 +346,12 @@ var visual;
 var visual;
 (function (visual) {
     var Visual = (function () {
-        function Visual(wnd, canvas) {
+        /**
+         * Constructs a `Visual` associated with the specified window and canvas.
+         * @param $window The window in which the visualization will operate.
+         * @param canvas The canvas element or the `id` property of a canvas element in which the visualization will operate.
+         */
+        function Visual($window, canvas) {
             this.scene = new THREE.Scene();
             this.camera = new THREE.PerspectiveCamera(45, 1.0, 0.1, 10000);
             var ambientLight = new THREE.AmbientLight(0x111111);
@@ -360,20 +365,25 @@ var visual;
             this.camera.position.set(4.0, 4.0, 4.0);
             this.camera.up.set(0, 0, 1);
             this.camera.lookAt(this.scene.position);
-            if (canvas) {
+            if (typeof canvas === 'string') {
+                var canvasElement = document.getElementById(canvas);
+                this.renderer = new THREE.WebGLRenderer({ canvas: canvasElement });
+                this.workbench3D = new visual.Workbench3D(canvasElement, this.renderer, this.camera, $window);
+            }
+            else if (typeof canvas === 'object') {
                 this.renderer = new THREE.WebGLRenderer({ canvas: canvas });
-                this.workbench3D = new visual.Workbench3D(canvas, this.renderer, this.camera, wnd);
+                this.workbench3D = new visual.Workbench3D(canvas, this.renderer, this.camera, $window);
             }
             else {
                 this.renderer = new THREE.WebGLRenderer();
-                this.workbench3D = new visual.Workbench3D(this.renderer.domElement, this.renderer, this.camera, wnd);
+                this.workbench3D = new visual.Workbench3D(this.renderer.domElement, this.renderer, this.camera, $window);
             }
-            this.renderer.setClearColor(new THREE.Color(0x080808), 1.0);
-            this.canvas2D = wnd.document.createElement("canvas");
+            this.renderer.setClearColor(new THREE.Color(0xCCCCCC), 1.0);
+            this.canvas2D = $window.document.createElement("canvas");
             this.canvas2D.style.position = "absolute";
             this.canvas2D.style.top = "0px";
             this.canvas2D.style.left = "0px";
-            this.workbench2D = new visual.Workbench2D(this.canvas2D, wnd);
+            this.workbench2D = new visual.Workbench2D(this.canvas2D, $window);
             if (typeof createjs !== 'undefined') {
                 this.stage = new createjs.Stage(this.canvas2D);
                 this.stage.autoClear = true;
@@ -535,7 +545,7 @@ var visual;
     /**
      * The version of the visual module.
      */
-    visual.VERSION = '1.1.1';
+    visual.VERSION = '1.2.0';
     /**
      * Returns a grade zero Euclidean 3D multivector (scalar).
      * @param w The scalar value.

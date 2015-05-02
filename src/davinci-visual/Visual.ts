@@ -13,7 +13,12 @@ module visual
     public workbench2D: Workbench2D;
     public stage: createjs.Stage;
 
-    constructor(wnd: Window, canvas?: HTMLCanvasElement)
+    /**
+     * Constructs a `Visual` associated with the specified window and canvas.
+     * @param $window The window in which the visualization will operate.
+     * @param canvas The canvas element or the `id` property of a canvas element in which the visualization will operate.
+     */
+    constructor($window: Window, canvas?: HTMLCanvasElement|string)
     {
       var ambientLight = new THREE.AmbientLight(0x111111);
       this.scene.add(ambientLight);
@@ -30,25 +35,31 @@ module visual
       this.camera.up.set(0,0,1);
       this.camera.lookAt(this.scene.position);
 
-      if (canvas)
+      if (typeof canvas === 'string')
+      {
+        var canvasElement: HTMLCanvasElement = <HTMLCanvasElement>document.getElementById(canvas);
+        this.renderer = new THREE.WebGLRenderer({canvas:canvasElement});
+        this.workbench3D = new Workbench3D(canvasElement, this.renderer, this.camera, $window);
+      }
+      else if (typeof canvas === 'object')
       {
         this.renderer = new THREE.WebGLRenderer({canvas:canvas});
-        this.workbench3D = new Workbench3D(canvas, this.renderer, this.camera, wnd);
+        this.workbench3D = new Workbench3D(canvas, this.renderer, this.camera, $window);
       }
       else
       {
         this.renderer = new THREE.WebGLRenderer();
-        this.workbench3D = new Workbench3D(this.renderer.domElement, this.renderer, this.camera, wnd);
+        this.workbench3D = new Workbench3D(this.renderer.domElement, this.renderer, this.camera, $window);
       }
-      this.renderer.setClearColor(new THREE.Color(0x080808), 1.0)
+      this.renderer.setClearColor(new THREE.Color(0xCCCCCC), 1.0)
       
-      this.canvas2D = wnd.document.createElement("canvas");
+      this.canvas2D = $window.document.createElement("canvas");
 
       this.canvas2D.style.position = "absolute";
       this.canvas2D.style.top = "0px";
       this.canvas2D.style.left = "0px";
       
-      this.workbench2D = new Workbench2D(this.canvas2D, wnd);
+      this.workbench2D = new Workbench2D(this.canvas2D, $window);
       if (typeof createjs !== 'undefined') {
         this.stage = new createjs.Stage(this.canvas2D);
         this.stage.autoClear = true;

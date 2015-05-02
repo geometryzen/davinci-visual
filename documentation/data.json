@@ -2,7 +2,7 @@
     "project": {
         "name": "davinci-visual",
         "description": "A lightweight WebGL Mathematical visualization library.",
-        "version": "1.1.1",
+        "version": "1.2.0",
         "url": "",
         "logo": "../assets/logo.png"
     },
@@ -26,36 +26,52 @@
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 385,
+            "line": 349,
+            "description": "Constructs a `Visual` associated with the specified window and canvas.",
+            "params": [
+                {
+                    "name": "$window",
+                    "description": "The window in which the visualization will operate."
+                },
+                {
+                    "name": "canvas",
+                    "description": "The canvas element or the `id` property of a canvas element in which the visualization will operate."
+                }
+            ],
+            "class": ""
+        },
+        {
+            "file": "dist/davinci-visual.js",
+            "line": 395,
             "description": "Resizes the canvas to (width, height), and also sets the viewport to fit that size.",
             "class": ""
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 400,
+            "line": 410,
             "description": "Render the 3D scene using the camera.",
             "class": ""
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 510,
+            "line": 520,
             "description": "Vortex is used to represent geometric objects with a non-zero curl.",
             "class": ""
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 530,
+            "line": 540,
             "class": ""
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 535,
+            "line": 545,
             "description": "The version of the visual module.",
             "class": ""
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 539,
+            "line": 549,
             "description": "Returns a grade zero Euclidean 3D multivector (scalar).",
             "params": [
                 {
@@ -67,7 +83,7 @@
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 547,
+            "line": 557,
             "description": "Returns a grade one Euclidean 3D multivector (vector) with the specified Cartesian coordinates.",
             "params": [
                 {
@@ -87,7 +103,7 @@
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 557,
+            "line": 567,
             "description": "Returns a grade two Euclidean 3D multivector (bivector) with the specified Cartesian coordinates.",
             "params": [
                 {
@@ -107,7 +123,7 @@
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 567,
+            "line": 577,
             "description": "Returns a grade three Euclidean 3D multivector (pseudoscalar).",
             "params": [
                 {
@@ -124,40 +140,44 @@
             "line": " dist/davinci-visual.js:162"
         },
         {
+            "message": "Missing item type\nConstructs a `Visual` associated with the specified window and canvas.",
+            "line": " dist/davinci-visual.js:349"
+        },
+        {
             "message": "Missing item type\nResizes the canvas to (width, height), and also sets the viewport to fit that size.",
-            "line": " dist/davinci-visual.js:385"
+            "line": " dist/davinci-visual.js:395"
         },
         {
             "message": "Missing item type\nRender the 3D scene using the camera.",
-            "line": " dist/davinci-visual.js:400"
+            "line": " dist/davinci-visual.js:410"
         },
         {
             "message": "Missing item type\nVortex is used to represent geometric objects with a non-zero curl.",
-            "line": " dist/davinci-visual.js:510"
+            "line": " dist/davinci-visual.js:520"
         },
         {
             "message": "Missing item type",
-            "line": " dist/davinci-visual.js:530"
+            "line": " dist/davinci-visual.js:540"
         },
         {
             "message": "Missing item type\nThe version of the visual module.",
-            "line": " dist/davinci-visual.js:535"
+            "line": " dist/davinci-visual.js:545"
         },
         {
             "message": "Missing item type\nReturns a grade zero Euclidean 3D multivector (scalar).",
-            "line": " dist/davinci-visual.js:539"
+            "line": " dist/davinci-visual.js:549"
         },
         {
             "message": "Missing item type\nReturns a grade one Euclidean 3D multivector (vector) with the specified Cartesian coordinates.",
-            "line": " dist/davinci-visual.js:547"
-        },
-        {
-            "message": "Missing item type\nReturns a grade two Euclidean 3D multivector (bivector) with the specified Cartesian coordinates.",
             "line": " dist/davinci-visual.js:557"
         },
         {
-            "message": "Missing item type\nReturns a grade three Euclidean 3D multivector (pseudoscalar).",
+            "message": "Missing item type\nReturns a grade two Euclidean 3D multivector (bivector) with the specified Cartesian coordinates.",
             "line": " dist/davinci-visual.js:567"
+        },
+        {
+            "message": "Missing item type\nReturns a grade three Euclidean 3D multivector (pseudoscalar).",
+            "line": " dist/davinci-visual.js:577"
         }
     ]
 }
