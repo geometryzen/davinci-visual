@@ -88,6 +88,7 @@ declare module visual {
         keys: number[];
         update: () => void;
         handleResize: () => void;
+        setSize(width: number, height: number): void;
     }
 }
 declare module visual {
@@ -96,6 +97,7 @@ declare module visual {
         wnd: Window;
         private sizer;
         constructor(canvas: HTMLCanvasElement, wnd: Window);
+        setSize(width: number, height: number): void;
         setUp(): void;
         tearDown(): void;
     }
@@ -103,9 +105,13 @@ declare module visual {
 declare module visual {
     class Workbench3D {
         canvas: HTMLCanvasElement;
+        renderer: THREE.WebGLRenderer;
+        camera: THREE.PerspectiveCamera;
+        controls: TrackBall;
         wnd: Window;
         private sizer;
-        constructor(canvas: HTMLCanvasElement, renderer: THREE.WebGLRenderer, camera: THREE.PerspectiveCamera, controls: any, wnd: Window);
+        constructor(canvas: HTMLCanvasElement, renderer: THREE.WebGLRenderer, camera: THREE.PerspectiveCamera, controls: TrackBall, wnd: Window);
+        setSize(width: number, height: number): void;
         setUp(): void;
         tearDown(): void;
     }
@@ -125,8 +131,15 @@ declare module visual {
         controls: TrackBall;
         constructor(wnd: Window, canvas?: HTMLCanvasElement);
         add(object: THREE.Object3D): void;
+        /**
+         * Resizes the canvas to (width, height), and also sets the viewport to fit that size.
+         */
+        setSize(width: number, height: number): void;
         setUp(): void;
         tearDown(): void;
+        /**
+         * Render the 3D scene using the camera.
+         */
         update(): void;
     }
 }

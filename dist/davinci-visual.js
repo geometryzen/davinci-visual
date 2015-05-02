@@ -282,6 +282,10 @@ var visual;
             }
             this.sizer = onWindowResize;
         }
+        Workbench2D.prototype.setSize = function (width, height) {
+            this.canvas.width = width;
+            this.canvas.height = height;
+        };
         Workbench2D.prototype.setUp = function () {
             this.wnd.document.body.insertBefore(this.canvas, this.wnd.document.body.firstChild);
             this.wnd.addEventListener('resize', this.sizer, false);
@@ -307,17 +311,25 @@ var visual;
     var Workbench3D = (function () {
         function Workbench3D(canvas, renderer, camera, controls, wnd) {
             this.canvas = canvas;
+            this.renderer = renderer;
+            this.camera = camera;
+            this.controls = controls;
             this.wnd = wnd;
+            var self = this;
             function onWindowResize(event) {
                 var width = wnd.innerWidth;
                 var height = wnd.innerHeight;
-                renderer.setSize(width, height);
-                camera.aspect = width / height;
-                camera.updateProjectionMatrix();
+                self.setSize(width, height);
                 controls.handleResize();
             }
             this.sizer = onWindowResize;
         }
+        Workbench3D.prototype.setSize = function (width, height) {
+            this.renderer.setSize(width, height);
+            this.camera.aspect = width / height;
+            this.camera.updateProjectionMatrix();
+            this.controls.setSize(width, height);
+        };
         Workbench3D.prototype.setUp = function () {
             this.wnd.document.body.insertBefore(this.canvas, this.wnd.document.body.firstChild);
             this.wnd.addEventListener('resize', this.sizer, false);
@@ -377,6 +389,10 @@ var visual;
                 screen.top = box.top + wnd.pageYOffset - documentElement.clientTop;
                 screen.width = box.width;
                 screen.height = box.height;
+            },
+            setSize: function (width, height) {
+                screen.width = width;
+                screen.height = height;
             }
         };
         var getMouseOnScreen = (function () {
@@ -739,6 +755,14 @@ var visual;
         Visual.prototype.add = function (object) {
             this.scene.add(object);
         };
+        /**
+         * Resizes the canvas to (width, height), and also sets the viewport to fit that size.
+         */
+        Visual.prototype.setSize = function (width, height) {
+            this.workbench3D.setSize(width, height);
+            this.workbench2D.setSize(width, height);
+            this.controls.setSize(width, height);
+        };
         Visual.prototype.setUp = function () {
             this.workbench3D.setUp();
             this.workbench2D.setUp();
@@ -747,6 +771,9 @@ var visual;
             this.workbench3D.tearDown();
             this.workbench2D.tearDown();
         };
+        /**
+         * Render the 3D scene using the camera.
+         */
         Visual.prototype.update = function () {
             this.renderer.render(this.scene, this.camera);
             this.controls.update();
@@ -883,7 +910,7 @@ var visual;
     /**
      * The version of the visual module.
      */
-    visual.VERSION = '1.0.0';
+    visual.VERSION = '1.1.0';
     /**
      * Returns a grade zero Euclidean 3D multivector (scalar).
      * @param w The scalar value.

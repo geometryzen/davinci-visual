@@ -14,5 +14,6 @@ module visual {
         keys: number[];
         update: () => void;
         handleResize: () => void;
+        setSize(width: number, height: number): void;
     }
 }

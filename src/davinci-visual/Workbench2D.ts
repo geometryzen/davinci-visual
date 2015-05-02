@@ -25,6 +25,12 @@ export class Workbench2D
     }
     this.sizer = onWindowResize;
   }
+
+  setSize(width: number, height: number) {
+    this.canvas.width  = width;
+    this.canvas.height = height;
+  }
+
   setUp()
   {
     this.wnd.document.body.insertBefore(this.canvas, this.wnd.document.body.firstChild);

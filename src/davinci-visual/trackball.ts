@@ -44,6 +44,10 @@ export var trackball = function(object: THREE.Object3D, wnd: Window): TrackBall 
             screen.top = box.top + wnd.pageYOffset - documentElement.clientTop;
             screen.width = box.width;
             screen.height = box.height;
+        },
+        setSize: function(width: number, height: number) {
+            screen.width = width;
+            screen.height = height;
         }
     };
     var getMouseOnScreen: (pageX: number, pageY: number) => THREE.Vector2 = (function() {
