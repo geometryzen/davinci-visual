@@ -107,17 +107,13 @@ declare module visual {
         canvas: HTMLCanvasElement;
         renderer: THREE.WebGLRenderer;
         camera: THREE.PerspectiveCamera;
-        controls: TrackBall;
         wnd: Window;
         private sizer;
-        constructor(canvas: HTMLCanvasElement, renderer: THREE.WebGLRenderer, camera: THREE.PerspectiveCamera, controls: TrackBall, wnd: Window);
+        constructor(canvas: HTMLCanvasElement, renderer: THREE.WebGLRenderer, camera: THREE.PerspectiveCamera, wnd: Window);
         setSize(width: number, height: number): void;
         setUp(): void;
         tearDown(): void;
     }
-}
-declare module visual {
-    var trackball: (object: THREE.Object3D, wnd: Window) => TrackBall;
 }
 declare module visual {
     class Visual {
@@ -128,7 +124,6 @@ declare module visual {
         canvas2D: HTMLCanvasElement;
         workbench2D: Workbench2D;
         stage: createjs.Stage;
-        controls: TrackBall;
         constructor(wnd: Window, canvas?: HTMLCanvasElement);
         add(object: THREE.Object3D): void;
         /**
@@ -194,4 +189,7 @@ declare module visual {
      * @param xyz The pseudoscalar value.
      */
     function pseudoE3(xyz: number): blade.Euclidean3;
+}
+declare module visual {
+    var trackball: (object: THREE.Object3D, wnd: Window) => TrackBall;
 }

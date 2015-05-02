@@ -1,10 +1,8 @@
 /// <reference path="../../typings/createjs/createjs.d.ts"/>
 /// <reference path="Workbench2D.ts"/>
 /// <reference path="Workbench3D.ts"/>
-/// <reference path="trackball.ts"/>
-/// <reference path="TrackBall.ts"/>
-module visual {
-
+module visual
+{
   export class Visual
   {
     public scene: THREE.Scene = new THREE.Scene();
@@ -14,7 +12,6 @@ module visual {
     public canvas2D: HTMLCanvasElement;
     public workbench2D: Workbench2D;
     public stage: createjs.Stage;
-    public controls: TrackBall;
 
     constructor(wnd: Window, canvas?: HTMLCanvasElement)
     {
@@ -33,15 +30,15 @@ module visual {
       this.camera.up.set(0,0,1);
       this.camera.lookAt(this.scene.position);
 
-      this.controls = trackball(this.camera, wnd);
-
-      if (canvas) {
+      if (canvas)
+      {
         this.renderer = new THREE.WebGLRenderer({canvas:canvas});
-        this.workbench3D = new Workbench3D(canvas, this.renderer, this.camera, this.controls, wnd);
-     }
-      else {
+        this.workbench3D = new Workbench3D(canvas, this.renderer, this.camera, wnd);
+      }
+      else
+      {
         this.renderer = new THREE.WebGLRenderer();
-        this.workbench3D = new Workbench3D(this.renderer.domElement, this.renderer, this.camera, this.controls, wnd);
+        this.workbench3D = new Workbench3D(this.renderer.domElement, this.renderer, this.camera, wnd);
       }
       this.renderer.setClearColor(new THREE.Color(0x080808), 1.0)
       
@@ -56,26 +53,8 @@ module visual {
         this.stage = new createjs.Stage(this.canvas2D);
         this.stage.autoClear = true;
       }
-
-      this.controls.rotateSpeed = 1.0;
-      this.controls.zoomSpeed = 1.2;
-      this.controls.panSpeed = 0.8;
-
-      this.controls.noZoom = false;
-      this.controls.noPan = false;
-
-      this.controls.staticMoving = true;
-      this.controls.dynamicDampingFactor = 0.3;
-
-      this.controls.keys = [ 65, 83, 68 ];
-      
-      function render()
-      {
-        
-      }
-
-  //  this.controls.addEventListener( 'change', render );
     }
+
     add(object: THREE.Object3D)
     {
       this.scene.add(object);
@@ -84,10 +63,10 @@ module visual {
     /**
      * Resizes the canvas to (width, height), and also sets the viewport to fit that size.
      */
-    setSize(width: number, height: number) {
+    setSize(width: number, height: number)
+    {
       this.workbench3D.setSize(width, height);
       this.workbench2D.setSize(width, height);
-      this.controls.setSize(width, height);
     }
 
     setUp()
@@ -108,8 +87,8 @@ module visual {
     update()
     {
       this.renderer.render(this.scene, this.camera);
-      this.controls.update();
-      if (this.stage) {
+      if (this.stage)
+      {
         this.stage.update();
       }
     }

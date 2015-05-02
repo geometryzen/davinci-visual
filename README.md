@@ -7,6 +7,7 @@ A lightweight WebGL Mathematical visualization library.
 ## Release History
 * v1.0.0: 2015-05-02 Initial release.
 * v1.1.0: 2015-05-02 Visual.setSize(width, height)
+* v1.1.1: 2015-05-02 Disable mouse controls
 
 ## License
 Copyright (c) 2014-2015 David Holmes  

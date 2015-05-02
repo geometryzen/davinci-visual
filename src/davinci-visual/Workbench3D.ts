@@ -1,8 +1,10 @@
-module visual {
-
-  function removeElementsByTagName(doc: Document, tagName: string) {
+module visual
+{
+  function removeElementsByTagName(doc: Document, tagName: string)
+  {
     var elements = doc.getElementsByTagName(tagName);
-    for (var i = elements.length - 1; i >= 0; i--) {
+    for (var i = elements.length - 1; i >= 0; i--)
+    {
       var e = elements[i];
       e.parentNode.removeChild(e);
     }
@@ -13,15 +15,13 @@ module visual {
     public canvas: HTMLCanvasElement;
     public renderer: THREE.WebGLRenderer;
     public camera: THREE.PerspectiveCamera;
-    public controls: TrackBall;
     public wnd: Window;
     private sizer: EventListener;
-    constructor(canvas: HTMLCanvasElement, renderer: THREE.WebGLRenderer, camera: THREE.PerspectiveCamera, controls: TrackBall, wnd: Window)
+    constructor(canvas: HTMLCanvasElement, renderer: THREE.WebGLRenderer, camera: THREE.PerspectiveCamera, wnd: Window)
     {
       this.canvas = canvas;
       this.renderer = renderer;
       this.camera = camera;
-      this.controls = controls;
       this.wnd = wnd;
 
       var self = this;
@@ -31,7 +31,6 @@ module visual {
         var width  = wnd.innerWidth;
         var height = wnd.innerHeight;
         self.setSize(width, height);
-        controls.handleResize();
       }
       this.sizer = onWindowResize;
     }
@@ -41,7 +40,6 @@ module visual {
       this.renderer.setSize(width, height);
       this.camera.aspect = width / height;
       this.camera.updateProjectionMatrix();
-      this.controls.setSize(width, height);
     }
 
     setUp()

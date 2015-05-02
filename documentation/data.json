@@ -2,7 +2,7 @@
     "project": {
         "name": "davinci-visual",
         "description": "A lightweight WebGL Mathematical visualization library.",
-        "version": "1.1.0",
+        "version": "1.1.1",
         "url": "",
         "logo": "../assets/logo.png"
     },
@@ -26,36 +26,36 @@
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 758,
+            "line": 385,
             "description": "Resizes the canvas to (width, height), and also sets the viewport to fit that size.",
             "class": ""
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 774,
+            "line": 400,
             "description": "Render the 3D scene using the camera.",
             "class": ""
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 885,
+            "line": 510,
             "description": "Vortex is used to represent geometric objects with a non-zero curl.",
             "class": ""
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 905,
+            "line": 530,
             "class": ""
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 910,
+            "line": 535,
             "description": "The version of the visual module.",
             "class": ""
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 914,
+            "line": 539,
             "description": "Returns a grade zero Euclidean 3D multivector (scalar).",
             "params": [
                 {
@@ -67,7 +67,7 @@
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 922,
+            "line": 547,
             "description": "Returns a grade one Euclidean 3D multivector (vector) with the specified Cartesian coordinates.",
             "params": [
                 {
@@ -87,7 +87,7 @@
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 932,
+            "line": 557,
             "description": "Returns a grade two Euclidean 3D multivector (bivector) with the specified Cartesian coordinates.",
             "params": [
                 {
@@ -107,7 +107,7 @@
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 942,
+            "line": 567,
             "description": "Returns a grade three Euclidean 3D multivector (pseudoscalar).",
             "params": [
                 {
@@ -125,39 +125,39 @@
         },
         {
             "message": "Missing item type\nResizes the canvas to (width, height), and also sets the viewport to fit that size.",
-            "line": " dist/davinci-visual.js:758"
+            "line": " dist/davinci-visual.js:385"
         },
         {
             "message": "Missing item type\nRender the 3D scene using the camera.",
-            "line": " dist/davinci-visual.js:774"
+            "line": " dist/davinci-visual.js:400"
         },
         {
             "message": "Missing item type\nVortex is used to represent geometric objects with a non-zero curl.",
-            "line": " dist/davinci-visual.js:885"
+            "line": " dist/davinci-visual.js:510"
         },
         {
             "message": "Missing item type",
-            "line": " dist/davinci-visual.js:905"
+            "line": " dist/davinci-visual.js:530"
         },
         {
             "message": "Missing item type\nThe version of the visual module.",
-            "line": " dist/davinci-visual.js:910"
+            "line": " dist/davinci-visual.js:535"
         },
         {
             "message": "Missing item type\nReturns a grade zero Euclidean 3D multivector (scalar).",
-            "line": " dist/davinci-visual.js:914"
+            "line": " dist/davinci-visual.js:539"
         },
         {
             "message": "Missing item type\nReturns a grade one Euclidean 3D multivector (vector) with the specified Cartesian coordinates.",
-            "line": " dist/davinci-visual.js:922"
+            "line": " dist/davinci-visual.js:547"
         },
         {
             "message": "Missing item type\nReturns a grade two Euclidean 3D multivector (bivector) with the specified Cartesian coordinates.",
-            "line": " dist/davinci-visual.js:932"
+            "line": " dist/davinci-visual.js:557"
         },
         {
             "message": "Missing item type\nReturns a grade three Euclidean 3D multivector (pseudoscalar).",
-            "line": " dist/davinci-visual.js:942"
+            "line": " dist/davinci-visual.js:567"
         }
     ]
 }
