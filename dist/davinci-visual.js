@@ -691,10 +691,9 @@ var visual;
 var visual;
 (function (visual) {
     var Visual = (function () {
-        function Visual(wnd) {
+        function Visual(wnd, canvas) {
             this.scene = new THREE.Scene();
             this.camera = new THREE.PerspectiveCamera(45, 1.0, 0.1, 10000);
-            this.renderer = new THREE.WebGLRenderer();
             var ambientLight = new THREE.AmbientLight(0x111111);
             this.scene.add(ambientLight);
             var pointLight = new THREE.PointLight(0xFFFFFF);
@@ -707,8 +706,15 @@ var visual;
             this.camera.up.set(0, 0, 1);
             this.camera.lookAt(this.scene.position);
             this.controls = visual.trackball(this.camera, wnd);
+            if (canvas) {
+                this.renderer = new THREE.WebGLRenderer({ canvas: canvas });
+                this.workbench3D = new visual.Workbench3D(canvas, this.renderer, this.camera, this.controls, wnd);
+            }
+            else {
+                this.renderer = new THREE.WebGLRenderer();
+                this.workbench3D = new visual.Workbench3D(this.renderer.domElement, this.renderer, this.camera, this.controls, wnd);
+            }
             this.renderer.setClearColor(new THREE.Color(0x080808), 1.0);
-            this.workbench3D = new visual.Workbench3D(this.renderer.domElement, this.renderer, this.camera, this.controls, wnd);
             this.canvas2D = wnd.document.createElement("canvas");
             this.canvas2D.style.position = "absolute";
             this.canvas2D.style.top = "0px";
@@ -877,7 +883,7 @@ var visual;
     /**
      * The version of the visual module.
      */
-    visual.VERSION = '0.0.52';
+    visual.VERSION = '1.0.0';
     /**
      * Returns a grade zero Euclidean 3D multivector (scalar).
      * @param w The scalar value.

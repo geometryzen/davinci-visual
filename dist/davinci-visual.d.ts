@@ -123,7 +123,7 @@ declare module visual {
         workbench2D: Workbench2D;
         stage: createjs.Stage;
         controls: TrackBall;
-        constructor(wnd: Window);
+        constructor(wnd: Window, canvas?: HTMLCanvasElement);
         add(object: THREE.Object3D): void;
         setUp(): void;
         tearDown(): void;

@@ -17,7 +17,7 @@
                 <h1><img src="../../assets/logo.png" title="davinci-visual"></h1>
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.0.52</em>
+            <em>API Docs for: 1.0.0</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -771,10 +771,9 @@ var visual;
 var visual;
 (function (visual) {
     var Visual = (function () {
-        function Visual(wnd) {
+        function Visual(wnd, canvas) {
             this.scene = new THREE.Scene();
             this.camera = new THREE.PerspectiveCamera(45, 1.0, 0.1, 10000);
-            this.renderer = new THREE.WebGLRenderer();
             var ambientLight = new THREE.AmbientLight(0x111111);
             this.scene.add(ambientLight);
             var pointLight = new THREE.PointLight(0xFFFFFF);
@@ -787,8 +786,15 @@ var visual;
             this.camera.up.set(0, 0, 1);
             this.camera.lookAt(this.scene.position);
             this.controls = visual.trackball(this.camera, wnd);
+            if (canvas) {
+                this.renderer = new THREE.WebGLRenderer({ canvas: canvas });
+                this.workbench3D = new visual.Workbench3D(canvas, this.renderer, this.camera, this.controls, wnd);
+            }
+            else {
+                this.renderer = new THREE.WebGLRenderer();
+                this.workbench3D = new visual.Workbench3D(this.renderer.domElement, this.renderer, this.camera, this.controls, wnd);
+            }
             this.renderer.setClearColor(new THREE.Color(0x080808), 1.0);
-            this.workbench3D = new visual.Workbench3D(this.renderer.domElement, this.renderer, this.camera, this.controls, wnd);
             this.canvas2D = wnd.document.createElement(&quot;canvas&quot;);
             this.canvas2D.style.position = &quot;absolute&quot;;
             this.canvas2D.style.top = &quot;0px&quot;;
@@ -957,7 +963,7 @@ var visual;
     /**
      * The version of the visual module.
      */
-    visual.VERSION = &#x27;0.0.52&#x27;;
+    visual.VERSION = &#x27;1.0.0&#x27;;
     /**
      * Returns a grade zero Euclidean 3D multivector (scalar).
      * @param w The scalar value.

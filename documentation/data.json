@@ -2,7 +2,7 @@
     "project": {
         "name": "davinci-visual",
         "description": "A lightweight WebGL Mathematical visualization library.",
-        "version": "0.0.52",
+        "version": "1.0.0",
         "url": "",
         "logo": "../assets/logo.png"
     },
@@ -26,24 +26,24 @@
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 852,
+            "line": 858,
             "description": "Vortex is used to represent geometric objects with a non-zero curl.",
             "class": ""
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 872,
+            "line": 878,
             "class": ""
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 877,
+            "line": 883,
             "description": "The version of the visual module.",
             "class": ""
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 881,
+            "line": 887,
             "description": "Returns a grade zero Euclidean 3D multivector (scalar).",
             "params": [
                 {
@@ -55,7 +55,7 @@
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 889,
+            "line": 895,
             "description": "Returns a grade one Euclidean 3D multivector (vector) with the specified Cartesian coordinates.",
             "params": [
                 {
@@ -75,7 +75,7 @@
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 899,
+            "line": 905,
             "description": "Returns a grade two Euclidean 3D multivector (bivector) with the specified Cartesian coordinates.",
             "params": [
                 {
@@ -95,7 +95,7 @@
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 909,
+            "line": 915,
             "description": "Returns a grade three Euclidean 3D multivector (pseudoscalar).",
             "params": [
                 {
@@ -113,31 +113,31 @@
         },
         {
             "message": "Missing item type\nVortex is used to represent geometric objects with a non-zero curl.",
-            "line": " dist/davinci-visual.js:852"
+            "line": " dist/davinci-visual.js:858"
         },
         {
             "message": "Missing item type",
-            "line": " dist/davinci-visual.js:872"
+            "line": " dist/davinci-visual.js:878"
         },
         {
             "message": "Missing item type\nThe version of the visual module.",
-            "line": " dist/davinci-visual.js:877"
+            "line": " dist/davinci-visual.js:883"
         },
         {
             "message": "Missing item type\nReturns a grade zero Euclidean 3D multivector (scalar).",
-            "line": " dist/davinci-visual.js:881"
+            "line": " dist/davinci-visual.js:887"
         },
         {
             "message": "Missing item type\nReturns a grade one Euclidean 3D multivector (vector) with the specified Cartesian coordinates.",
-            "line": " dist/davinci-visual.js:889"
+            "line": " dist/davinci-visual.js:895"
         },
         {
             "message": "Missing item type\nReturns a grade two Euclidean 3D multivector (bivector) with the specified Cartesian coordinates.",
-            "line": " dist/davinci-visual.js:899"
+            "line": " dist/davinci-visual.js:905"
         },
         {
             "message": "Missing item type\nReturns a grade three Euclidean 3D multivector (pseudoscalar).",
-            "line": " dist/davinci-visual.js:909"
+            "line": " dist/davinci-visual.js:915"
         }
     ]
 }

@@ -9,14 +9,14 @@ export class Visual
 {
   public scene: THREE.Scene = new THREE.Scene();
   public camera: THREE.PerspectiveCamera = new THREE.PerspectiveCamera(45, 1.0, 0.1, 10000);
-  public renderer: THREE.WebGLRenderer = new THREE.WebGLRenderer();
+  public renderer: THREE.WebGLRenderer;
   public workbench3D: Workbench3D;
   public canvas2D: HTMLCanvasElement;
   public workbench2D: Workbench2D;
   public stage: createjs.Stage;
   public controls: TrackBall;
 
-  constructor(wnd: Window)
+  constructor(wnd: Window, canvas?: HTMLCanvasElement)
   {
     var ambientLight = new THREE.AmbientLight(0x111111);
     this.scene.add(ambientLight);
@@ -34,9 +34,16 @@ export class Visual
     this.camera.lookAt(this.scene.position);
 
     this.controls = trackball(this.camera, wnd);
-    
+
+    if (canvas) {
+      this.renderer = new THREE.WebGLRenderer({canvas:canvas});
+      this.workbench3D = new Workbench3D(canvas, this.renderer, this.camera, this.controls, wnd);
+   }
+    else {
+      this.renderer = new THREE.WebGLRenderer();
+      this.workbench3D = new Workbench3D(this.renderer.domElement, this.renderer, this.camera, this.controls, wnd);
+    }
     this.renderer.setClearColor(new THREE.Color(0x080808), 1.0)
-    this.workbench3D = new Workbench3D(this.renderer.domElement, this.renderer, this.camera, this.controls, wnd);
     
     this.canvas2D = wnd.document.createElement("canvas");
 
