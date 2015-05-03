@@ -1,3 +1,4 @@
+/*
 module visual {
     export interface ITrackBall {
         enabled: boolean;
@@ -17,3 +18,4 @@ module visual {
         setSize(width: number, height: number): void;
     }
 }
+*/

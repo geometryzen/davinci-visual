@@ -11,6 +11,7 @@ A lightweight WebGL Mathematical visualization library.
 * 1.2.0: 2015-05-02 Allow canvas to be an `id` in Visual($window, canvas).
 * 1.3.0: 2015-05-02 Rename Visual to WebGLCanvas.
 * 1.4.0: 2015-05-02 Remove Lighting.
+* 1.4.1: 2015-05-02 Documentation.
 
 ## License
 Copyright (c) 2014-2015 David Holmes  

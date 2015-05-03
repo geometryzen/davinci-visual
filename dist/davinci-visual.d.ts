@@ -19,17 +19,37 @@ declare module visual {
 }
 declare module visual {
     /**
-     * Visual provides the common behavior for all Mesh (Geometry, Material) objects.
+     * Mesh provides the common behavior for all Mesh (Geometry, Material) objects.
+     * Mesh may be used in place of a THREE.Mesh and provides additional features
+     * for Geometric Algebra manipulations.
      */
     class Mesh<G extends THREE.Geometry, M extends THREE.Material> extends THREE.Mesh {
+        /**
+         * The geometry used in constructing the Mesh.
+         */
         geometry: G;
+        /**
+         * The material used in constructing the Mesh.
+         */
         material: M;
         constructor(geometry: G, material: M);
+        /**
+         * The get `pos` property is a position vector that is a copy of this.position.
+         * The set `pos` property manipulates this.position using a vector.
+         */
         pos: blade.Euclidean3;
+        /**
+         * The get `attitude` property is a rotor and a copy of this.quaternion.
+         * The set `attitude` property manipulates this.quaternion using a rotor.
+         */
         attitude: blade.Euclidean3;
     }
 }
 declare module visual {
+    /**
+     * A class for generating an ArrowGeometry with THREE.MeshLambertMaterial.
+     * The default arguments create a unit arrow which is yellow and opaque.
+     */
     class Arrow extends Mesh<ArrowGeometry, THREE.MeshLambertMaterial> {
         constructor(parameters?: {
             scale?: number;
@@ -45,11 +65,56 @@ declare module visual {
     }
 }
 declare module visual {
+    /**
+     * A class for generating a THREE.BoxGeometry with THREE.MeshLambertMaterial.
+     * The default arguments create a unit cube which is red and opaque.
+     */
     class Box extends Mesh<THREE.BoxGeometry, THREE.MeshLambertMaterial> {
         constructor(parameters?: {
             width?: number;
             height?: number;
             depth?: number;
+            color?: number;
+            opacity?: number;
+            transparent?: boolean;
+        });
+    }
+}
+declare module visual {
+    /**
+     * A class for generating a THREE.SphereGeometry with THREE.MeshLambertMaterial.
+     * The default arguments create a unity radius sphere which is blue and opaque.
+     */
+    class Sphere extends Mesh<THREE.SphereGeometry, THREE.MeshLambertMaterial> {
+        constructor(parameters?: {
+            radius?: number;
+            widthSegments?: number;
+            heightSegments?: number;
+            phiStart?: number;
+            phiLength?: number;
+            thetaStart?: number;
+            thetaLength?: number;
+            color?: number;
+            opacity?: number;
+            transparent?: boolean;
+        });
+    }
+}
+declare module visual {
+    class VortexGeometry extends THREE.Geometry {
+        constructor(radius: number, radiusCone: number, radiusShaft: number, lengthCone: number, lengthShaft: number, arrowSegments?: number, radialSegments?: number);
+    }
+}
+declare module visual {
+    /**
+     * Vortex is used to represent geometric objects with a non-zero curl.
+     * A class for generating a VortexGeometry with THREE.MeshLambertMaterial.
+     * The default arguments create a unity radius ring which is green and opaque.
+     */
+    class Vortex extends Mesh<VortexGeometry, THREE.MeshLambertMaterial> {
+        constructor(parameters?: {
+            radius?: number;
+            radiusCone?: number;
             color?: number;
             opacity?: number;
             transparent?: boolean;
@@ -82,14 +147,14 @@ declare module visual {
 }
 declare module visual {
     /**
-     * An convenient abstraction for doodles consisting of a THREE.Scene, THREE.PerspeciveCamera and THREE.WebGLRenderer.
+     * An convenient abstraction for 3D modeling consisting of a THREE.Scene, THREE.PerspeciveCamera and THREE.WebGLRenderer.
      * The camera is set looking along the y-axis so that the x-axis is to the right and the z-axis is up.
      * The camera field of view is initialized to 45 degrees.
      * When used for a canvas over the entire window, the `setUp` and `tearDown` methods provide `resize` handling.
      * When used for a smaller canvas, the width and height properties control the canvas size.
      * This convenience class does not provide lighting of the scene.
      */
-    class DoodleCanvas {
+    class WebGLCanvas {
         scene: THREE.Scene;
         camera: THREE.PerspectiveCamera;
         renderer: THREE.WebGLRenderer;
@@ -99,23 +164,17 @@ declare module visual {
         workbench2D: Workbench2D;
         stage: createjs.Stage;
         /**
-         * Constructs a `DoodleCanvas` associated with the specified window and canvas.
+         * Constructs a `WebGLCanvas` associated with the specified window and canvas.
          * @param $window The window in which the visualization will operate.
          * @param canvas The canvas element (HTMLCanvasElement) or the `id` (string) property of a canvas element in which the visualization will operate.
          */
         constructor($window: Window, canvas?: any);
         /**
-         * The `width` property of the doodle canvas.
-         */
-        /**
-         * The `width` property of the doodle canvas.
+         * The `width` property of the canvas.
          */
         width: number;
         /**
-         * The `height` property of the doodle canvas.
-         */
-        /**
-         * The `height` property of the doodle canvas.
+         * The `height` property of the canvas.
          */
         height: number;
         /**
@@ -131,71 +190,17 @@ declare module visual {
          */
         setSize(width: number, height: number): void;
         /**
-         * Performs one-time setup of the doodle canvas when being used to support full window.
+         * Performs one-time setup of the canvas when being used to support full window.
          */
         setUp(): void;
         /**
-         * Performs one-time teardown of the doodle canvas when being used to support full window.
+         * Performs one-time teardown of the canvas when being used to support full window.
          */
         tearDown(): void;
         /**
          * Render the 3D scene using the default camera.
          */
         update(): void;
-    }
-}
-declare module visual {
-    interface ITrackBall {
-        enabled: boolean;
-        rotateSpeed: number;
-        zoomSpeed: number;
-        panSpeed: number;
-        noRotate: boolean;
-        noZoom: boolean;
-        noPan: boolean;
-        staticMoving: boolean;
-        dynamicDampingFactor: number;
-        minDistance: number;
-        maxDistance: number;
-        keys: number[];
-        update: () => void;
-        handleResize: () => void;
-        setSize(width: number, height: number): void;
-    }
-}
-declare module visual {
-    class Sphere extends Mesh<THREE.SphereGeometry, THREE.MeshLambertMaterial> {
-        constructor(parameters?: {
-            radius?: number;
-            widthSegments?: number;
-            heightSegments?: number;
-            phiStart?: number;
-            phiLength?: number;
-            thetaStart?: number;
-            thetaLength?: number;
-            color?: number;
-            opacity?: number;
-            transparent?: boolean;
-        });
-    }
-}
-declare module visual {
-    class VortexGeometry extends THREE.Geometry {
-        constructor(radius: number, radiusCone: number, radiusShaft: number, lengthCone: number, lengthShaft: number, arrowSegments?: number, radialSegments?: number);
-    }
-}
-declare module visual {
-    /**
-     * Vortex is used to represent geometric objects with a non-zero curl.
-     */
-    class Vortex extends Mesh<VortexGeometry, THREE.MeshLambertMaterial> {
-        constructor(parameters?: {
-            radius?: number;
-            radiusCone?: number;
-            color?: number;
-            opacity?: number;
-            transparent?: boolean;
-        });
     }
 }
 /**
@@ -230,7 +235,4 @@ declare module visual {
      * @param xyz The pseudoscalar value.
      */
     function pseudoE3(xyz: number): blade.Euclidean3;
-}
-declare module visual {
-    var trackball: (object: THREE.Object3D, wnd: Window) => ITrackBall;
 }

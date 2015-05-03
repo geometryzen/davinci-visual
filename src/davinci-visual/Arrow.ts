@@ -2,6 +2,10 @@
 /// <reference path="ArrowGeometry.ts"/>
 /// <reference path="Mesh.ts"/>
 module visual {
+    /**
+     * A class for generating an ArrowGeometry with THREE.MeshLambertMaterial.
+     * The default arguments create a unit arrow which is yellow and opaque.
+     */
     export class Arrow extends Mesh<ArrowGeometry, THREE.MeshLambertMaterial> {
         constructor(parameters?: { scale?: number; axis?: { x: number; y: number; z: number}; color?: number; opacity?: number; transparent?: boolean }) {
             parameters = parameters || {};

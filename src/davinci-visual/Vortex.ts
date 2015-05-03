@@ -4,6 +4,8 @@
 module visual {
     /**
      * Vortex is used to represent geometric objects with a non-zero curl.
+     * A class for generating a VortexGeometry with THREE.MeshLambertMaterial.
+     * The default arguments create a unity radius ring which is green and opaque.
      */
     export class Vortex extends Mesh<VortexGeometry, THREE.MeshLambertMaterial> {
         constructor(parameters?: {radius?: number; radiusCone?: number; color?: number; opacity?: number; transparent?: boolean}) {

@@ -5,14 +5,14 @@
 module visual
 {
   /**
-   * An convenient abstraction for doodles consisting of a THREE.Scene, THREE.PerspeciveCamera and THREE.WebGLRenderer.
+   * An convenient abstraction for 3D modeling consisting of a THREE.Scene, THREE.PerspeciveCamera and THREE.WebGLRenderer.
    * The camera is set looking along the y-axis so that the x-axis is to the right and the z-axis is up.
    * The camera field of view is initialized to 45 degrees.
    * When used for a canvas over the entire window, the `setUp` and `tearDown` methods provide `resize` handling.
    * When used for a smaller canvas, the width and height properties control the canvas size.
    * This convenience class does not provide lighting of the scene. 
    */
-  export class DoodleCanvas/* implements HTMLCanvasElement*/
+  export class WebGLCanvas/* implements HTMLCanvasElement*/
   {
     public scene: THREE.Scene = new THREE.Scene();
     public camera: THREE.PerspectiveCamera = new THREE.PerspectiveCamera(45, 1.0, 0.1, 10000);
@@ -25,7 +25,7 @@ module visual
 
     // FIXME: We'll need TypeScript 1.4+ to be able to use union types for canvas.
     /**
-     * Constructs a `DoodleCanvas` associated with the specified window and canvas.
+     * Constructs a `WebGLCanvas` associated with the specified window and canvas.
      * @param $window The window in which the visualization will operate.
      * @param canvas The canvas element (HTMLCanvasElement) or the `id` (string) property of a canvas element in which the visualization will operate.
      */
@@ -72,15 +72,11 @@ module visual
     }
 
     /**
-     * The `width` property of the doodle canvas.
+     * The `width` property of the canvas.
      */
     get width() {
       return this.canvas3D.width;
     }
-
-    /**
-     * The `width` property of the doodle canvas.
-     */
     set width(width: number) {
       this.canvas3D.width = width;
       this.canvas2D.width = width;
@@ -89,15 +85,11 @@ module visual
     }
 
     /**
-     * The `height` property of the doodle canvas.
+     * The `height` property of the canvas.
      */
     get height() {
       return this.canvas3D.height;
     }
-
-    /**
-     * The `height` property of the doodle canvas.
-     */
     set height(height: number) {
       this.canvas3D.height = height;
       this.canvas2D.height = height;
@@ -131,7 +123,7 @@ module visual
     }
 
     /**
-     * Performs one-time setup of the doodle canvas when being used to support full window.
+     * Performs one-time setup of the canvas when being used to support full window.
      */
     setUp()
     {
@@ -140,7 +132,7 @@ module visual
     }
 
     /**
-     * Performs one-time teardown of the doodle canvas when being used to support full window.
+     * Performs one-time teardown of the canvas when being used to support full window.
      */
     tearDown()
     {

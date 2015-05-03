@@ -1,6 +1,10 @@
 /// <reference path="../../typings/threejs/three.d.ts"/>
 /// <reference path="Mesh.ts"/>
 module visual {
+    /**
+     * A class for generating a THREE.BoxGeometry with THREE.MeshLambertMaterial.
+     * The default arguments create a unit cube which is red and opaque.
+     */
     export class Box extends Mesh<THREE.BoxGeometry, THREE.MeshLambertMaterial> {
         constructor(parameters?: {width?: number; height?: number; depth?: number; color?: number; opacity?: number; transparent?: boolean}) {
             parameters = parameters || {};
