@@ -6,9 +6,11 @@ A lightweight WebGL Mathematical visualization library.
 
 ## Release History
 * 1.0.0: 2015-05-02 Initial release.
-* 1.1.0: 2015-05-02 Visual.setSize(width, height)
-* 1.1.1: 2015-05-02 Disable mouse controls
-* 1.2.0: 2015-05-02 Allow canvas to be an `id` in Visual($window, canvas)
+* 1.1.0: 2015-05-02 Visual.setSize(width, height) added for canvas elements smaller than full window.
+* 1.1.1: 2015-05-02 Disable mouse controls.
+* 1.2.0: 2015-05-02 Allow canvas to be an `id` in Visual($window, canvas).
+* 1.3.0: 2015-05-02 Rename Visual to WebGLCanvas.
+* 1.4.0: 2015-05-02 Remove Lighting.
 
 ## License
 Copyright (c) 2014-2015 David Holmes  

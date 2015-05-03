@@ -2,7 +2,7 @@
     "project": {
         "name": "davinci-visual",
         "description": "A lightweight WebGL Mathematical visualization library.",
-        "version": "1.2.0",
+        "version": "1.4.0",
         "url": "",
         "logo": "../assets/logo.png"
     },
@@ -26,8 +26,14 @@
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 349,
-            "description": "Constructs a `Visual` associated with the specified window and canvas.",
+            "line": 331,
+            "description": "An convenient abstraction for doodles consisting of a THREE.Scene, THREE.PerspeciveCamera and THREE.WebGLRenderer.\nThe camera is set looking along the y-axis so that the x-axis is to the right and the z-axis is up.\nThe camera field of view is initialized to 45 degrees.\nWhen used for a canvas over the entire window, the `setUp` and `tearDown` methods provide `resize` handling.\nWhen used for a smaller canvas, the width and height properties control the canvas size.\nThis convenience class does not provide lighting of the scene.",
+            "class": ""
+        },
+        {
+            "file": "dist/davinci-visual.js",
+            "line": 341,
+            "description": "Constructs a `DoodleCanvas` associated with the specified window and canvas.",
             "params": [
                 {
                     "name": "$window",
@@ -35,43 +41,92 @@
                 },
                 {
                     "name": "canvas",
-                    "description": "The canvas element or the `id` property of a canvas element in which the visualization will operate."
+                    "description": "The canvas element (HTMLCanvasElement) or the `id` (string) property of a canvas element in which the visualization will operate."
                 }
             ],
             "class": ""
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 395,
+            "line": 382,
+            "description": "The `width` property of the doodle canvas.",
+            "class": ""
+        },
+        {
+            "file": "dist/davinci-visual.js",
+            "line": 388,
+            "description": "The `width` property of the doodle canvas.",
+            "class": ""
+        },
+        {
+            "file": "dist/davinci-visual.js",
+            "line": 401,
+            "description": "The `height` property of the doodle canvas.",
+            "class": ""
+        },
+        {
+            "file": "dist/davinci-visual.js",
+            "line": 407,
+            "description": "The `height` property of the doodle canvas.",
+            "class": ""
+        },
+        {
+            "file": "dist/davinci-visual.js",
+            "line": 419,
+            "description": "Adds an object, typically a THREE.Mesh or THREE.Camera to the underlying THREE.Scene.",
+            "class": ""
+        },
+        {
+            "file": "dist/davinci-visual.js",
+            "line": 425,
+            "description": "Removes an object, typically a THREE.Mesh or THREE.Camera from the underlying THREE.Scene.",
+            "class": ""
+        },
+        {
+            "file": "dist/davinci-visual.js",
+            "line": 431,
             "description": "Resizes the canvas to (width, height), and also sets the viewport to fit that size.",
             "class": ""
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 410,
-            "description": "Render the 3D scene using the camera.",
+            "line": 438,
+            "description": "Performs one-time setup of the doodle canvas when being used to support full window.",
             "class": ""
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 520,
+            "line": 445,
+            "description": "Performs one-time teardown of the doodle canvas when being used to support full window.",
+            "class": ""
+        },
+        {
+            "file": "dist/davinci-visual.js",
+            "line": 452,
+            "description": "Render the 3D scene using the default camera.",
+            "class": ""
+        },
+        {
+            "file": "dist/davinci-visual.js",
+            "line": 582,
             "description": "Vortex is used to represent geometric objects with a non-zero curl.",
             "class": ""
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 540,
+            "line": 602,
+            "description": "The `visual` modile provides convenience abstractions for 3D modeling.",
             "class": ""
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 545,
+            "line": 607,
             "description": "The version of the visual module.",
             "class": ""
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 549,
+            "line": 611,
             "description": "Returns a grade zero Euclidean 3D multivector (scalar).",
             "params": [
                 {
@@ -83,7 +138,7 @@
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 557,
+            "line": 619,
             "description": "Returns a grade one Euclidean 3D multivector (vector) with the specified Cartesian coordinates.",
             "params": [
                 {
@@ -103,7 +158,7 @@
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 567,
+            "line": 629,
             "description": "Returns a grade two Euclidean 3D multivector (bivector) with the specified Cartesian coordinates.",
             "params": [
                 {
@@ -123,7 +178,7 @@
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 577,
+            "line": 639,
             "description": "Returns a grade three Euclidean 3D multivector (pseudoscalar).",
             "params": [
                 {
@@ -140,44 +195,80 @@
             "line": " dist/davinci-visual.js:162"
         },
         {
-            "message": "Missing item type\nConstructs a `Visual` associated with the specified window and canvas.",
-            "line": " dist/davinci-visual.js:349"
+            "message": "Missing item type\nAn convenient abstraction for doodles consisting of a THREE.Scene, THREE.PerspeciveCamera and THREE.WebGLRenderer.\nThe camera is set looking along the y-axis so that the x-axis is to the right and the z-axis is up.\nThe camera field of view is initialized to 45 degrees.\nWhen used for a canvas over the entire window, the `setUp` and `tearDown` methods provide `resize` handling.\nWhen used for a smaller canvas, the width and height properties control the canvas size.\nThis convenience class does not provide lighting of the scene.",
+            "line": " dist/davinci-visual.js:331"
+        },
+        {
+            "message": "Missing item type\nConstructs a `DoodleCanvas` associated with the specified window and canvas.",
+            "line": " dist/davinci-visual.js:341"
+        },
+        {
+            "message": "Missing item type\nThe `width` property of the doodle canvas.",
+            "line": " dist/davinci-visual.js:382"
+        },
+        {
+            "message": "Missing item type\nThe `width` property of the doodle canvas.",
+            "line": " dist/davinci-visual.js:388"
+        },
+        {
+            "message": "Missing item type\nThe `height` property of the doodle canvas.",
+            "line": " dist/davinci-visual.js:401"
+        },
+        {
+            "message": "Missing item type\nThe `height` property of the doodle canvas.",
+            "line": " dist/davinci-visual.js:407"
+        },
+        {
+            "message": "Missing item type\nAdds an object, typically a THREE.Mesh or THREE.Camera to the underlying THREE.Scene.",
+            "line": " dist/davinci-visual.js:419"
+        },
+        {
+            "message": "Missing item type\nRemoves an object, typically a THREE.Mesh or THREE.Camera from the underlying THREE.Scene.",
+            "line": " dist/davinci-visual.js:425"
         },
         {
             "message": "Missing item type\nResizes the canvas to (width, height), and also sets the viewport to fit that size.",
-            "line": " dist/davinci-visual.js:395"
+            "line": " dist/davinci-visual.js:431"
         },
         {
-            "message": "Missing item type\nRender the 3D scene using the camera.",
-            "line": " dist/davinci-visual.js:410"
+            "message": "Missing item type\nPerforms one-time setup of the doodle canvas when being used to support full window.",
+            "line": " dist/davinci-visual.js:438"
+        },
+        {
+            "message": "Missing item type\nPerforms one-time teardown of the doodle canvas when being used to support full window.",
+            "line": " dist/davinci-visual.js:445"
+        },
+        {
+            "message": "Missing item type\nRender the 3D scene using the default camera.",
+            "line": " dist/davinci-visual.js:452"
         },
         {
             "message": "Missing item type\nVortex is used to represent geometric objects with a non-zero curl.",
-            "line": " dist/davinci-visual.js:520"
+            "line": " dist/davinci-visual.js:582"
         },
         {
-            "message": "Missing item type",
-            "line": " dist/davinci-visual.js:540"
+            "message": "Missing item type\nThe `visual` modile provides convenience abstractions for 3D modeling.",
+            "line": " dist/davinci-visual.js:602"
         },
         {
             "message": "Missing item type\nThe version of the visual module.",
-            "line": " dist/davinci-visual.js:545"
+            "line": " dist/davinci-visual.js:607"
         },
         {
             "message": "Missing item type\nReturns a grade zero Euclidean 3D multivector (scalar).",
-            "line": " dist/davinci-visual.js:549"
+            "line": " dist/davinci-visual.js:611"
         },
         {
             "message": "Missing item type\nReturns a grade one Euclidean 3D multivector (vector) with the specified Cartesian coordinates.",
-            "line": " dist/davinci-visual.js:557"
+            "line": " dist/davinci-visual.js:619"
         },
         {
             "message": "Missing item type\nReturns a grade two Euclidean 3D multivector (bivector) with the specified Cartesian coordinates.",
-            "line": " dist/davinci-visual.js:567"
+            "line": " dist/davinci-visual.js:629"
         },
         {
             "message": "Missing item type\nReturns a grade three Euclidean 3D multivector (pseudoscalar).",
-            "line": " dist/davinci-visual.js:577"
+            "line": " dist/davinci-visual.js:639"
         }
     ]
 }

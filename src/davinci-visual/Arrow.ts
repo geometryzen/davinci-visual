@@ -1,3 +1,4 @@
+/// <reference path="../../typings/threejs/three.d.ts"/>
 /// <reference path="ArrowGeometry.ts"/>
 /// <reference path="Mesh.ts"/>
 module visual {
@@ -12,7 +13,7 @@ module visual {
             var radiusCone = 0.08 * scale;
             var lengthCone = 0.2 * scale;
             var axis = parameters.axis || {x: 0, y: 0, z: 1};
-            parameters.color = typeof parameters.color === 'number' ? parameters.color : 0xFFFFFF;
+            parameters.color = typeof parameters.color === 'number' ? parameters.color : 0xFFFF00;
             parameters.opacity = typeof parameters.opacity === 'number' ? parameters.opacity : 1.0;
             parameters.transparent = typeof parameters.transparent === 'boolean' ? parameters.transparent : false;
             var material = new THREE.MeshLambertMaterial({color: parameters.color, opacity: parameters.opacity, transparent: parameters.transparent});

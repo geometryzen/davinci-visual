@@ -1,5 +1,5 @@
 module visual {
-    export interface TrackBall {
+    export interface ITrackBall {
         enabled: boolean;
         rotateSpeed: number;
         zoomSpeed: number;

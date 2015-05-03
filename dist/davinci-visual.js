@@ -195,6 +195,7 @@ var visual;
     })(THREE.Mesh);
     visual.Mesh = Mesh;
 })(visual || (visual = {}));
+/// <reference path="../../typings/threejs/three.d.ts"/>
 /// <reference path="ArrowGeometry.ts"/>
 /// <reference path="Mesh.ts"/>
 var visual;
@@ -211,7 +212,7 @@ var visual;
             var radiusCone = 0.08 * scale;
             var lengthCone = 0.2 * scale;
             var axis = parameters.axis || { x: 0, y: 0, z: 1 };
-            parameters.color = typeof parameters.color === 'number' ? parameters.color : 0xFFFFFF;
+            parameters.color = typeof parameters.color === 'number' ? parameters.color : 0xFFFF00;
             parameters.opacity = typeof parameters.opacity === 'number' ? parameters.opacity : 1.0;
             parameters.transparent = typeof parameters.transparent === 'boolean' ? parameters.transparent : false;
             var material = new THREE.MeshLambertMaterial({ color: parameters.color, opacity: parameters.opacity, transparent: parameters.transparent });
@@ -241,25 +242,6 @@ var visual;
         return Box;
     })(visual.Mesh);
     visual.Box = Box;
-})(visual || (visual = {}));
-/// <reference path="../../typings/threejs/three.d.ts"/>
-/// <reference path="Mesh.ts"/>
-var visual;
-(function (visual) {
-    var Sphere = (function (_super) {
-        __extends(Sphere, _super);
-        function Sphere(parameters) {
-            parameters = parameters || {};
-            parameters.radius = parameters.radius || 1.0;
-            parameters.color = typeof parameters.color === 'number' ? parameters.color : 0x0000FF;
-            parameters.opacity = typeof parameters.opacity === 'number' ? parameters.opacity : 1.0;
-            parameters.transparent = typeof parameters.transparent === 'boolean' ? parameters.transparent : false;
-            var material = new THREE.MeshLambertMaterial({ color: parameters.color, opacity: parameters.opacity, transparent: parameters.transparent });
-            _super.call(this, new THREE.SphereGeometry(parameters.radius, parameters.widthSegments, parameters.heightSegments, parameters.phiStart, parameters.phiLength, parameters.thetaStart, parameters.thetaLength), material);
-        }
-        return Sphere;
-    })(visual.Mesh);
-    visual.Sphere = Sphere;
 })(visual || (visual = {}));
 var visual;
 (function (visual) {
@@ -340,45 +322,52 @@ var visual;
     })();
     visual.Workbench3D = Workbench3D;
 })(visual || (visual = {}));
+/// <reference path="../../typings/threejs/three.d.ts"/>
 /// <reference path="../../typings/createjs/createjs.d.ts"/>
 /// <reference path="Workbench2D.ts"/>
 /// <reference path="Workbench3D.ts"/>
 var visual;
 (function (visual) {
-    var Visual = (function () {
+    /**
+     * An convenient abstraction for doodles consisting of a THREE.Scene, THREE.PerspeciveCamera and THREE.WebGLRenderer.
+     * The camera is set looking along the y-axis so that the x-axis is to the right and the z-axis is up.
+     * The camera field of view is initialized to 45 degrees.
+     * When used for a canvas over the entire window, the `setUp` and `tearDown` methods provide `resize` handling.
+     * When used for a smaller canvas, the width and height properties control the canvas size.
+     * This convenience class does not provide lighting of the scene.
+     */
+    var DoodleCanvas = (function () {
+        // FIXME: We'll need TypeScript 1.4+ to be able to use union types for canvas.
         /**
-         * Constructs a `Visual` associated with the specified window and canvas.
+         * Constructs a `DoodleCanvas` associated with the specified window and canvas.
          * @param $window The window in which the visualization will operate.
-         * @param canvas The canvas element or the `id` property of a canvas element in which the visualization will operate.
+         * @param canvas The canvas element (HTMLCanvasElement) or the `id` (string) property of a canvas element in which the visualization will operate.
          */
-        function Visual($window, canvas) {
+        function DoodleCanvas($window, canvas) {
             this.scene = new THREE.Scene();
             this.camera = new THREE.PerspectiveCamera(45, 1.0, 0.1, 10000);
-            var ambientLight = new THREE.AmbientLight(0x111111);
-            this.scene.add(ambientLight);
-            var pointLight = new THREE.PointLight(0xFFFFFF);
-            pointLight.position.set(10.0, 10.0, 10.0);
-            this.scene.add(pointLight);
-            var directionalLight = new THREE.DirectionalLight(0xFFFFFF);
-            directionalLight.position.set(0.0, 1.0, 0.0);
-            this.scene.add(directionalLight);
-            this.camera.position.set(4.0, 4.0, 4.0);
+            // We assume the `physical` convention that x is to the right, z is up, and y is away from the camera.
+            this.camera.position.set(0, -5, 0);
             this.camera.up.set(0, 0, 1);
             this.camera.lookAt(this.scene.position);
             if (typeof canvas === 'string') {
-                var canvasElement = document.getElementById(canvas);
-                this.renderer = new THREE.WebGLRenderer({ canvas: canvasElement });
-                this.workbench3D = new visual.Workbench3D(canvasElement, this.renderer, this.camera, $window);
+                this.canvas3D = document.getElementById(canvas);
+                if (this.canvas3D) {
+                    this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas3D });
+                }
+                else {
+                    throw new Error(canvas + " is not a valid canvas element identifier.");
+                }
             }
             else if (typeof canvas === 'object') {
+                this.canvas3D = canvas;
                 this.renderer = new THREE.WebGLRenderer({ canvas: canvas });
-                this.workbench3D = new visual.Workbench3D(canvas, this.renderer, this.camera, $window);
             }
             else {
                 this.renderer = new THREE.WebGLRenderer();
-                this.workbench3D = new visual.Workbench3D(this.renderer.domElement, this.renderer, this.camera, $window);
+                this.canvas3D = this.renderer.domElement;
             }
-            this.renderer.setClearColor(new THREE.Color(0xCCCCCC), 1.0);
+            this.workbench3D = new visual.Workbench3D(this.canvas3D, this.renderer, this.camera, $window);
             this.canvas2D = $window.document.createElement("canvas");
             this.canvas2D.style.position = "absolute";
             this.canvas2D.style.top = "0px";
@@ -389,36 +378,108 @@ var visual;
                 this.stage.autoClear = true;
             }
         }
-        Visual.prototype.add = function (object) {
-            this.scene.add(object);
+        Object.defineProperty(DoodleCanvas.prototype, "width", {
+            /**
+             * The `width` property of the doodle canvas.
+             */
+            get: function () {
+                return this.canvas3D.width;
+            },
+            /**
+             * The `width` property of the doodle canvas.
+             */
+            set: function (width) {
+                this.canvas3D.width = width;
+                this.canvas2D.width = width;
+                this.workbench3D.setSize(width, this.canvas3D.height);
+                this.workbench2D.setSize(width, this.canvas3D.height);
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(DoodleCanvas.prototype, "height", {
+            /**
+             * The `height` property of the doodle canvas.
+             */
+            get: function () {
+                return this.canvas3D.height;
+            },
+            /**
+             * The `height` property of the doodle canvas.
+             */
+            set: function (height) {
+                this.canvas3D.height = height;
+                this.canvas2D.height = height;
+                this.workbench3D.setSize(this.canvas3D.width, height);
+                this.workbench2D.setSize(this.canvas3D.width, height);
+            },
+            enumerable: true,
+            configurable: true
+        });
+        /**
+         * Adds an object, typically a THREE.Mesh or THREE.Camera to the underlying THREE.Scene.
+         */
+        DoodleCanvas.prototype.add = function (object) {
+            return this.scene.add(object);
+        };
+        /**
+         * Removes an object, typically a THREE.Mesh or THREE.Camera from the underlying THREE.Scene.
+         */
+        DoodleCanvas.prototype.remove = function (object) {
+            return this.scene.remove(object);
         };
         /**
          * Resizes the canvas to (width, height), and also sets the viewport to fit that size.
          */
-        Visual.prototype.setSize = function (width, height) {
+        DoodleCanvas.prototype.setSize = function (width, height) {
             this.workbench3D.setSize(width, height);
             this.workbench2D.setSize(width, height);
         };
-        Visual.prototype.setUp = function () {
+        /**
+         * Performs one-time setup of the doodle canvas when being used to support full window.
+         */
+        DoodleCanvas.prototype.setUp = function () {
             this.workbench3D.setUp();
             this.workbench2D.setUp();
         };
-        Visual.prototype.tearDown = function () {
+        /**
+         * Performs one-time teardown of the doodle canvas when being used to support full window.
+         */
+        DoodleCanvas.prototype.tearDown = function () {
             this.workbench3D.tearDown();
             this.workbench2D.tearDown();
         };
         /**
-         * Render the 3D scene using the camera.
+         * Render the 3D scene using the default camera.
          */
-        Visual.prototype.update = function () {
+        DoodleCanvas.prototype.update = function () {
             this.renderer.render(this.scene, this.camera);
             if (this.stage) {
                 this.stage.update();
             }
         };
-        return Visual;
+        return DoodleCanvas;
     })();
-    visual.Visual = Visual;
+    visual.DoodleCanvas = DoodleCanvas;
+})(visual || (visual = {}));
+/// <reference path="../../typings/threejs/three.d.ts"/>
+/// <reference path="Mesh.ts"/>
+var visual;
+(function (visual) {
+    var Sphere = (function (_super) {
+        __extends(Sphere, _super);
+        function Sphere(parameters) {
+            parameters = parameters || {};
+            parameters.radius = parameters.radius || 1.0;
+            parameters.color = typeof parameters.color === 'number' ? parameters.color : 0x0000FF;
+            parameters.opacity = typeof parameters.opacity === 'number' ? parameters.opacity : 1.0;
+            parameters.transparent = typeof parameters.transparent === 'boolean' ? parameters.transparent : false;
+            var material = new THREE.MeshLambertMaterial({ color: parameters.color, opacity: parameters.opacity, transparent: parameters.transparent });
+            _super.call(this, new THREE.SphereGeometry(parameters.radius, parameters.widthSegments, parameters.heightSegments, parameters.phiStart, parameters.phiLength, parameters.thetaStart, parameters.thetaLength), material);
+        }
+        return Sphere;
+    })(visual.Mesh);
+    visual.Sphere = Sphere;
 })(visual || (visual = {}));
 /// <reference path="../../typings/threejs/three.d.ts"/>
 var visual;
@@ -513,6 +574,7 @@ var visual;
     })(THREE.Geometry);
     visual.VortexGeometry = VortexGeometry;
 })(visual || (visual = {}));
+/// <reference path="../../typings/threejs/three.d.ts"/>
 /// <reference path="VortexGeometry.ts"/>
 /// <reference path="Mesh.ts"/>
 var visual;
@@ -523,10 +585,10 @@ var visual;
     var Vortex = (function (_super) {
         __extends(Vortex, _super);
         function Vortex(parameters) {
-            parameters = parameters || { radius: 1.0, radiusCone: 0.08, color: 0xFFFFFF, opacity: 1.0, transparent: false };
+            parameters = parameters || { radius: 1.0, radiusCone: 0.08, color: 0x00FF00, opacity: 1.0, transparent: false };
             parameters.radius = parameters.radius || 1.0;
             parameters.radiusCone = parameters.radiusCone || 0.08;
-            parameters.color = typeof parameters.color === 'number' ? parameters.color : 0xFFFFFF;
+            parameters.color = typeof parameters.color === 'number' ? parameters.color : 0x00FF00;
             parameters.opacity = typeof parameters.opacity === 'number' ? parameters.opacity : 1.0;
             parameters.transparent = typeof parameters.transparent === 'boolean' ? parameters.transparent : false;
             var material = new THREE.MeshLambertMaterial({ color: parameters.color, opacity: parameters.opacity, transparent: parameters.transparent });
@@ -538,14 +600,14 @@ var visual;
 })(visual || (visual = {}));
 /// <reference path="../../vendor/davinci-blade/dist/davinci-blade.d.ts"/>
 /**
- *
+ * The `visual` modile provides convenience abstractions for 3D modeling.
  */
 var visual;
 (function (visual) {
     /**
      * The version of the visual module.
      */
-    visual.VERSION = '1.2.0';
+    visual.VERSION = '1.4.0';
     /**
      * Returns a grade zero Euclidean 3D multivector (scalar).
      * @param w The scalar value.
@@ -585,7 +647,7 @@ var visual;
 })(visual || (visual = {}));
 ;
 /// <reference path="../../typings/threejs/three.d.ts"/>
-/// <reference path="TrackBall.ts"/>
+/// <reference path="./ITrackBall.ts"/>
 var visual;
 (function (visual) {
     visual.trackball = function (object, wnd) {

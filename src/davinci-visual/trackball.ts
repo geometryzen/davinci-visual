@@ -1,12 +1,12 @@
 /// <reference path="../../typings/threejs/three.d.ts"/>
-/// <reference path="TrackBall.ts"/>
+/// <reference path="./ITrackBall.ts"/>
 module visual {
 
-export var trackball = function(object: THREE.Object3D, wnd: Window): TrackBall {
+export var trackball = function(object: THREE.Object3D, wnd: Window): ITrackBall {
     var document = wnd.document;
     var documentElement = document.documentElement;
     var screen = {left: 0, top: 0, width: 0, height: 0};
-    var api: TrackBall = {
+    var api: ITrackBall = {
         enabled: true,
         rotateSpeed: 1.0,
         zoomSpeed: 1.2,
