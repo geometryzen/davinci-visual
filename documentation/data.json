@@ -2,7 +2,7 @@
     "project": {
         "name": "davinci-visual",
         "description": "A lightweight WebGL Mathematical visualization library.",
-        "version": "1.5.0",
+        "version": "1.6.0",
         "url": "",
         "logo": "../assets/logo.png"
     },
@@ -62,13 +62,30 @@
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 493,
+            "line": 455,
+            "class": ""
+        },
+        {
+            "file": "dist/davinci-visual.js",
+            "line": 478,
+            "description": "The `setUp` method causes the Workbench3D to start handling window resize events for the canvas.\nThe canvas is inserted as the first element in the document body if requested with `embedCanvas`.",
+            "class": ""
+        },
+        {
+            "file": "dist/davinci-visual.js",
+            "line": 491,
+            "description": "The `tearDown` method causes the Workbench3D to stop handling window resize events for the canvas.\nThe canvas is removed from its parent if it was originally inserted by the workbench.\nThe canvas is restored to its original dimensions.",
+            "class": ""
+        },
+        {
+            "file": "dist/davinci-visual.js",
+            "line": 514,
             "description": "An convenient abstraction for 3D modeling consisting of a THREE.Scene, THREE.PerspeciveCamera and THREE.WebGLRenderer.\nThe camera is set looking along the y-axis so that the x-axis is to the right and the z-axis is up.\nThe camera field of view is initialized to 45 degrees.\nWhen used for a canvas over the entire window, the `setUp` and `tearDown` methods provide `resize` handling.\nWhen used for a smaller canvas, the width and height properties control the canvas size.\nThis convenience class does not provide lighting of the scene.",
             "class": ""
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 503,
+            "line": 524,
             "description": "Constructs a `WebGLCanvas` associated with the specified window and canvas.",
             "params": [
                 {
@@ -84,55 +101,55 @@
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 544,
+            "line": 567,
             "description": "The `width` property of the canvas.",
             "class": ""
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 560,
+            "line": 583,
             "description": "The `height` property of the canvas.",
             "class": ""
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 575,
+            "line": 598,
             "description": "Adds an object, typically a THREE.Mesh or THREE.Camera to the underlying THREE.Scene.",
             "class": ""
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 581,
+            "line": 604,
             "description": "Removes an object, typically a THREE.Mesh or THREE.Camera from the underlying THREE.Scene.",
             "class": ""
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 587,
+            "line": 610,
             "description": "Resizes the canvas to (width, height), and also sets the viewport to fit that size.",
             "class": ""
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 594,
+            "line": 617,
             "description": "Performs one-time setup of the canvas when being used to support full window.",
             "class": ""
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 601,
+            "line": 624,
             "description": "Performs one-time teardown of the canvas when being used to support full window.",
             "class": ""
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 608,
+            "line": 631,
             "description": "Render the 3D scene using the default camera.",
             "class": ""
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 623,
+            "line": 646,
             "description": "Creates an object implementing a stopwatch API that makes callbacks to user-supplied functions.",
             "params": [
                 {
@@ -156,19 +173,19 @@
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 752,
+            "line": 775,
             "description": "The `visual` modile provides convenience abstractions for 3D modeling.",
             "class": ""
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 757,
+            "line": 780,
             "description": "The version of the visual module.",
             "class": ""
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 761,
+            "line": 784,
             "description": "Returns a grade zero Euclidean 3D multivector (scalar).",
             "params": [
                 {
@@ -180,7 +197,7 @@
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 769,
+            "line": 792,
             "description": "Returns a grade one Euclidean 3D multivector (vector) with the specified Cartesian coordinates.",
             "params": [
                 {
@@ -200,7 +217,7 @@
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 779,
+            "line": 802,
             "description": "Returns a grade two Euclidean 3D multivector (bivector) with the specified Cartesian coordinates.",
             "params": [
                 {
@@ -220,7 +237,7 @@
         },
         {
             "file": "dist/davinci-visual.js",
-            "line": 789,
+            "line": 812,
             "description": "Returns a grade three Euclidean 3D multivector (pseudoscalar).",
             "params": [
                 {
@@ -261,72 +278,84 @@
             "line": " dist/davinci-visual.js:387"
         },
         {
+            "message": "Missing item type",
+            "line": " dist/davinci-visual.js:455"
+        },
+        {
+            "message": "Missing item type\nThe `setUp` method causes the Workbench3D to start handling window resize events for the canvas.\nThe canvas is inserted as the first element in the document body if requested with `embedCanvas`.",
+            "line": " dist/davinci-visual.js:478"
+        },
+        {
+            "message": "Missing item type\nThe `tearDown` method causes the Workbench3D to stop handling window resize events for the canvas.\nThe canvas is removed from its parent if it was originally inserted by the workbench.\nThe canvas is restored to its original dimensions.",
+            "line": " dist/davinci-visual.js:491"
+        },
+        {
             "message": "Missing item type\nAn convenient abstraction for 3D modeling consisting of a THREE.Scene, THREE.PerspeciveCamera and THREE.WebGLRenderer.\nThe camera is set looking along the y-axis so that the x-axis is to the right and the z-axis is up.\nThe camera field of view is initialized to 45 degrees.\nWhen used for a canvas over the entire window, the `setUp` and `tearDown` methods provide `resize` handling.\nWhen used for a smaller canvas, the width and height properties control the canvas size.\nThis convenience class does not provide lighting of the scene.",
-            "line": " dist/davinci-visual.js:493"
+            "line": " dist/davinci-visual.js:514"
         },
         {
             "message": "Missing item type\nConstructs a `WebGLCanvas` associated with the specified window and canvas.",
-            "line": " dist/davinci-visual.js:503"
+            "line": " dist/davinci-visual.js:524"
         },
         {
             "message": "Missing item type\nThe `width` property of the canvas.",
-            "line": " dist/davinci-visual.js:544"
+            "line": " dist/davinci-visual.js:567"
         },
         {
             "message": "Missing item type\nThe `height` property of the canvas.",
-            "line": " dist/davinci-visual.js:560"
+            "line": " dist/davinci-visual.js:583"
         },
         {
             "message": "Missing item type\nAdds an object, typically a THREE.Mesh or THREE.Camera to the underlying THREE.Scene.",
-            "line": " dist/davinci-visual.js:575"
+            "line": " dist/davinci-visual.js:598"
         },
         {
             "message": "Missing item type\nRemoves an object, typically a THREE.Mesh or THREE.Camera from the underlying THREE.Scene.",
-            "line": " dist/davinci-visual.js:581"
+            "line": " dist/davinci-visual.js:604"
         },
         {
             "message": "Missing item type\nResizes the canvas to (width, height), and also sets the viewport to fit that size.",
-            "line": " dist/davinci-visual.js:587"
+            "line": " dist/davinci-visual.js:610"
         },
         {
             "message": "Missing item type\nPerforms one-time setup of the canvas when being used to support full window.",
-            "line": " dist/davinci-visual.js:594"
+            "line": " dist/davinci-visual.js:617"
         },
         {
             "message": "Missing item type\nPerforms one-time teardown of the canvas when being used to support full window.",
-            "line": " dist/davinci-visual.js:601"
+            "line": " dist/davinci-visual.js:624"
         },
         {
             "message": "Missing item type\nRender the 3D scene using the default camera.",
-            "line": " dist/davinci-visual.js:608"
+            "line": " dist/davinci-visual.js:631"
         },
         {
             "message": "Missing item type\nCreates an object implementing a stopwatch API that makes callbacks to user-supplied functions.",
-            "line": " dist/davinci-visual.js:623"
+            "line": " dist/davinci-visual.js:646"
         },
         {
             "message": "Missing item type\nThe `visual` modile provides convenience abstractions for 3D modeling.",
-            "line": " dist/davinci-visual.js:752"
+            "line": " dist/davinci-visual.js:775"
         },
         {
             "message": "Missing item type\nThe version of the visual module.",
-            "line": " dist/davinci-visual.js:757"
+            "line": " dist/davinci-visual.js:780"
         },
         {
             "message": "Missing item type\nReturns a grade zero Euclidean 3D multivector (scalar).",
-            "line": " dist/davinci-visual.js:761"
+            "line": " dist/davinci-visual.js:784"
         },
         {
             "message": "Missing item type\nReturns a grade one Euclidean 3D multivector (vector) with the specified Cartesian coordinates.",
-            "line": " dist/davinci-visual.js:769"
+            "line": " dist/davinci-visual.js:792"
         },
         {
             "message": "Missing item type\nReturns a grade two Euclidean 3D multivector (bivector) with the specified Cartesian coordinates.",
-            "line": " dist/davinci-visual.js:779"
+            "line": " dist/davinci-visual.js:802"
         },
         {
             "message": "Missing item type\nReturns a grade three Euclidean 3D multivector (pseudoscalar).",
-            "line": " dist/davinci-visual.js:789"
+            "line": " dist/davinci-visual.js:812"
         }
     ]
 }

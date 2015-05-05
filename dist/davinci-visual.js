@@ -452,33 +452,54 @@ var visual;
             e.parentNode.removeChild(e);
         }
     }
+    /**
+     *
+     */
     var Workbench3D = (function () {
-        function Workbench3D(canvas, renderer, camera, wnd) {
+        function Workbench3D(canvas, renderer, camera, $window, embedCanvas) {
             this.canvas = canvas;
             this.renderer = renderer;
             this.camera = camera;
-            this.wnd = wnd;
+            this.$window = $window;
+            this.embedCanvas = embedCanvas;
             var self = this;
             function onWindowResize(event) {
-                var width = wnd.innerWidth;
-                var height = wnd.innerHeight;
+                var width = $window.innerWidth;
+                var height = $window.innerHeight;
                 self.setSize(width, height);
             }
-            this.sizer = onWindowResize;
+            this.resizeHandler = onWindowResize;
         }
         Workbench3D.prototype.setSize = function (width, height) {
             this.renderer.setSize(width, height);
             this.camera.aspect = width / height;
             this.camera.updateProjectionMatrix();
         };
+        /**
+         * The `setUp` method causes the Workbench3D to start handling window resize events for the canvas.
+         * The canvas is inserted as the first element in the document body if requested with `embedCanvas`.
+         */
         Workbench3D.prototype.setUp = function () {
-            this.wnd.document.body.insertBefore(this.canvas, this.wnd.document.body.firstChild);
-            this.wnd.addEventListener('resize', this.sizer, false);
-            this.sizer(null);
+            this.originalWidth = this.canvas.width;
+            this.originalHeight = this.canvas.height;
+            if (this.embedCanvas) {
+                this.$window.document.body.insertBefore(this.canvas, this.$window.document.body.firstChild);
+            }
+            this.$window.addEventListener('resize', this.resizeHandler, false);
+            this.setSize(this.$window.innerWidth, this.$window.innerHeight);
         };
+        /**
+         * The `tearDown` method causes the Workbench3D to stop handling window resize events for the canvas.
+         * The canvas is removed from its parent if it was originally inserted by the workbench.
+         * The canvas is restored to its original dimensions.
+         */
         Workbench3D.prototype.tearDown = function () {
-            this.wnd.removeEventListener('resize', this.sizer, false);
-            removeElementsByTagName(this.wnd.document, "canvas");
+            this.$window.removeEventListener('resize', this.resizeHandler, false);
+            if (this.embedCanvas) {
+                this.canvas.parentNode.removeChild(this.canvas);
+            }
+            this.canvas.width = this.originalWidth;
+            this.canvas.height = this.originalHeight;
         };
         return Workbench3D;
     })();
@@ -520,16 +541,18 @@ var visual;
                 else {
                     throw new Error(canvas + " is not a valid canvas element identifier.");
                 }
+                this.workbench3D = new visual.Workbench3D(this.canvas3D, this.renderer, this.camera, $window, false);
             }
             else if (typeof canvas === 'object') {
                 this.canvas3D = canvas;
                 this.renderer = new THREE.WebGLRenderer({ canvas: canvas });
+                this.workbench3D = new visual.Workbench3D(this.canvas3D, this.renderer, this.camera, $window, false);
             }
             else {
                 this.renderer = new THREE.WebGLRenderer();
                 this.canvas3D = this.renderer.domElement;
+                this.workbench3D = new visual.Workbench3D(this.canvas3D, this.renderer, this.camera, $window, true);
             }
-            this.workbench3D = new visual.Workbench3D(this.canvas3D, this.renderer, this.camera, $window);
             this.canvas2D = $window.document.createElement("canvas");
             this.canvas2D.style.position = "absolute";
             this.canvas2D.style.top = "0px";
@@ -757,7 +780,7 @@ var visual;
     /**
      * The version of the visual module.
      */
-    visual.VERSION = '1.5.0';
+    visual.VERSION = '1.6.0';
     /**
      * Returns a grade zero Euclidean 3D multivector (scalar).
      * @param w The scalar value.

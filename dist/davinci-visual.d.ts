@@ -168,15 +168,30 @@ declare module visual {
     }
 }
 declare module visual {
+    /**
+     *
+     */
     class Workbench3D {
         canvas: HTMLCanvasElement;
         renderer: THREE.WebGLRenderer;
         camera: THREE.PerspectiveCamera;
-        wnd: Window;
-        private sizer;
-        constructor(canvas: HTMLCanvasElement, renderer: THREE.WebGLRenderer, camera: THREE.PerspectiveCamera, wnd: Window);
+        $window: Window;
+        embedCanvas: boolean;
+        private originalWidth;
+        private originalHeight;
+        private resizeHandler;
+        constructor(canvas: HTMLCanvasElement, renderer: THREE.WebGLRenderer, camera: THREE.PerspectiveCamera, $window: Window, embedCanvas: boolean);
         setSize(width: number, height: number): void;
+        /**
+         * The `setUp` method causes the Workbench3D to start handling window resize events for the canvas.
+         * The canvas is inserted as the first element in the document body if requested with `embedCanvas`.
+         */
         setUp(): void;
+        /**
+         * The `tearDown` method causes the Workbench3D to stop handling window resize events for the canvas.
+         * The canvas is removed from its parent if it was originally inserted by the workbench.
+         * The canvas is restored to its original dimensions.
+         */
         tearDown(): void;
     }
 }

@@ -13,6 +13,7 @@ A lightweight WebGL Mathematical visualization library.
 * 1.4.0: 2015-05-02 Remove Lighting.
 * 1.4.1: 2015-05-02 Documentation.
 * 1.5.0: 2015-05-04 animationRunner and IStopwatch.
+* 1.6.0: 2015-05-04 Workbench3D canvas management.
 
 ## License
 Copyright (c) 2014-2015 David Holmes  

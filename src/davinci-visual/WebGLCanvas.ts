@@ -12,7 +12,7 @@ module visual
    * When used for a smaller canvas, the width and height properties control the canvas size.
    * This convenience class does not provide lighting of the scene. 
    */
-  export class WebGLCanvas/* implements HTMLCanvasElement*/
+  export class WebGLCanvas
   {
     public scene: THREE.Scene = new THREE.Scene();
     public camera: THREE.PerspectiveCamera = new THREE.PerspectiveCamera(45, 1.0, 0.1, 10000);
@@ -45,18 +45,20 @@ module visual
         else {
           throw new Error(canvas + " is not a valid canvas element identifier.");
         }
+        this.workbench3D = new Workbench3D(this.canvas3D, this.renderer, this.camera, $window, false);
       }
       else if (typeof canvas === 'object')
       {
         this.canvas3D = canvas;
         this.renderer = new THREE.WebGLRenderer({canvas:canvas});
+        this.workbench3D = new Workbench3D(this.canvas3D, this.renderer, this.camera, $window, false);
       }
       else
       {
         this.renderer = new THREE.WebGLRenderer();
         this.canvas3D = this.renderer.domElement;
+        this.workbench3D = new Workbench3D(this.canvas3D, this.renderer, this.camera, $window, true);
       }
-      this.workbench3D = new Workbench3D(this.canvas3D, this.renderer, this.camera, $window);
 
       this.canvas2D = $window.document.createElement("canvas");
 
